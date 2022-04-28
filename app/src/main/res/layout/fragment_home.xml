@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragmentHome"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:id="@+id/pannel_ad"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="@color/purple_500" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/pannel_ad">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="WHAT'S NEW?"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:id="@+id/tv_news1"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcv_news"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_below="@id/tv_news1" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="NOW PROMOTION"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:id="@+id/tv_news2"
+                android:layout_below="@id/rcv_news"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_below="@id/tv_news2"
+                android:id="@+id/rcv_promo"
+                />
+        </RelativeLayout>
+    </ScrollView>
+
+
+
+
+
+
+
+</RelativeLayout>

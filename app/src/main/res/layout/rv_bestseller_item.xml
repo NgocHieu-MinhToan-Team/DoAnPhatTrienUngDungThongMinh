@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="10dp"
+    android:paddingVertical="20dp"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="horizontal"
+        android:background="@drawable/bg_dish"
+        >
+        <ImageView
+            android:id="@+id/iv_image"
+            android:layout_width="160dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/beef_sukiyaki"
+            android:layout_gravity="left"
+            android:layout_marginLeft="20dp"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:id="@+id/tv_dishName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="beef sukiyaki"
+                android:textSize="24dp"
+                android:textStyle="bold"
+
+                android:fontFamily="sans-serif-condensed"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="dat mon ngay"
+                android:textSize="18dp"
+                android:fontFamily="sans-serif-condensed"/>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

@@ -10,12 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PepperLuchApplication">
         <activity
-            android:name=".HomePageActivity"
+            android:name=".MainActivity"
             android:exported="false"
             android:theme="@style/AppTheme"
             />
         <activity
-            android:name=".MainActivity"
+            android:name=".HomePageActivity"
             android:exported="false"
             android:theme="@style/AppTheme" />
         <activity

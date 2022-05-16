@@ -18,10 +18,11 @@ public class RV_ProductAdapter extends RecyclerView.Adapter<ViewProduct> impleme
     Context activity;
     ArrayList<Product> data;
 
-    public RV_ProductAdapter(Context activity,ArrayList<Product> data) {
+    public RV_ProductAdapter(Context activity, ArrayList<Product> data) {
         this.activity = activity;
         this.data = data;
     }
+
     @Override
     public Filter getFilter() {
         return null;
@@ -30,13 +31,13 @@ public class RV_ProductAdapter extends RecyclerView.Adapter<ViewProduct> impleme
     @NonNull
     @Override
     public ViewProduct onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(activity).inflate(R.layout.rv_product_item,null);
+        View view = LayoutInflater.from(activity).inflate(R.layout.rv_product_item, null);
         return new ViewProduct(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewProduct holder, int position) {
-        Product kq=data.get(position);
+        Product kq = data.get(position);
         holder.tv_product_name.setText(kq.getName());
         holder.iv_product_image.setImageResource(kq.image);
     }
@@ -48,14 +49,14 @@ public class RV_ProductAdapter extends RecyclerView.Adapter<ViewProduct> impleme
     }
 }
 
-class ViewProduct extends RecyclerView.ViewHolder{
+class ViewProduct extends RecyclerView.ViewHolder {
     TextView tv_product_name;
     ImageView iv_product_image;
 
     public ViewProduct(@NonNull View itemView) {
         super(itemView);
-        tv_product_name=itemView.findViewById(R.id.tv_product_name);
-        iv_product_image=itemView.findViewById(R.id.iv_product_image);
+        tv_product_name = itemView.findViewById(R.id.tv_product_name);
+        iv_product_image = itemView.findViewById(R.id.iv_product_image);
 
     }
 }

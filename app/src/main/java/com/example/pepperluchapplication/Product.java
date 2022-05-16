@@ -4,6 +4,11 @@ public class Product {
     int image;
     private String name;
 
+    public Product(int image, String name) {
+        this.image = image;
+        this.name = name;
+    }
+
     public int getImage() {
         return image;
     }
@@ -17,11 +22,6 @@ public class Product {
     }
 
     public void setName(String name) {
-        this.name = name;
-    }
-
-    public Product(int image, String name) {
-        this.image = image;
         this.name = name;
     }
 

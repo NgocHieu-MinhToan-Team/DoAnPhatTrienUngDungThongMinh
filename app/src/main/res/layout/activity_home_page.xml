@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomePageActivity"
-    android:background="@drawable/bg_white">
+    android:background="@drawable/bg_white"
+    tools:context=".HomePageActivity">
 
     <FrameLayout
         android:id="@+id/frmMain"
@@ -19,9 +19,9 @@
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:background="@color/colorText"
+        app:itemIconSize="35dp"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
-        app:menu="@menu/menubutton"
-        app:itemIconSize="35dp"/>
+        app:menu="@menu/menubutton" />
 
 </RelativeLayout>

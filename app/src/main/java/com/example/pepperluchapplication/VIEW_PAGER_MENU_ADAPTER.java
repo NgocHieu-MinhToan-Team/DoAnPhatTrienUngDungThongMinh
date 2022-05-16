@@ -10,15 +10,14 @@ import java.util.ArrayList;
 
 public class VIEW_PAGER_MENU_ADAPTER extends FragmentPagerAdapter {
 
-    ArrayList<Fragment> fragmentArrayList=new ArrayList<>();
-    ArrayList<String> tieudeTab=new ArrayList<>();
+    ArrayList<Fragment> fragmentArrayList = new ArrayList<>();
+    ArrayList<String> tieudeTab = new ArrayList<>();
 
     public VIEW_PAGER_MENU_ADAPTER(@NonNull FragmentManager fm, int behavior) {
         super(fm, behavior);
     }
 
-    public  void addFragment(Fragment fragment,String title)
-    {
+    public void addFragment(Fragment fragment, String title) {
         fragmentArrayList.add(fragment);
         tieudeTab.add(title);
     }

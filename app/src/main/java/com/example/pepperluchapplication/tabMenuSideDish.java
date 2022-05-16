@@ -1,16 +1,13 @@
 package com.example.pepperluchapplication;
 
-import androidx.lifecycle.ViewModelProvider;
-
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 public class tabMenuSideDish extends Fragment {
 
@@ -24,8 +21,6 @@ public class tabMenuSideDish extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.tab_menu_side_dish_fragment, container, false);
     }
-
-
 
 
 }

@@ -3,17 +3,17 @@
     <item
         android:id="@+id/mnuHome"
         android:icon="@drawable/ic_baseline_home_24"
-        android:title="Home"/>
+        android:title="Home" />
     <item
         android:id="@+id/mnuMenu"
         android:icon="@drawable/ic_baseline_restaurant_menu_24"
-        android:title="Menu"/>
+        android:title="Menu" />
     <item
         android:id="@+id/mnuHistory"
         android:icon="@drawable/ic_baseline_history_24"
-        android:title="History"/>
+        android:title="History" />
     <item
         android:id="@+id/mnuProfile"
         android:icon="@drawable/ic_baseline_account_box_24"
-        android:title="Profile"/>
+        android:title="Profile" />
 </menu>

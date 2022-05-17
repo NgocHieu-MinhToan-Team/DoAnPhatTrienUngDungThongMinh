@@ -18,10 +18,11 @@ public class RV_BestSellerAdapter extends RecyclerView.Adapter<KHUNGNHIN> implem
     Context activity;
     ArrayList<Product> data;
 
-    public RV_BestSellerAdapter(Context activity,ArrayList<Product> data) {
+    public RV_BestSellerAdapter(Context activity, ArrayList<Product> data) {
         this.activity = activity;
         this.data = data;
     }
+
     @Override
     public Filter getFilter() {
         return null;
@@ -30,13 +31,13 @@ public class RV_BestSellerAdapter extends RecyclerView.Adapter<KHUNGNHIN> implem
     @NonNull
     @Override
     public KHUNGNHIN onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(activity).inflate(R.layout.rv_bestseller_item,null);
+        View view = LayoutInflater.from(activity).inflate(R.layout.rv_bestseller_item, null);
         return new KHUNGNHIN(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull KHUNGNHIN holder, int position) {
-        Product kq=data.get(position);
+        Product kq = data.get(position);
         holder.tv_dishName.setText(kq.getName());
         holder.iv_image.setImageResource(kq.image);
     }
@@ -47,14 +48,14 @@ public class RV_BestSellerAdapter extends RecyclerView.Adapter<KHUNGNHIN> implem
     }
 }
 
-class KHUNGNHIN extends RecyclerView.ViewHolder{
+class KHUNGNHIN extends RecyclerView.ViewHolder {
     TextView tv_dishName;
     ImageView iv_image;
 
     public KHUNGNHIN(@NonNull View itemView) {
         super(itemView);
-        tv_dishName=itemView.findViewById(R.id.tv_dishName);
-        iv_image=itemView.findViewById(R.id.iv_image);
+        tv_dishName = itemView.findViewById(R.id.tv_dishName);
+        iv_image = itemView.findViewById(R.id.iv_image);
 
     }
 }

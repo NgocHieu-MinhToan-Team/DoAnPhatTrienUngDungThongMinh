@@ -3,20 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragmentMenu"
-    android:background="@color/white">
+    android:background="@color/white"
+    tools:context=".fragmentMenu">
 
     <com.google.android.material.tabs.TabLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tablayout_menu"
 
         />
+
     <androidx.viewpager.widget.ViewPager
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/viewpager_menu"
-        />
+        android:layout_height="match_parent" />
 
 
 </FrameLayout>

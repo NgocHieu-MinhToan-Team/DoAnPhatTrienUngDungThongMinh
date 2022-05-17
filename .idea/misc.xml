@@ -4,13 +4,16 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1285" />
+        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/drawable/rounded_button_add_on_cart.xml" value="0.251" />
         <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/drawable/rounded_product.xml" value="0.148" />
-        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/activity_home_page.xml" value="0.25" />
+        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/activity_detail_product.xml" value="0.2" />
+        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/activity_home_page.xml" value="0.1" />
         <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/fragment_home.xml" value="0.24912280701754386" />
         <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/fragment_product_item.xml" value="0.20512820512820512" />
+        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/fragment_product_item_detail.xml" value="0.2" />
         <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/rv_bestseller_item.xml" value="0.20512820512820512" />
         <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/rv_category.xml" value="0.20512820512820512" />
-        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/rv_product_item.xml" value="0.1" />
+        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/rv_product_item.xml" value="0.264" />
         <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/menu/menubutton.xml" value="0.25" />
         <entry key="app/src/main/res/drawable/ic_baseline_account_box_24.xml" value="0.1545" />
         <entry key="app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.1405" />

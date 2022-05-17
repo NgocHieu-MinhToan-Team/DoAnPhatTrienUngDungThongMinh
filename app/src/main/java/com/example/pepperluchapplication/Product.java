@@ -1,6 +1,8 @@
 package com.example.pepperluchapplication;
 
-public class Product {
+import java.io.Serializable;
+
+public class Product implements Serializable {
     int image;
     private String name;
 

@@ -10,16 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PepperLuchApplication">
         <activity
-            android:name=".MainActivity"
+            android:name=".DetailProduct"
             android:exported="false"
-            android:theme="@style/AppTheme"
-            />
+            android:theme="@style/AppTheme"/>
         <activity
-            android:name=".HomePageActivity"
+            android:name=".MainActivity"
             android:exported="false"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".WelcomeActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".HomePageActivity"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

@@ -1,51 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_white"
-    tools:context=".fragmentHome"
-    android:id="@+id/drawerLayout"
+    tools:context=".Fragments.fragmentHome"
+    android:orientation="vertical"
     >
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-
         >
-        <!--    header: toolbar-->
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            >
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                >
-            </androidx.appcompat.widget.Toolbar>
-            <ImageView
-                android:id="@+id/imageView1"
-                android:layout_width="160dp"
-                android:layout_height="match_parent"
-                android:padding="6dp"
-                android:src="@drawable/logotext"
-                android:layout_gravity="center"
-                android:layout_centerInParent="true"
-                />
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="48dp"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="16dp"
-                android:padding="6dp"
-                android:src="@drawable/shopping_cart_128px"
-                android:layout_alignParentEnd="true"
-                />
-        </RelativeLayout>
         <!--    news , advert vd best seller-->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_bestSeller"
@@ -73,13 +40,7 @@
             android:layout_weight="1"/>
         <!--    menu -->
     </LinearLayout>
-    <com.google.android.material.navigation.NavigationView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:fitsSystemWindows="true"
-        android:id="@+id/navigationView">
-    </com.google.android.material.navigation.NavigationView>
 
 
-</androidx.drawerlayout.widget.DrawerLayout>
+
+</LinearLayout>

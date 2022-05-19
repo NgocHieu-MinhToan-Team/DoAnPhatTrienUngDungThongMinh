@@ -14,7 +14,7 @@
             android:exported="false"
             android:theme="@style/AppTheme"/>
         <activity
-            android:name=".MainActivity"
+            android:name=".ActivityHomePage"
             android:exported="false"
             android:theme="@style/AppTheme" />
         <activity
@@ -22,7 +22,7 @@
             android:exported="false"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".HomePageActivity"
+            android:name=".ActivityLogin"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

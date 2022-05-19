@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/mnuHome"
-        android:icon="@drawable/ic_baseline_home_24"
-        android:title="Home"/>
+
     <item
         android:id="@+id/mnuMenu"
-        android:icon="@drawable/ic_baseline_restaurant_menu_24"
+        android:icon="@drawable/menu_32px"
         android:title="Menu"/>
     <item
-        android:id="@+id/mnuHistory"
-        android:icon="@drawable/ic_baseline_history_24"
-        android:title="History"/>
+        android:id="@+id/mnuHome"
+        android:icon="@drawable/home_32px"
+        android:title="Home"/>
     <item
-        android:id="@+id/mnuProfile"
-        android:icon="@drawable/ic_baseline_account_box_24"
-        android:title="Profile"/>
+        android:id="@+id/mnuHistory"
+        android:icon="@drawable/history_32px"
+        android:title="History"/>
 </menu>

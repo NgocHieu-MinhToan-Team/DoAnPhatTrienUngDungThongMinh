@@ -31,7 +31,7 @@
                 android:layout_width="60dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/shopping_cart_128px"
+                android:src="@drawable/cart_32px"
                 android:padding="10dp"
                 android:layout_alignParentRight="true"
                 />

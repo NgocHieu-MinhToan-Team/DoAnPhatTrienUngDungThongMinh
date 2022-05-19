@@ -25,11 +25,10 @@ public class RV_ProductAdapter extends RecyclerView.Adapter<ViewProduct> impleme
     Context activity;
     ArrayList<Product> data;
 
-    public RV_ProductAdapter(Context activity, ArrayList<Product> data) {
+    public RV_ProductAdapter(Context activity,ArrayList<Product> data) {
         this.activity = activity;
         this.data = data;
     }
-
     @Override
     public Filter getFilter() {
         return null;
@@ -38,27 +37,27 @@ public class RV_ProductAdapter extends RecyclerView.Adapter<ViewProduct> impleme
     @NonNull
     @Override
     public ViewProduct onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(activity).inflate(R.layout.rv_product_item, null);
+        View view = LayoutInflater.from(activity).inflate(R.layout.rv_product_item,null);
         return new ViewProduct(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewProduct holder, int position) {
-        Product pro = data.get(position);
+        Product pro=data.get(position);
         holder.tv_product_name.setText(pro.getName());
         holder.iv_product_image.setImageResource(pro.getImage());
         holder.item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                OnClickItemProduct(pro);
+               OnClickItemProduct(pro);
             }
         });
     }
 
     private void OnClickItemProduct(Product pro) {
-        Intent intent = new Intent(activity, DetailProduct.class);
+        Intent intent =new Intent(activity, DetailProduct.class);
         Bundle bundle = new Bundle();
-        bundle.putSerializable("product", pro);
+        bundle.putSerializable("product",pro);
         intent.putExtras(bundle);
         activity.startActivity(intent);
     }
@@ -78,9 +77,9 @@ class ViewProduct extends RecyclerView.ViewHolder {
 
     public ViewProduct(@NonNull View itemView) {
         super(itemView);
-        tv_product_name = itemView.findViewById(R.id.tv_product_name);
-        iv_product_image = itemView.findViewById(R.id.iv_product_image);
-        item = itemView.findViewById(R.id.product_item);
+        tv_product_name=itemView.findViewById(R.id.tv_product_name);
+        iv_product_image=itemView.findViewById(R.id.iv_product_image);
+        item=itemView.findViewById(R.id.product_item);
 
     }
 

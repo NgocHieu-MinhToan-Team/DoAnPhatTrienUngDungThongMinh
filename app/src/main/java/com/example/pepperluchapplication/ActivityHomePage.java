@@ -1,9 +1,5 @@
 package com.example.pepperluchapplication;
 
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -12,9 +8,14 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+
 import com.example.pepperluchapplication.Fragments.fragmentHistory;
 import com.example.pepperluchapplication.Fragments.fragmentHome;
 import com.example.pepperluchapplication.Fragments.fragmentMenu;
+import com.example.pepperluchapplication.Fragments.fragmentProfile;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -30,7 +31,7 @@ public class ActivityHomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
         // Ánh Xạ Views
-        bottomNavigationView = findViewById(R.id.NavigationMenu);
+        bottomNavigationView=findViewById(R.id.NavigationMenu);
         toolbar = findViewById(R.id.toolbar);
         drawerLayout = findViewById(R.id.drawerLayout);
 
@@ -42,16 +43,14 @@ public class ActivityHomePage extends AppCompatActivity {
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id = item.getItemId();
-                switch (id) {
-                    case R.id.mnuHome:
-                        fragment = new fragmentHome(getApplicationContext());
+                int id=item.getItemId();
+                switch (id)
+                {
+                    case R.id.mnuHome: fragment=new fragmentHome(getApplicationContext());
                         break;
-                    case R.id.mnuMenu:
-                        fragment = new fragmentMenu(getApplicationContext());
+                    case R.id.mnuMenu: fragment=new fragmentMenu(getApplicationContext());
                         break;
-                    case R.id.mnuHistory:
-                        fragment = new fragmentHistory(getApplicationContext());
+                    case R.id.mnuHistory: fragment=new fragmentHistory(getApplicationContext());
                         break;
                 }
                 loadFragment(fragment);
@@ -71,10 +70,10 @@ public class ActivityHomePage extends AppCompatActivity {
             }
         });
     }
-
-    public void loadFragment(Fragment f) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frmMain, f);
+    public void loadFragment(Fragment f)
+    {
+        FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frmMain,f);
         transaction.commit();
     }
 }

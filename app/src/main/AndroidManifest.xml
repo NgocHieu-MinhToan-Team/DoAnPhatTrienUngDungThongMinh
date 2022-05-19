@@ -12,9 +12,9 @@
         <activity
             android:name=".DetailProduct"
             android:exported="false"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"/>
         <activity
-            android:name=".ActivityLogin"
+            android:name=".ActivityHomePage"
             android:exported="false"
             android:theme="@style/AppTheme" />
         <activity
@@ -22,7 +22,7 @@
             android:exported="false"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".ActivityHomePage"
+            android:name=".ActivityLogin"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

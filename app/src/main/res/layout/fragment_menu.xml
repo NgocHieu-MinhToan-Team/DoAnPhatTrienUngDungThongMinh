@@ -6,16 +6,16 @@
     tools:context=".Fragments.fragmentMenu">
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tablayout_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/tablayout_menu"
 
         />
-
     <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewpager_menu"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:id="@+id/viewpager_menu"
+        />
 
 
 </FrameLayout>

@@ -41,7 +41,6 @@ public class fragmentHome extends Fragment {
     public fragmentHome(Context context) {
         this.context = context;
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -53,7 +52,6 @@ public class fragmentHome extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         // Mapping
         rv_bestSeller = view.findViewById(R.id.rv_bestSeller);
         tabLayout = view.findViewById(R.id.tablayout);
@@ -88,15 +86,13 @@ public class fragmentHome extends Fragment {
                 }
 
                 for (Category item : dataOfCategory) {
-                    Product pro = new Product(R.drawable.beef_sukiyaki, item.NAME_CATEGORY);
+                    Product pro = new Product(R.drawable.beef_sukiyaki, item.getNAME_CATEGORY());
                     dataOfProduct.add(pro);
                 }
-
                 // NOTE
                 bestSellerAdapter.notifyDataSetChanged();
                 viewPager_categoryAdapter.notifyDataSetChanged();
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
@@ -104,7 +100,6 @@ public class fragmentHome extends Fragment {
         };
         // Add event
         myRef.addValueEventListener(valueEventListener);
-
         registerForContextMenu(tabLayout);
     }
 

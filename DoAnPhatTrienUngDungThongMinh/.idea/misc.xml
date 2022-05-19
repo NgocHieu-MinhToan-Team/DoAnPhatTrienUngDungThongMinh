@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1285" />
+        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/drawable/rounded_button_add_on_cart.xml" value="0.251" />
+        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/drawable/rounded_form_login.xml" value="0.1535" />
+        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/drawable/rounded_product.xml" value="0.148" />
+        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/activity_detail_product.xml" value="0.2" />
+        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/activity_home_page.xml" value="0.2" />
+        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/activity_login.xml" value="0.2" />
+        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/activity_main.xml" value="0.20512820512820512" />
+        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/activity_welcome.xml" value="0.20512820512820512" />
+        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/fragment_form_login.xml" value="0.20512820512820512" />
+        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/fragment_home.xml" value="0.24912280701754386" />
+        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/fragment_menu.xml" value="0.20512820512820512" />
+        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/fragment_product_item.xml" value="0.20512820512820512" />
+        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/fragment_product_item_detail.xml" value="0.2" />
+        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/rv_bestseller_item.xml" value="0.264" />
+        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/rv_category.xml" value="0.20512820512820512" />
+        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/rv_product_item.xml" value="0.264" />
+        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/menu/menubutton.xml" value="0.25" />
+        <entry key="app/src/main/res/drawable/ic_baseline_account_box_24.xml" value="0.1545" />
+        <entry key="app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.1405" />
+        <entry key="app/src/main/res/layout/activity_home_page.xml" value="0.21944444444444444" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.24537037037037038" />
+        <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.16302521008403362" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.21944444444444444" />
+        <entry key="app/src/main/res/layout/fragment_order.xml" value="0.2953125" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.2953125" />
+        <entry key="app/src/main/res/layout/fragment_status.xml" value="0.2953125" />
+        <entry key="app/src/main/res/layout/welcome_slide1.xml" value="0.2101851851851852" />
+        <entry key="app/src/main/res/layout/welcome_slide2.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/welcome_slide3.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/welcome_slide4.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/menu/menubutton.xml" value="0.2953125" />
+        <entry key="app/src/main/res/menu/mnu_type_food.xml" value="0.2953125" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

@@ -1,85 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_white"
     android:orientation="vertical"
     tools:context=".DetailProduct">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="250dp"
+        android:orientation="vertical"
         android:background="@color/white"
-        android:orientation="vertical">
-
+        >
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
             <ImageView
                 android:id="@+id/iv_product_detail_back"
                 android:layout_width="60dp"
                 android:layout_height="48dp"
-                android:layout_alignParentLeft="true"
-                android:layout_marginTop="10dp"
-                android:contentDescription="@string/app_name"
+                android:src="@drawable/back_48px"
                 android:padding="10dp"
-                android:src="@drawable/back_48px" />
-
+                android:layout_marginTop="10dp"
+                android:layout_alignParentLeft="true"
+                android:contentDescription="@string/app_name"
+                />
             <ImageView
                 android:id="@+id/iv_product_detail_cart"
                 android:layout_width="60dp"
                 android:layout_height="48dp"
-                android:layout_alignParentRight="true"
                 android:layout_marginTop="10dp"
+                android:src="@drawable/cart_32px"
                 android:padding="10dp"
-                android:src="@drawable/cart_32px" />
+                android:layout_alignParentRight="true"
+                />
         </RelativeLayout>
 
         <ImageView
             android:id="@+id/iv_product_detail_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/beef_sukiyaki" />
+            android:src="@drawable/beef_sukiyaki"
+            />
     </LinearLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1">
-
+        android:layout_weight="1"
+        >
         <TextView
             android:id="@+id/tv_product_detail_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textStyle="bold|italic"
+            android:textColor="@color/colorText"
+            android:text="Beef pepper rice"
+            android:textSize="24dp"
             android:paddingHorizontal="30dp"
             android:paddingVertical="10dp"
-            android:text="Beef pepper rice"
-            android:textColor="@color/colorText"
-            android:textSize="24dp"
-            android:textStyle="bold|italic" />
+            />
     </LinearLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:background="@drawable/bg_main"
         android:orientation="vertical"
+        android:background="@drawable/bg_main"
         android:paddingHorizontal="10dp"
-        android:paddingVertical="8dp">
-
+        android:paddingVertical="8dp"
+        >
         <Button
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/rounded_button_add_on_cart"
-            android:gravity="center"
-            android:padding="12dp"
             android:text="Thêm vào giỏ hàng"
+            android:textSize="20dp"
+            android:gravity="center"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="20dp"
+            android:layout_weight="1"
+            android:padding="12dp"
+            android:background="@drawable/rounded_button_add_on_cart"
             tools:ignore="RtlCompat" />
     </LinearLayout>
 

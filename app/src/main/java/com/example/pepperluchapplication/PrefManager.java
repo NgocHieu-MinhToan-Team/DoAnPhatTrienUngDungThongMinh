@@ -4,25 +4,25 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 public class PrefManager {
-    private static final String PREF_NAME = "androidhive-welcome";
-    private static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
-    private static PrefManager mInstance;
     SharedPreferences mPref;
     SharedPreferences.Editor mEditor;
     Context mContext;
     int PRIVATE_MODE = 0;
-
-    public PrefManager(Context context) {
-        this.mContext = context;
-        mPref = mContext.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
-        mEditor = mPref.edit();
-    }
+    private static final String PREF_NAME = "androidhive-welcome";
+    private static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
+    private static PrefManager mInstance;
 
     public static PrefManager getInstance(Context context) {
         if (mInstance == null) {
             mInstance = new PrefManager(context);
         }
         return mInstance;
+    }
+
+    public PrefManager(Context context) {
+        this.mContext = context;
+        mPref = mContext.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
+        mEditor = mPref.edit();
     }
 
     public void setFirstimeLaunch(boolean isFirstTime) {

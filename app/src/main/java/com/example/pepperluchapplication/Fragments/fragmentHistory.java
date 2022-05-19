@@ -2,11 +2,12 @@ package com.example.pepperluchapplication.Fragments;
 
 import android.content.Context;
 import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import androidx.fragment.app.Fragment;
 
 import com.example.pepperluchapplication.R;
 
@@ -18,9 +19,9 @@ import com.example.pepperluchapplication.R;
 public class fragmentHistory extends Fragment {
 
     Context context;
-
-    public fragmentHistory(Context context) {
-        this.context = context;
+    public fragmentHistory(Context context)
+    {
+        this.context=context;
     }
 
     @Override

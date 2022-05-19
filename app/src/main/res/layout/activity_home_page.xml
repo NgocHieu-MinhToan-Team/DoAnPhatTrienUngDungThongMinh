@@ -1,18 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
     android:background="@drawable/bg_white"
     tools:context=".HomePageActivity">
 
     <FrameLayout
         android:id="@+id/frmMain"
+=======
+    tools:context=".ActivityHomePage"
+    android:orientation="vertical"
+    android:background="@drawable/bg_white"
+    >
+    <androidx.drawerlayout.widget.DrawerLayout
+>>>>>>> f9f290355de84b4d2cd648d84f54e48016f36b21
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/btnNav" />
+        android:id="@+id/drawerLayout"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
 
+<<<<<<< HEAD
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/btnNav"
         android:layout_width="match_parent"
@@ -23,5 +38,62 @@
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
         app:menu="@menu/menubutton" />
+=======
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp">
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                </androidx.appcompat.widget.Toolbar>
+                <ImageView
+                    android:id="@+id/iv_cart"
+                    android:layout_width="180dp"
+                    android:layout_height="60dp"
+                    android:layout_centerInParent="true"
+                    android:padding="6dp"
+                    android:src="@drawable/logotext" />
 
-</RelativeLayout>
+                <ImageView
+                    android:id="@+id/iv_sideBar"
+                    android:layout_width="48dp"
+                    android:layout_height="60dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="16dp"
+                    android:padding="4dp"
+                    android:src="@drawable/cart_32px" />
+            </RelativeLayout>
+            <FrameLayout
+                android:id="@+id/frmMain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                />
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/NavigationMenu"
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/colorText"
+                app:itemIconSize="34dp"
+                app:itemIconTint="@color/white"
+                app:itemTextColor="@color/white"
+                app:menu="@menu/menubutton"
+                tools:ignore="MissingClass" />
+        </LinearLayout>
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navigationView"
+            android:layout_width="240dp"
+            app:itemIconPadding="4dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="60dp"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+
+            >
+>>>>>>> f9f290355de84b4d2cd648d84f54e48016f36b21
+
+        </com.google.android.material.navigation.NavigationView>
+    </androidx.drawerlayout.widget.DrawerLayout>
+</LinearLayout>

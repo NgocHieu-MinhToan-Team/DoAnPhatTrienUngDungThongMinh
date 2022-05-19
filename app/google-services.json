@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "889146152019",
+    "firebase_url": "https://dbpepperlunch-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "dbpepperlunch",
+    "storage_bucket": "dbpepperlunch.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:889146152019:android:6af91646bcbf09e7b822a6",
+        "android_client_info": {
+          "package_name": "com.example.pepperluchapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "889146152019-hp8njq8k240ue5fbv3npklhvgvra1ksg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtMl5ySf1h_MbzHc8H2dCyxUdAEr_1LBM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "889146152019-hp8njq8k240ue5fbv3npklhvgvra1ksg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

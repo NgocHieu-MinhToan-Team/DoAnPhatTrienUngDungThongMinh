@@ -3,8 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
     android:background="@color/white"
     tools:context=".fragmentMenu">
+=======
+    tools:context=".Fragments.fragmentMenu">
+>>>>>>> f9f290355de84b4d2cd648d84f54e48016f36b21
 
     <com.google.android.material.tabs.TabLayout
         android:layout_width="match_parent"

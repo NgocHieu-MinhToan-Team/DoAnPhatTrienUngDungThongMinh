@@ -1,15 +1,10 @@
 package com.example.pepperluchapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.PagerAdapter;
-import androidx.viewpager.widget.ViewPager;
-
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +14,10 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -30,6 +29,31 @@ public class WelcomeActivity extends AppCompatActivity {
     private Button mBtnSkip;
     private Button mBtnNext;
     private PrefManager mPrefManager;
+    private ViewPager.OnPageChangeListener mViewPagerChangeListener = new ViewPager.OnPageChangeListener() {
+        @Override
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+        }
+
+        @Override
+        public void onPageSelected(int position) {
+            addBottomDots(position);
+            //Change the next button text 'NEXT'/'GOT IT'
+            if (position == mLayouts.length - 1) {
+                mBtnNext.setText(getString(R.string.start));
+                mBtnSkip.setVisibility(View.GONE);
+            } else {
+                //Still pages are left
+                mBtnNext.setText(getString(R.string.next));
+                mBtnSkip.setVisibility(View.VISIBLE);
+            }
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int state) {
+
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +65,8 @@ public class WelcomeActivity extends AppCompatActivity {
 
         //Making notification bar transparent
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+            getWindow().getDecorView()
+                    .setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
 
         }
         setContentView(R.layout.activity_welcome);
@@ -82,31 +107,7 @@ public class WelcomeActivity extends AppCompatActivity {
             }
         });
     }
-    private ViewPager.OnPageChangeListener mViewPagerChangeListener = new ViewPager.OnPageChangeListener() {
-        @Override
-        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
-        }
-
-        @Override
-        public void onPageSelected(int position) {
-            addBottomDots(position);
-            //Change the next button text 'NEXT'/'GOT IT'
-            if (position == mLayouts.length - 1) {
-                mBtnNext.setText(getString(R.string.start));
-                mBtnSkip.setVisibility(View.GONE);
-            } else {
-                //Still pages are left
-                mBtnNext.setText(getString(R.string.next));
-                mBtnSkip.setVisibility(View.VISIBLE);
-            }
-        }
-
-        @Override
-        public void onPageScrollStateChanged(int state) {
-
-        }
-    };
     private void addBottomDots(int currentPage) {
         mDots = new TextView[mLayouts.length];
 
@@ -125,6 +126,7 @@ public class WelcomeActivity extends AppCompatActivity {
             mDots[currentPage].setTextColor(colorsActive[currentPage]);
         }
     }
+
     private void changeStatusBarColor() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
@@ -138,10 +140,11 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     private void launchHomeScreen() {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, ActivityLogin.class);
         startActivity(intent);
         this.finish();
     }
+
     public class IntroViewPagerAdapter extends PagerAdapter {
         private LayoutInflater mInflater;
 

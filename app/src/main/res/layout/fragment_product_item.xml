@@ -3,14 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment_product_item">
+    tools:context=".Fragments.fragment_product_item">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_product"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="16dp"
         android:paddingHorizontal="16dp"
-        />
+        android:paddingTop="16dp" />
 
 </LinearLayout>

@@ -1,10 +1,15 @@
-package com.example.pepperluchapplication;
+package com.example.pepperluchapplication.DTO;
 
 import java.io.Serializable;
 
 public class Product implements Serializable {
     int image;
     private String name;
+
+    public Product(int image, String name) {
+        this.image = image;
+        this.name = name;
+    }
 
     public int getImage() {
         return image;
@@ -19,11 +24,6 @@ public class Product implements Serializable {
     }
 
     public void setName(String name) {
-        this.name = name;
-    }
-
-    public Product(int image, String name) {
-        this.image = image;
         this.name = name;
     }
 

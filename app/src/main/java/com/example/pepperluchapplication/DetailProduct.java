@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.pepperluchapplication.DTO.Category;
+import com.example.pepperluchapplication.DTO.CATEGORY;
 
 public class DetailProduct extends AppCompatActivity {
 
@@ -22,7 +22,7 @@ public class DetailProduct extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         if(bundle==null)
             return;
-        Category cate = (Category) bundle.getSerializable("product");
+        CATEGORY cate = (CATEGORY) bundle.getSerializable("product");
         iv_image=findViewById(R.id.iv_product_detail_image);
         iv_back=findViewById(R.id.iv_product_detail_back);
         iv_cart=findViewById(R.id.iv_product_detail_cart);

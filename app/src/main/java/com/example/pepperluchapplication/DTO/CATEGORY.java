@@ -1,9 +1,12 @@
 package com.example.pepperluchapplication.DTO;
 
-public class Category {
-    String ID_CATEGORY,GROUP_CATEGORY,NAME_CATEGORY;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-    public Category(){}
+public class CATEGORY {
+    String ID_CATEGORY,GROUP_CATEGORY,NAME_CATEGORY;
+    HashMap<String,PRODUCT> Dishes;
+
     public String getID_CATEGORY() {
         return ID_CATEGORY;
     }
@@ -28,9 +31,26 @@ public class Category {
         this.NAME_CATEGORY = NAME_CATEGORY;
     }
 
-    public Category(String ID_CATEGORY, String GROUP_CATEGORY, String NAME_CATEGORY) {
+    public HashMap<String,PRODUCT> getDishes() {
+        return Dishes;
+    }
+
+    public void setDishes(HashMap<String,PRODUCT> dishes) {
+        Dishes = dishes;
+    }
+
+    public CATEGORY(){}
+
+    public CATEGORY(String ID_CATEGORY, String GROUP_CATEGORY, String NAME_CATEGORY) {
         this.ID_CATEGORY = ID_CATEGORY;
         this.GROUP_CATEGORY = GROUP_CATEGORY;
         this.NAME_CATEGORY = NAME_CATEGORY;
+    }
+
+    public CATEGORY(String ID_CATEGORY, String GROUP_CATEGORY, String NAME_CATEGORY, HashMap<String,PRODUCT> dishes) {
+        this.ID_CATEGORY = ID_CATEGORY;
+        this.GROUP_CATEGORY = GROUP_CATEGORY;
+        this.NAME_CATEGORY = NAME_CATEGORY;
+        this.Dishes = dishes;
     }
 }

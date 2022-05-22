@@ -12,16 +12,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.pepperluchapplication.DTO.Product;
+import com.example.pepperluchapplication.DTO.PRODUCT;
 import com.example.pepperluchapplication.R;
 
 import java.util.ArrayList;
 
 public class RV_BestSellerAdapter extends RecyclerView.Adapter<KHUNGNHIN> implements Filterable {
     Context context;
-    ArrayList<Product> data;
+    ArrayList<PRODUCT> data;
 
-    public RV_BestSellerAdapter(Context context,ArrayList<Product> data) {
+    public RV_BestSellerAdapter(Context context,ArrayList<PRODUCT> data) {
         this.context = context;
         this.data = data;
     }
@@ -39,9 +39,9 @@ public class RV_BestSellerAdapter extends RecyclerView.Adapter<KHUNGNHIN> implem
 
     @Override
     public void onBindViewHolder(@NonNull KHUNGNHIN holder, int position) {
-        Product kq=data.get(position);
-        holder.tv_dishName.setText(kq.getName());
-        holder.iv_image.setImageResource(kq.getImage());
+//        PRODUCT kq=data.get(position);
+//        holder.tv_dishName.setText(kq.getName());
+//        holder.iv_image.setImageResource(kq.getImage());
     }
 
     @Override

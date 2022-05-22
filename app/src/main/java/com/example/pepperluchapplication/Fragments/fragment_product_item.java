@@ -12,16 +12,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.pepperluchapplication.DTO.Product;
+import com.example.pepperluchapplication.DTO.PRODUCT;
 import com.example.pepperluchapplication.R;
 import com.example.pepperluchapplication.Adaper.RV_ProductAdapter;
 
 import java.util.ArrayList;
 
 public class fragment_product_item extends Fragment {
-    ArrayList<Product> data;
+    ArrayList<PRODUCT> data;
     RecyclerView rv_product;
-    public fragment_product_item(ArrayList<Product> data) {
+    public fragment_product_item(ArrayList<PRODUCT> data) {
         this.data=data;
     }
     @Override

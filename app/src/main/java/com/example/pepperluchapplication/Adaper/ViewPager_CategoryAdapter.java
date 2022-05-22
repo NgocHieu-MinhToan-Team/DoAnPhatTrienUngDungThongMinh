@@ -37,11 +37,11 @@ public class ViewPager_CategoryAdapter extends FragmentPagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        return null;
+        return listFrag.get(position);
     }
 
     @Override
     public int getCount() {
-        return 0;
+        return listFrag.size();
     }
 }

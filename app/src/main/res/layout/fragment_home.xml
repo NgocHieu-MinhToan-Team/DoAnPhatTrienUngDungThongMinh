@@ -14,14 +14,22 @@
         android:orientation="vertical"
         >
         <!--    news , advert vd best seller-->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_bestSeller"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:orientation="horizontal"
-            />
-
-        <!-- category -->
+            android:orientation="vertical"
+            >
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPager2_slider"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"/>
+            <me.relex.circleindicator.CircleIndicator3
+                android:id="@+id/circleIndicator3_slider"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                app:ci_drawable="@drawable/indicator3_slider"
+                />
+        </LinearLayout>
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tablayout"
             android:layout_width="match_parent"

@@ -51,25 +51,19 @@ public class RV_ProductAdapter extends RecyclerView.Adapter<ViewProduct> impleme
     @Override
     public void onBindViewHolder(@NonNull ViewProduct holder, int position) {
         PRODUCT pro=data.get(position);
-        holder.tv_product_name.setText(pro.getNAME_PRODUCT_EN());
+        holder.tv_product_name.setText(pro.getNAME_PRODUCT_VN());
         Picasso.get().load(pro.getIMAGE_PRODUCT()).into(holder.iv_product_image);
-        holder.item.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-               OnClickItemProduct(pro);
+            public void onClick(View v) {
+                Intent intent =new Intent(context, DetailProduct.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("product",pro);
+                intent.putExtras(bundle);
+                context.startActivity(intent);
             }
         });
     }
-
-    private void OnClickItemProduct(PRODUCT pro) {
-        Intent intent =new Intent(context, DetailProduct.class);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("product",pro);
-        intent.putExtras(bundle);
-        context.startActivity(intent);
-    }
-
-
     @Override
     public int getItemCount() {
         return data.size();

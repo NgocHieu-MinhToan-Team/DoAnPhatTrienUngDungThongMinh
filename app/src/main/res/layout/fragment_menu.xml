@@ -46,7 +46,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="30dp"
                 android:text="Main"
-                android:textSize="30dp"
+                android:textSize="26dp"
                 android:textStyle="bold"
 
                 />
@@ -76,7 +76,7 @@
                 android:layout_marginLeft="70dp"
                 android:layout_weight="1"
                 android:text="Side"
-                android:textSize="30dp"
+                android:textSize="26dp"
                 android:textStyle="bold"
                 />
             <ImageView
@@ -118,7 +118,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="20dp"
                 android:text="Combo"
-                android:textSize="30dp"
+                android:textSize="26dp"
                 android:textStyle="bold"
                 />
         </LinearLayout>

@@ -51,11 +51,10 @@ public class RV_CategoryAdapter extends RecyclerView.Adapter<ViewHolderCategory>
     public void onBindViewHolder(@NonNull ViewHolderCategory holder, int position) {
         CATEGORY kq=listCate.get(position);
         holder.tv_category_name.setText(kq.getNAME_CATEGORY());
-        ArrayList<PRODUCT> listProduct = new ArrayList<>();
-        ArrayList<PRODUCT> listOfValues
+        ArrayList<PRODUCT> listProduct
                 =  kq.getDishes().values().stream().collect(
                 Collectors.toCollection(ArrayList::new));
-        RV_ProductAdapter adapter = new RV_ProductAdapter(context,listOfValues);
+        RV_ProductAdapter adapter = new RV_ProductAdapter(context,listProduct);
         holder.rv_product_item_by_cate.setAdapter(adapter);
         holder.rv_product_item_by_cate.setLayoutManager(new GridLayoutManager(context,2, GridLayoutManager.VERTICAL,false));
 

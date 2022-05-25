@@ -17,8 +17,8 @@ public class FragmentProfile extends Fragment {
 
     private Context context;
 
-    private ArrayList<ItemProfileMenu> lstItemProfileMenu =
-            new ArrayList<ItemProfileMenu>(Arrays.asList(
+    private ArrayList<ItemProfileMenu> lstItemProfileMenu = new ArrayList<ItemProfileMenu>(
+            Arrays.asList(
                     new ItemProfileMenu(R.drawable.ic_baseline_contact_emergency_24,
                             "Thông tin tài khoản"),
                     new ItemProfileMenu(R.drawable.ic_baseline_lock_24,

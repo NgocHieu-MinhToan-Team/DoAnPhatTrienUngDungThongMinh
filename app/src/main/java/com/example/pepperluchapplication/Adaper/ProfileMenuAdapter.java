@@ -1,4 +1,4 @@
-package com.example.pepperluchapplication.Adapter;
+package com.example.pepperluchapplication.Adaper;
 
 import android.content.Context;
 import android.view.LayoutInflater;

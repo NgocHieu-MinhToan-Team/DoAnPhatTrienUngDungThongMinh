@@ -8,11 +8,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.pepperluchapplication.Adaper.ViewPager_CategoryAdapter;
-import com.example.pepperluchapplication.Adaper.ViewPager_Login;
+import com.example.pepperluchapplication.Adapter.ViewPager_Login;
 import com.example.pepperluchapplication.Fragments.fragmentFormLogin;
 import com.example.pepperluchapplication.Fragments.fragmentFormRegister;
-import com.example.pepperluchapplication.Fragments.fragment_product_item;
 import com.google.android.material.tabs.TabLayout;
 
 public class ActivityLogin extends AppCompatActivity {

@@ -12,7 +12,7 @@
         android:orientation="horizontal"
         >
         <ImageView
-            android:id="@+id/iv_product_detail_image"
+            android:id="@+id/image_product_seemore_cart"
             android:layout_width="160dp"
             android:layout_height="160dp"
             android:src="@drawable/beef_sukiyaki"
@@ -23,7 +23,7 @@
             android:padding="20dp"
             android:orientation="vertical">
             <TextView
-                android:id="@+id/tv_product_detail_name"
+                android:id="@+id/name_product_seemore_cart"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
@@ -33,7 +33,7 @@
                 android:paddingVertical="10dp"
                 />
             <TextView
-                android:id="@+id/tv_product_detail_price"
+                android:id="@+id/price_seemore_cart"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
@@ -56,7 +56,7 @@
                     android:background="@null"
                     />
                 <TextView
-                    android:id="@+id/tv_detail_product_quantity"
+                    android:id="@+id/product_count_seemore_cart"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:inputType="number"
@@ -78,8 +78,8 @@
             </LinearLayout>
         </LinearLayout>
 
-        </LinearLayout>
-<!--    Option here-->
+    </LinearLayout>
+    <!--    Option here-->
     <RadioGroup
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -89,7 +89,7 @@
         android:orientation="horizontal"
         >
         <RadioButton
-            android:id="@+id/radio_a"
+            android:id="@+id/radio_a_seemore"
             android:text="No Spicy"
             android:checked="true"
             android:layout_width="wrap_content"
@@ -100,7 +100,7 @@
 
             />
         <RadioButton
-            android:id="@+id/radio_b"
+            android:id="@+id/radio_b_seemore"
             android:text="Less Spicy"
             android:textSize="20dp"
             android:layout_weight="1"
@@ -108,7 +108,7 @@
             android:layout_marginVertical="10dp"
             android:layout_height="wrap_content" />
         <RadioButton
-            android:id="@+id/radio_c"
+            android:id="@+id/radio_c_seemore"
             android:layout_weight="1"
             android:text="Spicy"
             android:layout_width="wrap_content"
@@ -116,7 +116,7 @@
             android:layout_marginVertical="10dp"
             android:layout_height="wrap_content" />
     </RadioGroup>
-<!--    note here-->
+    <!--    note here-->
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -134,20 +134,36 @@
             android:gravity="center_vertical"
             android:background="@null"
             android:hint="Note"
+            android:id="@+id/note_product_seemore_cart"
             />
     </androidx.cardview.widget.CardView>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:paddingHorizontal="10dp"
         android:paddingVertical="8dp"
+
         >
+
         <Button
-            android:id="@+id/btn_detail_product_addToCart"
+            android:id="@+id/btn_cancel_item_cart"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Add To Cart"
+            android:text="Cancel"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:padding="12dp"
+            android:layout_weight="1"
+            />
+        <Button
+            android:id="@+id/btn_update_item_cart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Update"
             android:textSize="20dp"
             android:gravity="center"
             android:textStyle="bold"
@@ -155,6 +171,7 @@
             android:textColor="@color/white"
             android:padding="12dp"
             android:background="@drawable/rounded_button_add_on_cart"
+            android:layout_weight="1"
             />
     </LinearLayout>
 </LinearLayout>

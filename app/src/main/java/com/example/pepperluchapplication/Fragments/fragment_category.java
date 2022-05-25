@@ -14,9 +14,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.pepperluchapplication.Adaper.RV_CategoryAdapter;
+import com.example.pepperluchapplication.Adapter.RV_CategoryAdapter;
 import com.example.pepperluchapplication.DTO.CATEGORY;
-import com.example.pepperluchapplication.DTO.PRODUCT;
 import com.example.pepperluchapplication.R;
 
 import java.util.ArrayList;

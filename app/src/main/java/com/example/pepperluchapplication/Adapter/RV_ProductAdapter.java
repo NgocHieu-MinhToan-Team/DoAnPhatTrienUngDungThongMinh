@@ -1,6 +1,6 @@
-package com.example.pepperluchapplication.Adaper;
+package com.example.pepperluchapplication.Adapter;
 
-import android.app.ProgressDialog;
+import android.app.Application;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,10 +12,13 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.pepperluchapplication.DTO.CART;
+import com.example.pepperluchapplication.DTO.MyApplication;
 import com.example.pepperluchapplication.DTO.PRODUCT;
 import com.example.pepperluchapplication.R;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -25,6 +28,7 @@ import java.util.ArrayList;
 
 public class RV_ProductAdapter extends RecyclerView.Adapter<ViewProduct> implements Filterable {
     Context context;
+
     ArrayList<PRODUCT> data;
 
     public RV_ProductAdapter(Context context,ArrayList<PRODUCT> data) {
@@ -43,11 +47,8 @@ public class RV_ProductAdapter extends RecyclerView.Adapter<ViewProduct> impleme
         return new ViewProduct(view);
     }
 
-
     @Override
     public void onBindViewHolder(@NonNull ViewProduct holder, int position) {
-
-
         PRODUCT pro=data.get(position);
         holder.tv_product_name.setText(pro.getNAME_PRODUCT_VN());
         Picasso.get().load(pro.getIMAGE_PRODUCT()).into(holder.iv_product_image);
@@ -104,6 +105,15 @@ public class RV_ProductAdapter extends RecyclerView.Adapter<ViewProduct> impleme
                         }
                     }
                 });
+                btnAddToCart.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        CART cart=new CART(pro,Integer.parseInt(tv_detail_product_quantity.getText().toString()));
+                        MyApplication.setItem(cart);
+                        Toast.makeText(context,"AddSucess!",Toast.LENGTH_SHORT).show();
+                        bottomSheetDialog.dismiss();
+                    }
+                });
             }
         });
     }
@@ -111,7 +121,6 @@ public class RV_ProductAdapter extends RecyclerView.Adapter<ViewProduct> impleme
     public int getItemCount() {
         return data.size();
     }
-
 }
 
 class ViewProduct extends RecyclerView.ViewHolder {
@@ -127,6 +136,5 @@ class ViewProduct extends RecyclerView.ViewHolder {
         item=itemView.findViewById(R.id.product_item);
 
     }
-
 
 }

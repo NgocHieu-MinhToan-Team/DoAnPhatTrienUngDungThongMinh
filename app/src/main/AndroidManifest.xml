@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".DTO.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -15,10 +16,6 @@
             android:name=".CartActivity"
             android:exported="false"
             android:theme="@style/AppTheme"/>
-        <activity
-            android:name=".DetailProduct"
-            android:exported="false"
-            android:theme="@style/AppTheme" />
         <activity
             android:name=".ActivityLogin"
             android:exported="false"

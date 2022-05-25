@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.pepperluchapplication.Adaper.RV_ProductAdapter;
+import com.example.pepperluchapplication.Adapter.RV_ProductAdapter;
 import com.example.pepperluchapplication.DTO.Product;
 import com.example.pepperluchapplication.R;
 

@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 
 import com.example.pepperluchapplication.DTO.PRODUCT;
 import com.example.pepperluchapplication.R;
-import com.example.pepperluchapplication.Adaper.RV_ProductAdapter;
+import com.example.pepperluchapplication.Adapter.RV_ProductAdapter;
 
 import java.util.ArrayList;
 

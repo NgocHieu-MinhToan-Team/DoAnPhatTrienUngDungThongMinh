@@ -32,6 +32,7 @@
     <color name="dot_dark_screen4">#a854d4</color>
     <color name="red_holo">#FF4444</color>
     <color name="red_logo">#ed1c24</color>
+    <color name="bg_login">#ed1c24</color>
 
     <!-- dots active colors -->
     <color name="dot_light_screen1">#f98da5</color>

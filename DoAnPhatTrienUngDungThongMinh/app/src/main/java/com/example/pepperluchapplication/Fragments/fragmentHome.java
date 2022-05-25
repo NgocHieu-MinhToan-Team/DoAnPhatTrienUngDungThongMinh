@@ -17,8 +17,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
-import com.example.pepperluchapplication.Adaper.RV_BestSellerAdapter;
-import com.example.pepperluchapplication.Adaper.ViewPager_CategoryAdapter;
+import com.example.pepperluchapplication.Adapter.RV_BestSellerAdapter;
+import com.example.pepperluchapplication.Adapter.ViewPager_CategoryAdapter;
 import com.example.pepperluchapplication.DTO.Category;
 import com.example.pepperluchapplication.DTO.Product;
 import com.example.pepperluchapplication.R;

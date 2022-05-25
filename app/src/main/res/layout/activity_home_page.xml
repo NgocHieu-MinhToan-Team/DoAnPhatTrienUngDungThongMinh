@@ -40,9 +40,9 @@
                     android:layout_height="match_parent"
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="16dp"
+                    android:onClick="btnCart_Click"
                     android:padding="4dp"
-                    android:src="@drawable/paid_96px"
-                    android:onClick="btnCart_Click"/>
+                    android:src="@drawable/paid_96px" />
             </RelativeLayout>
             <FrameLayout
                 android:id="@+id/frmMain"

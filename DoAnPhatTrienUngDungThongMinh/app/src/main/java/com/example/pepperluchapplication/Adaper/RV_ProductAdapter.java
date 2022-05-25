@@ -1,4 +1,4 @@
-package com.example.pepperluchapplication.Adaper;
+package com.example.pepperluchapplication.Adapter;
 
 import android.content.Context;
 import android.content.Intent;

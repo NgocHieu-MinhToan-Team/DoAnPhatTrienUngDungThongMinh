@@ -1,11 +1,10 @@
-package com.example.pepperluchapplication.Adaper;
+package com.example.pepperluchapplication.Adapter;
 
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;

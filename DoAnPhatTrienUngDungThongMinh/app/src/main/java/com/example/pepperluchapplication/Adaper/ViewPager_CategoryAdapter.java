@@ -1,4 +1,4 @@
-package com.example.pepperluchapplication.Adaper;
+package com.example.pepperluchapplication.Adapter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

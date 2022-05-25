@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.example.pepperluchapplication.DTO.CART;
+import com.example.pepperluchapplication.DTO.MyApplication;
 import com.example.pepperluchapplication.DTO.PRODUCT;
 import com.example.pepperluchapplication.Fragments.fragmentHistory;
 import com.example.pepperluchapplication.Fragments.fragmentHome;
@@ -46,8 +47,12 @@ public class ActivityHomePage extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawerLayout);
         iv_cart=findViewById(R.id.iv_cart);
 
-        CART item= new CART(new PRODUCT("IDLMON01","MAMON01","https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/image%2FPremiumSteak%2FTheGIANT.png?alt=media&token=b410306b-dfab-44f0-bb61-b465b422418d","The Giant","Bò Mỹ Thượng Hạng",(long)369000),1);
-        carts.add(item);
+//        CART item= new CART(new PRODUCT("IDLMON01","MAMON01","https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/image%2FPremiumSteak%2FTheGIANT.png?alt=media&token=b410306b-dfab-44f0-bb61-b465b422418d","The Giant","Bò Mỹ Thượng Hạng",(long)369000),1);
+//        carts.add(item);
+//        item= new CART(new PRODUCT("IDLMON01","MAMON01","https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/image%2FPremiumSteak%2FTheGIANT.png?alt=media&token=b410306b-dfab-44f0-bb61-b465b422418d","The Giant","Bò Mỹ Thượng Hạng",(long)369000),2);
+//        carts.add(item);
+//        item= new CART(new PRODUCT("IDLMON01","MAMON01","https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/image%2FPremiumSteak%2FTheGIANT.png?alt=media&token=b410306b-dfab-44f0-bb61-b465b422418d","The Giant","Bò Mỹ Thượng Hạng",(long)369000),3);
+//        carts.add(item);
 
         // thiết lập views
         // Navigation bottom
@@ -92,7 +97,7 @@ public class ActivityHomePage extends AppCompatActivity {
     public void btnCart_Click(View view)
     {
         Intent intent= new Intent(ActivityHomePage.this,CartActivity.class);
-        intent.putExtra("cart",carts);
+        //intent.putExtra("cart", MyApplication.getCarts());
         startActivity(intent);
     }
 

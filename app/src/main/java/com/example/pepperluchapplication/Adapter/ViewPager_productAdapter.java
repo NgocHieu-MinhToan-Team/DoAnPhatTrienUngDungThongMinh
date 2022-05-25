@@ -1,4 +1,4 @@
-package com.example.pepperluchapplication.Adaper;
+package com.example.pepperluchapplication.Adapter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -8,11 +8,11 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import java.util.ArrayList;
 
-public class ViewPager_Login extends FragmentPagerAdapter {
+public class ViewPager_productAdapter extends FragmentPagerAdapter {
     ArrayList<Fragment> listFrag = new ArrayList<>();
     ArrayList<String> titles = new ArrayList<>();
 
-    public ViewPager_Login(@NonNull FragmentManager fm, int behavior) {
+    public ViewPager_productAdapter(@NonNull FragmentManager fm, int behavior) {
         super(fm, behavior);
     }
 
@@ -20,9 +20,10 @@ public class ViewPager_Login extends FragmentPagerAdapter {
         listFrag.add(fragment);
         titles.add(title);
     }
-
-
-
+    @Override
+    public int getItemPosition(@NonNull Object object) {
+        return POSITION_NONE;
+    }
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {

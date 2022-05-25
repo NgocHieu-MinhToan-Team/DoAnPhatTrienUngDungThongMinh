@@ -11,23 +11,16 @@ import android.view.ViewGroup;
 
 import com.example.pepperluchapplication.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link fragmentHistory#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class fragmentHistory extends Fragment {
-
     Context context;
-    public fragmentHistory(Context context)
-    {
-        this.context=context;
+    public fragmentHistory(Context applicationContext) {
+        this.context=applicationContext;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_status, container, false);
+        return inflater.inflate(R.layout.fragment_history, container, false);
     }
 }

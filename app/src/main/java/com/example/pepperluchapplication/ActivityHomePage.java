@@ -48,6 +48,7 @@ public class ActivityHomePage extends AppCompatActivity {
 
         CART item= new CART(new PRODUCT("IDLMON01","MAMON01","https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/image%2FPremiumSteak%2FTheGIANT.png?alt=media&token=b410306b-dfab-44f0-bb61-b465b422418d","The Giant","Bò Mỹ Thượng Hạng",(long)369000),1);
         carts.add(item);
+
         // thiết lập views
         // Navigation bottom
         bottomNavigationView.setSelectedItemId(R.id.mnuHome);
@@ -91,7 +92,7 @@ public class ActivityHomePage extends AppCompatActivity {
     public void btnCart_Click(View view)
     {
         Intent intent= new Intent(ActivityHomePage.this,CartActivity.class);
-        intent.putExtra("cart",cart);
+        intent.putExtra("cart",carts);
         startActivity(intent);
     }
 

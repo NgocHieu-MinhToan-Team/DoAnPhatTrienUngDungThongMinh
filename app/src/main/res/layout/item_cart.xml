@@ -28,6 +28,6 @@
         android:layout_toRightOf="@id/image_product_cart"
         android:text="cho xin cai gia phai tra"
         android:textSize="20dp"/>
-    <
+
 
 </RelativeLayout>

@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import com.example.pepperluchapplication.DTO.CART;
 
+import java.util.ArrayList;
+
 public class CartActivity extends AppCompatActivity {
 
     Button btn_back_cart, btn_buy_cart;
@@ -27,8 +29,9 @@ public class CartActivity extends AppCompatActivity {
 
 
         Intent intent=getIntent();
-        CART cart=(CART)intent.getSerializableExtra("cart");
-        if(cart.lstProduct.isEmpty())
+        ArrayList<CART> carts=(ArrayList<CART>) intent.getSerializableExtra("cart");
+
+        if(carts.isEmpty())
         {
             textView.setVisibility(View.VISIBLE);
             listView.setVisibility(View.GONE);

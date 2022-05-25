@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.pepperluchapplication">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,9 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PepperLuchApplication">
         <activity
-            android:name=".DetailProduct"
+            android:name=".CartActivity"
             android:exported="false"
             android:theme="@style/AppTheme"/>
+        <activity
+            android:name=".DetailProduct"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".ActivityLogin"
             android:exported="false"

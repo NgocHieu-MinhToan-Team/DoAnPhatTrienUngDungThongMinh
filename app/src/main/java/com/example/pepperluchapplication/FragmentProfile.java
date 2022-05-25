@@ -42,9 +42,9 @@ public class FragmentProfile extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
 
         // Initialize the adapter and set it to list view
-        ProfileMenuAdapter profileMenuAdapter = new ProfileMenuAdapter(getActivity(), lstItemProfileMenu);
-        ListView listView = rootView.findViewById(R.id.lstViewProfileMenu);
-        listView.setAdapter(profileMenuAdapter);
+//        ProfileMenuAdapter profileMenuAdapter = new ProfileMenuAdapter(getActivity(), lstItemProfileMenu);
+//        ListView listView = rootView.findViewById(R.id.lstViewProfileMenu);
+//        listView.setAdapter(profileMenuAdapter);
 
         return rootView;
     }

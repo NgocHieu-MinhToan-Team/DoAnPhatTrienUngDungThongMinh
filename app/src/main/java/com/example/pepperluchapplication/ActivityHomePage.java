@@ -1,5 +1,6 @@
 package com.example.pepperluchapplication;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -8,10 +9,15 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 
+import com.example.pepperluchapplication.DTO.CART;
+import com.example.pepperluchapplication.DTO.PRODUCT;
 import com.example.pepperluchapplication.Fragments.fragmentHistory;
 import com.example.pepperluchapplication.Fragments.fragmentHome;
 import com.example.pepperluchapplication.Fragments.fragmentMenu;
@@ -19,12 +25,16 @@ import com.example.pepperluchapplication.Fragments.fragmentProfile;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
+import java.util.ArrayList;
+
 public class ActivityHomePage extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
     Fragment fragment;
     Toolbar toolbar;
     DrawerLayout drawerLayout;
+    ImageView iv_cart;
+    ArrayList<CART> carts=new ArrayList<CART>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +44,10 @@ public class ActivityHomePage extends AppCompatActivity {
         bottomNavigationView=findViewById(R.id.NavigationMenu);
         toolbar = findViewById(R.id.toolbar);
         drawerLayout = findViewById(R.id.drawerLayout);
+        iv_cart=findViewById(R.id.iv_cart);
 
-
+        CART item= new CART(new PRODUCT("IDLMON01","MAMON01","https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/image%2FPremiumSteak%2FTheGIANT.png?alt=media&token=b410306b-dfab-44f0-bb61-b465b422418d","The Giant","Bò Mỹ Thượng Hạng",(long)369000),1);
+        carts.add(item);
         // thiết lập views
         // Navigation bottom
         bottomNavigationView.setSelectedItemId(R.id.mnuHome);
@@ -76,4 +88,11 @@ public class ActivityHomePage extends AppCompatActivity {
         transaction.replace(R.id.frmMain,f);
         transaction.commit();
     }
+    public void btnCart_Click(View view)
+    {
+        Intent intent= new Intent(ActivityHomePage.this,CartActivity.class);
+        intent.putExtra("cart",cart);
+        startActivity(intent);
+    }
+
 }

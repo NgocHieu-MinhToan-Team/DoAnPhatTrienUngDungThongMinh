@@ -1,5 +1,6 @@
 package com.example.pepperluchapplication.Adaper;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,8 +43,11 @@ public class RV_ProductAdapter extends RecyclerView.Adapter<ViewProduct> impleme
         return new ViewProduct(view);
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull ViewProduct holder, int position) {
+
+
         PRODUCT pro=data.get(position);
         holder.tv_product_name.setText(pro.getNAME_PRODUCT_VN());
         Picasso.get().load(pro.getIMAGE_PRODUCT()).into(holder.iv_product_image);
@@ -107,6 +111,7 @@ public class RV_ProductAdapter extends RecyclerView.Adapter<ViewProduct> impleme
     public int getItemCount() {
         return data.size();
     }
+
 }
 
 class ViewProduct extends RecyclerView.ViewHolder {
@@ -122,5 +127,6 @@ class ViewProduct extends RecyclerView.ViewHolder {
         item=itemView.findViewById(R.id.product_item);
 
     }
+
 
 }

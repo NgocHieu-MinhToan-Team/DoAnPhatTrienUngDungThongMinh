@@ -3,52 +3,47 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1285" />
-        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/drawable/indicator3_slider.xml" value="0.1735" />
-        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/drawable/rounded_button_add_on_cart.xml" value="0.251" />
-        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/drawable/rounded_form_login.xml" value="0.1535" />
-        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/drawable/rounded_product.xml" value="0.148" />
-        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/activity_cart.xml" value="0.20512820512820512" />
-        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/activity_detail_product.xml" value="0.264" />
-        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/activity_home_page.xml" value="0.2" />
-        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/activity_login.xml" value="0.2" />
-        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/activity_main.xml" value="0.20512820512820512" />
-        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/activity_welcome.xml" value="0.20512820512820512" />
-        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/bottom_sheet_detail_product.xml" value="0.2" />
-        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/fragment_category.xml" value="0.20512820512820512" />
-        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/fragment_form_login.xml" value="0.20512820512820512" />
-        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/fragment_history.xml" value="0.20512820512820512" />
-        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/fragment_home.xml" value="0.1" />
-        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/fragment_menu.xml" value="0.264" />
-        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/fragment_product_item.xml" value="0.20512820512820512" />
-        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/fragment_product_item_detail.xml" value="0.2" />
-        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/fragment_profile.xml" value="0.20512820512820512" />
-        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/fragment_status.xml" value="0.20512820512820512" />
-        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/item_seemore_cart.xml" value="0.20512820512820512" />
-        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/layout_bottom_sheet_detail_product.xml" value="0.20512820512820512" />
-        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/layout_item_profile_menu.xml" value="0.20512820512820512" />
-        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/navigationview_header.xml" value="0.20253164556962025" />
-        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/rv_bestseller_item.xml" value="0.264" />
-        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/rv_category.xml" value="0.20512820512820512" />
-        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/rv_category_item.xml" value="0.20512820512820512" />
-        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/rv_product_item.xml" value="0.264" />
-        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/slider_item.xml" value="0.20512820512820512" />
-        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/tab_menu_dessert_fragment.xml" value="0.20512820512820512" />
-        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/menu/menubutton.xml" value="0.25" />
+        <entry key="..\:/Projects/3. Do an HK6/Lap trinh di dong/Pepper lunch/app/src/main/res/drawable/ic_baseline_account_box_24.xml" value="0.1965" />
+        <entry key="..\:/Projects/3. Do an HK6/Lap trinh di dong/Pepper lunch/app/src/main/res/drawable/ic_baseline_emoji_food_beverage_24.xml" value="0.1965" />
+        <entry key="..\:/Projects/3. Do an HK6/Lap trinh di dong/Pepper lunch/app/src/main/res/drawable/ic_baseline_local_offer_24.xml" value="0.1965" />
+        <entry key="..\:/Projects/3. Do an HK6/Lap trinh di dong/Pepper lunch/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1965" />
+        <entry key="..\:/Projects/3. Do an HK6/Lap trinh di dong/Pepper lunch/app/src/main/res/drawable/rounded_product.xml" value="0.1965" />
+        <entry key="..\:/Projects/3. Do an HK6/Lap trinh di dong/Pepper lunch/app/src/main/res/layout/activity_home_page.xml" value="0.20512820512820512" />
+        <entry key="..\:/Projects/3. Do an HK6/Lap trinh di dong/Pepper lunch/app/src/main/res/layout/activity_main.xml" value="0.20512820512820512" />
+        <entry key="..\:/Projects/3. Do an HK6/Lap trinh di dong/Pepper lunch/app/src/main/res/layout/activity_welcome.xml" value="0.176" />
+        <entry key="..\:/Projects/3. Do an HK6/Lap trinh di dong/Pepper lunch/app/src/main/res/layout/fragment_home.xml" value="0.20512820512820512" />
+        <entry key="..\:/Projects/3. Do an HK6/Lap trinh di dong/Pepper lunch/app/src/main/res/layout/fragment_menu.xml" value="0.20512820512820512" />
+        <entry key="..\:/Projects/3. Do an HK6/Lap trinh di dong/Pepper lunch/app/src/main/res/layout/fragment_product_item.xml" value="0.20512820512820512" />
+        <entry key="..\:/Projects/3. Do an HK6/Lap trinh di dong/Pepper lunch/app/src/main/res/layout/fragment_profile.xml" value="0.20512820512820512" />
+        <entry key="..\:/Projects/3. Do an HK6/Lap trinh di dong/Pepper lunch/app/src/main/res/layout/fragment_status.xml" value="0.20512820512820512" />
+        <entry key="..\:/Projects/3. Do an HK6/Lap trinh di dong/Pepper lunch/app/src/main/res/layout/layout_item_profile_menu.xml" value="0.20427350427350427" />
+        <entry key="..\:/Projects/3. Do an HK6/Lap trinh di dong/Pepper lunch/app/src/main/res/layout/layout_profile_menu.xml" value="0.20512820512820512" />
+        <entry key="..\:/Projects/3. Do an HK6/Lap trinh di dong/Pepper lunch/app/src/main/res/layout/rv_bestseller_item.xml" value="0.20512820512820512" />
+        <entry key="..\:/Projects/3. Do an HK6/Lap trinh di dong/Pepper lunch/app/src/main/res/layout/rv_product_item.xml" value="0.20512820512820512" />
+        <entry key="..\:/Projects/3. Do an HK6/Lap trinh di dong/Pepper lunch/app/src/main/res/layout/tab_menu_dessert_fragment.xml" value="0.20512820512820512" />
+        <entry key="..\:/Projects/3. Do an HK6/Lap trinh di dong/Pepper lunch/app/src/main/res/layout/tab_menu_main_fragment.xml" value="0.20512820512820512" />
+        <entry key="..\:/Projects/3. Do an HK6/Lap trinh di dong/Pepper lunch/app/src/main/res/layout/tab_menu_side_dish_fragment.xml" value="0.20512820512820512" />
+        <entry key="..\:/Projects/3. Do an HK6/Lap trinh di dong/Pepper lunch/app/src/main/res/layout/welcome_slide1.xml" value="0.20512820512820512" />
+        <entry key="..\:/Projects/3. Do an HK6/Lap trinh di dong/PepperLunch/app/src/main/res/layout/activity_home_page.xml" value="0.2222222222222222" />
+        <entry key="..\:/Projects/3. Do an HK6/Lap trinh di dong/PepperLunch/app/src/main/res/layout/activity_login.xml" value="0.2222222222222222" />
+        <entry key="..\:/Projects/3. Do an HK6/Lap trinh di dong/PepperLunch/app/src/main/res/layout/activity_welcome.xml" value="0.2222222222222222" />
+        <entry key="..\:/Projects/3. Do an HK6/Lap trinh di dong/PepperLunch/app/src/main/res/layout/fragment_category.xml" value="0.2222222222222222" />
+        <entry key="..\:/Projects/3. Do an HK6/Lap trinh di dong/PepperLunch/app/src/main/res/layout/fragment_form_login.xml" value="0.2222222222222222" />
+        <entry key="..\:/Projects/3. Do an HK6/Lap trinh di dong/PepperLunch/app/src/main/res/layout/fragment_form_register.xml" value="0.2222222222222222" />
+        <entry key="..\:/Projects/3. Do an HK6/Lap trinh di dong/PepperLunch/app/src/main/res/layout/fragment_home.xml" value="0.2222222222222222" />
+        <entry key="..\:/Projects/3. Do an HK6/Lap trinh di dong/PepperLunch/app/src/main/res/layout/fragment_menu.xml" value="0.2222222222222222" />
+        <entry key="..\:/Projects/3. Do an HK6/Lap trinh di dong/PepperLunch/app/src/main/res/layout/fragment_product_item.xml" value="0.2222222222222222" />
+        <entry key="..\:/Projects/3. Do an HK6/Lap trinh di dong/PepperLunch/app/src/main/res/layout/fragment_profile.xml" value="0.2222222222222222" />
+        <entry key="..\:/Projects/3. Do an HK6/Lap trinh di dong/PepperLunch/app/src/main/res/layout/fragment_status.xml" value="0.2222222222222222" />
         <entry key="app/src/main/res/drawable/ic_baseline_account_box_24.xml" value="0.1545" />
         <entry key="app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.1405" />
-        <entry key="app/src/main/res/drawable/rounded_btnlogin.xml" value="0.131" />
-        <entry key="app/src/main/res/layout/activity_cart.xml" value="0.25427350427350426" />
         <entry key="app/src/main/res/layout/activity_home_page.xml" value="0.21944444444444444" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.24537037037037038" />
         <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.16302521008403362" />
-        <entry key="app/src/main/res/layout/cart_preview.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.21944444444444444" />
         <entry key="app/src/main/res/layout/fragment_order.xml" value="0.2953125" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.2953125" />
         <entry key="app/src/main/res/layout/fragment_status.xml" value="0.2953125" />
-        <entry key="app/src/main/res/layout/item_cart.xml" value="0.2423076923076923" />
-        <entry key="app/src/main/res/layout/slider_item.xml" value="0.2510548523206751" />
         <entry key="app/src/main/res/layout/welcome_slide1.xml" value="0.2101851851851852" />
         <entry key="app/src/main/res/layout/welcome_slide2.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/welcome_slide3.xml" value="0.3098958333333333" />
@@ -63,5 +58,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.20512820512820512" />
+      </ProjectState>
+    </option>
   </component>
 </project>

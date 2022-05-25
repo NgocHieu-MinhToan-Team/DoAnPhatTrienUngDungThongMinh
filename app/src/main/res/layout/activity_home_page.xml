@@ -9,7 +9,7 @@
     tools:context=".ActivityHomePage">
 
     <androidx.drawerlayout.widget.DrawerLayout
-        android:id="@+id/drawerLayout"
+        android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -71,8 +71,9 @@
             android:layout_gravity="start"
             android:layout_marginBottom="60dp"
             android:fitsSystemWindows="true"
+            app:headerLayout="@layout/navigation_header"
             app:itemIconPadding="4dp"
-
-            ></com.google.android.material.navigation.NavigationView>
+            app:itemIconTint="@color/red_logo"
+            app:menu="@menu/navigation_menu" />
     </androidx.drawerlayout.widget.DrawerLayout>
 </LinearLayout>

@@ -10,10 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PepperLuchApplication">
         <activity
-            android:name=".DetailProduct"
-            android:exported="false"
-            android:theme="@style/AppTheme"/>
-        <activity
             android:name=".ActivityLogin"
             android:exported="false"
             android:theme="@style/AppTheme" />

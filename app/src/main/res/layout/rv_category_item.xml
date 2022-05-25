@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="10dp"
+    >
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginBottom="10dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:background="@color/black"
+            >
+            <TextView
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="8dp"
+                android:id="@+id/tv_category_name"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Category name"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:gravity="center_vertical"
+                android:textColor="@color/white"
+                />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_product_item_by_cate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

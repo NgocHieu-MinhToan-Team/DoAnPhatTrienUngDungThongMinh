@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
-
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.pepperluchapplication">
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,9 +12,9 @@
         <activity
             android:name=".DetailProduct"
             android:exported="false"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"/>
         <activity
-            android:name=".MainActivity"
+            android:name=".ActivityLogin"
             android:exported="false"
             android:theme="@style/AppTheme" />
         <activity
@@ -21,7 +22,7 @@
             android:exported="false"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".HomePageActivity"
+            android:name=".ActivityHomePage"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

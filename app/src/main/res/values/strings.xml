@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">PepperLuch Application</string>
-    <string name="title_activity_welcome">Home Screen</string>
     <string name="next">NEXT</string>
     <string name="skip">SKIP</string>
     <string name="start">GOT IT</string>
@@ -18,8 +17,6 @@
     <string name="slide_4_title">Shopping everywhere</string>
     <string name="slide_4_desc">Buy your food everywhere!</string>
 
-    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
-    <string name="play_again">Play Again</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

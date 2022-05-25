@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.pepperluchapplication">
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -9,11 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PepperLuchApplication">
         <activity
+            android:name=".CartActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme"/>
+        <activity
             android:name=".DetailProduct"
             android:exported="false"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".ActivityHomePage"
+            android:name=".ActivityLogin"
             android:exported="false"
             android:theme="@style/AppTheme" />
         <activity
@@ -21,7 +28,7 @@
             android:exported="false"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".ActivityLogin"
+            android:name=".ActivityHomePage"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

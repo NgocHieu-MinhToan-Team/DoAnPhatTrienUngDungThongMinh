@@ -2,61 +2,34 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_white"
-<<<<<<< HEAD
-    tools:context=".fragmentHome">
-
-=======
     tools:context=".Fragments.fragmentHome"
     android:orientation="vertical"
     >
->>>>>>> f9f290355de84b4d2cd648d84f54e48016f36b21
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         >
-<<<<<<< HEAD
-        <!--    header: toolbar-->
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="60dp">
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"></androidx.appcompat.widget.Toolbar>
-
-            <ImageView
-                android:layout_width="160dp"
-                android:layout_height="match_parent"
-                android:layout_centerInParent="true"
-                android:layout_gravity="center"
-                android:padding="6dp"
-                android:src="@drawable/logotext" />
-
-            <ImageView
-                android:layout_width="48dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="16dp"
-                android:padding="6dp"
-                android:src="@drawable/shopping_cart_32px" />
-        </RelativeLayout>
-=======
->>>>>>> f9f290355de84b4d2cd648d84f54e48016f36b21
         <!--    news , advert vd best seller-->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_bestSeller"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:orientation="horizontal" />
-
-        <!-- category -->
+            android:orientation="vertical"
+            >
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPager2_slider"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"/>
+            <me.relex.circleindicator.CircleIndicator3
+                android:id="@+id/circleIndicator3_slider"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                app:ci_drawable="@drawable/indicator3_slider"
+                />
+        </LinearLayout>
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tablayout"
             android:layout_width="match_parent"
@@ -71,18 +44,10 @@
             android:id="@+id/viewpager"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:background="@drawable/bg_main"
+            android:layout_weight="1"/>
         <!--    menu -->
     </LinearLayout>
-<<<<<<< HEAD
-
-    <com.google.android.material.navigation.NavigationView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:fitsSystemWindows="true"></com.google.android.material.navigation.NavigationView>
-=======
->>>>>>> f9f290355de84b4d2cd648d84f54e48016f36b21
 
 
 

@@ -3,6 +3,7 @@ package com.example.pepperluchapplication.Fragments;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,19 +11,19 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
-import com.example.pepperluchapplication.Adaper.RV_BestSellerAdapter;
-import com.example.pepperluchapplication.Adaper.ViewPager_CategoryAdapter;
-import com.example.pepperluchapplication.DTO.Category;
-import com.example.pepperluchapplication.DTO.Product;
+import com.example.pepperluchapplication.Adaper.ViewPager2_Slider;
+import com.example.pepperluchapplication.Animation.DepthPageTransformer;
+import com.example.pepperluchapplication.DTO.CATEGORY;
+import com.example.pepperluchapplication.DTO.NEWS;
+import com.example.pepperluchapplication.DTO.PRODUCT;
 import com.example.pepperluchapplication.R;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,13 +31,30 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import me.relex.circleindicator.CircleIndicator3;
 
 
 public class fragmentHome extends Fragment {
     Context context;
-    RecyclerView rv_bestSeller;
     TabLayout tabLayout;
     ViewPager viewPager;
+    // khai bao cac view can thiet cho slider
+    List<NEWS> listNews = new ArrayList<>();;
+    ViewPager2 viewPager2_slider;
+    private Handler handler =new Handler();
+    Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            if(viewPager2_slider.getCurrentItem()==listNews.size()-1){
+                viewPager2_slider.setCurrentItem(0);
+            }
+            else{
+                viewPager2_slider.setCurrentItem(viewPager2_slider.getCurrentItem()+1);
+            }
+        }
+    };
 
     public fragmentHome(Context context) {
         this.context = context;
@@ -53,55 +71,59 @@ public class fragmentHome extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         // Mapping
-        rv_bestSeller = view.findViewById(R.id.rv_bestSeller);
         tabLayout = view.findViewById(R.id.tablayout);
         viewPager = view.findViewById(R.id.viewpager);
         tabLayout.setupWithViewPager(viewPager);
+        // add value here
+        // slider
+        viewPager2_slider = view.findViewById(R.id.viewPager2_slider);
+        ViewPager2_Slider sliderAdapter = new ViewPager2_Slider(listNews);
+        viewPager2_slider.setAdapter(sliderAdapter);
+
+        CircleIndicator3 indicator = view.findViewById(R.id.circleIndicator3_slider);
+        indicator.setViewPager(viewPager2_slider);
+        sliderAdapter.registerAdapterDataObserver(indicator.getAdapterDataObserver());
+        viewPager2_slider.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                handler.removeCallbacks(runnable);
+                handler.postDelayed(runnable,3000);
+            }
+        });
+        viewPager2_slider.setPageTransformer(new DepthPageTransformer());
+
 
         // Initialize Firebase
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://dbpepperlunch-default-rtdb.asia-southeast1.firebasedatabase.app/");
-        DatabaseReference myRef = database.getReference("Database/Category");
-
-        ArrayList<Category> dataOfCategory = new ArrayList<>();
-        ArrayList<Product> dataOfProduct = new ArrayList<>();
-
-        // Initialize and set adapter for ViewPager
-        ViewPager_CategoryAdapter viewPager_categoryAdapter =
-                new ViewPager_CategoryAdapter(((AppCompatActivity) getActivity()).getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
-        viewPager_categoryAdapter.addFragment(new fragment_product_item(dataOfProduct), "Tab 1");
-        viewPager.setAdapter(viewPager_categoryAdapter);
-
-        // Initialize and set adapter fo RV_BestSeller
-        RV_BestSellerAdapter bestSellerAdapter = new RV_BestSellerAdapter(getActivity(), dataOfProduct);
-        rv_bestSeller.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-        rv_bestSeller.setAdapter(bestSellerAdapter);
-
-        // Create event to get data
-        ValueEventListener valueEventListener = new ValueEventListener() {
+        DatabaseReference myRef = database.getReference("Database/News");
+        myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    Category category = dataSnapshot.getValue(Category.class);
-                    dataOfCategory.add(category);
+                    NEWS news = dataSnapshot.getValue(NEWS.class);
+                    listNews.add(news);
                 }
-
-                for (Category item : dataOfCategory) {
-                    Product pro = new Product(R.drawable.beef_sukiyaki, item.getNAME_CATEGORY());
-                    dataOfProduct.add(pro);
-                }
-                // NOTE
-                bestSellerAdapter.notifyDataSetChanged();
-                viewPager_categoryAdapter.notifyDataSetChanged();
+                sliderAdapter.notifyDataSetChanged();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        };
-        // Add event
-        myRef.addValueEventListener(valueEventListener);
+        });
         registerForContextMenu(tabLayout);
     }
+    // khi ng dung thoat ung dung thi luu index cua slider
+    @Override
+    public void onPause() {
+        super.onPause();
+        handler.removeCallbacks(runnable);
 
+    }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        handler.postDelayed(runnable,3000);
+    }
 }

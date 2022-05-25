@@ -1,8 +1,6 @@
 package com.example.pepperluchapplication;
 
-import android.os.Bundle;
-import android.view.MenuItem;
-
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -11,29 +9,32 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-<<<<<<< HEAD:app/src/main/java/com/example/pepperluchapplication/HomePageActivity.java
-=======
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 
+import com.example.pepperluchapplication.DTO.CART;
+import com.example.pepperluchapplication.DTO.PRODUCT;
 import com.example.pepperluchapplication.Fragments.fragmentHistory;
 import com.example.pepperluchapplication.Fragments.fragmentHome;
 import com.example.pepperluchapplication.Fragments.fragmentMenu;
 import com.example.pepperluchapplication.Fragments.fragmentProfile;
->>>>>>> f9f290355de84b4d2cd648d84f54e48016f36b21:app/src/main/java/com/example/pepperluchapplication/ActivityHomePage.java
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+
+import java.util.ArrayList;
 
 public class ActivityHomePage extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
     Fragment fragment;
-<<<<<<< HEAD:app/src/main/java/com/example/pepperluchapplication/HomePageActivity.java
-=======
     Toolbar toolbar;
     DrawerLayout drawerLayout;
->>>>>>> f9f290355de84b4d2cd648d84f54e48016f36b21:app/src/main/java/com/example/pepperluchapplication/ActivityHomePage.java
+    ImageView iv_cart;
+    ArrayList<CART> carts=new ArrayList<CART>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,37 +44,27 @@ public class ActivityHomePage extends AppCompatActivity {
         bottomNavigationView=findViewById(R.id.NavigationMenu);
         toolbar = findViewById(R.id.toolbar);
         drawerLayout = findViewById(R.id.drawerLayout);
+        iv_cart=findViewById(R.id.iv_cart);
 
+        CART item= new CART(new PRODUCT("IDLMON01","MAMON01","https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/image%2FPremiumSteak%2FTheGIANT.png?alt=media&token=b410306b-dfab-44f0-bb61-b465b422418d","The Giant","Bò Mỹ Thượng Hạng",(long)369000),1);
+        carts.add(item);
 
-<<<<<<< HEAD:app/src/main/java/com/example/pepperluchapplication/HomePageActivity.java
-        bottomNavigationView = findViewById(R.id.btnNav);
-=======
         // thiết lập views
         // Navigation bottom
->>>>>>> f9f290355de84b4d2cd648d84f54e48016f36b21:app/src/main/java/com/example/pepperluchapplication/ActivityHomePage.java
         bottomNavigationView.setSelectedItemId(R.id.mnuHome);
         loadFragment(new fragmentHome(this));
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id = item.getItemId();
-                switch (id) {
-                    case R.id.mnuHome:
-                        fragment = new fragmentHome(getApplicationContext());
+                int id=item.getItemId();
+                switch (id)
+                {
+                    case R.id.mnuHome: fragment=new fragmentHome(getApplicationContext());
                         break;
-                    case R.id.mnuMenu:
-                        fragment = new fragmentMenu(getApplicationContext());
+                    case R.id.mnuMenu: fragment=new fragmentMenu(getApplicationContext());
                         break;
-                    case R.id.mnuHistory:
-                        fragment = new fragmentHistory(getApplicationContext());
+                    case R.id.mnuHistory: fragment=new fragmentHistory(getApplicationContext());
                         break;
-<<<<<<< HEAD:app/src/main/java/com/example/pepperluchapplication/HomePageActivity.java
-                    case R.id.mnuProfile:
-                        fragment = new FragmentProfile(getApplicationContext());
-                        break;
-
-=======
->>>>>>> f9f290355de84b4d2cd648d84f54e48016f36b21:app/src/main/java/com/example/pepperluchapplication/ActivityHomePage.java
                 }
                 loadFragment(fragment);
                 return true;
@@ -92,17 +83,17 @@ public class ActivityHomePage extends AppCompatActivity {
             }
         });
     }
-<<<<<<< HEAD:app/src/main/java/com/example/pepperluchapplication/HomePageActivity.java
-
-    public void loadFragment(Fragment f) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frmMain, f);
-=======
     public void loadFragment(Fragment f)
     {
         FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frmMain,f);
->>>>>>> f9f290355de84b4d2cd648d84f54e48016f36b21:app/src/main/java/com/example/pepperluchapplication/ActivityHomePage.java
         transaction.commit();
     }
+    public void btnCart_Click(View view)
+    {
+        Intent intent= new Intent(ActivityHomePage.this,CartActivity.class);
+        intent.putExtra("cart",carts);
+        startActivity(intent);
+    }
+
 }

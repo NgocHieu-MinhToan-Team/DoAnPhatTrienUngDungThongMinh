@@ -1,36 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-<<<<<<< HEAD
-    <item
-        android:id="@+id/mnuHome"
-        android:icon="@drawable/ic_baseline_home_24"
-        android:title="Home" />
-    <item
-        android:id="@+id/mnuMenu"
-        android:icon="@drawable/ic_baseline_restaurant_menu_24"
-        android:title="Menu" />
-=======
 
     <item
         android:id="@+id/mnuMenu"
-        android:icon="@drawable/menu_32px"
+        android:icon="@drawable/cutlery_96px"
         android:title="Menu"/>
->>>>>>> f9f290355de84b4d2cd648d84f54e48016f36b21
     <item
         android:id="@+id/mnuHome"
-        android:icon="@drawable/home_32px"
+        android:icon="@drawable/home_96px"
         android:title="Home"/>
     <item
         android:id="@+id/mnuHistory"
-<<<<<<< HEAD
-        android:icon="@drawable/ic_baseline_history_24"
-        android:title="History" />
-    <item
-        android:id="@+id/mnuProfile"
-        android:icon="@drawable/ic_baseline_account_box_24"
-        android:title="Profile" />
-=======
-        android:icon="@drawable/history_32px"
+        android:icon="@drawable/time_machine_96px"
         android:title="History"/>
->>>>>>> f9f290355de84b4d2cd648d84f54e48016f36b21
 </menu>

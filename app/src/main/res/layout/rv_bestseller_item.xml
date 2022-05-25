@@ -3,54 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="200dp"
     android:paddingHorizontal="10dp"
-<<<<<<< HEAD
-    android:paddingVertical="20dp">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@drawable/bg_dish"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/iv_image"
-            android:layout_width="160dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="left"
-            android:layout_marginLeft="20dp"
-            android:src="@drawable/beef_sukiyaki" />
-
-=======
     android:paddingVertical="10dp"
     android:orientation="horizontal"
     >
->>>>>>> f9f290355de84b4d2cd648d84f54e48016f36b21
         <LinearLayout
             android:background="@drawable/bg_dish"
             android:layout_width="match_parent"
-<<<<<<< HEAD
-            android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
-            android:gravity="center_vertical"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/tv_dishName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-condensed"
-                android:text="beef sukiyaki"
-                android:textSize="24dp"
-
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-condensed"
-                android:text="dat mon ngay"
-                android:textSize="18dp" />
-=======
             android:layout_height="match_parent">
             <ImageView
                 android:id="@+id/iv_image"
@@ -84,6 +42,5 @@
                     android:textSize="18dp"
                     android:fontFamily="sans-serif-condensed"/>
             </LinearLayout>
->>>>>>> f9f290355de84b4d2cd648d84f54e48016f36b21
         </LinearLayout>
 </LinearLayout>

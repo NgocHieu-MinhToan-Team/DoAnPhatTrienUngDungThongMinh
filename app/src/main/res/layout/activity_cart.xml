@@ -76,7 +76,8 @@
                 android:textAlignment="center"
                 android:textSize="30dp"
                 android:textStyle="bold"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:onClick="btn_back_cart_click"/>
 
         </androidx.cardview.widget.CardView>
 
@@ -98,7 +99,8 @@
                 android:textAlignment="center"
                 android:textSize="30dp"
                 android:textStyle="bold"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:onClick="btn_buy_cart_click"/>
 
         </androidx.cardview.widget.CardView>
 

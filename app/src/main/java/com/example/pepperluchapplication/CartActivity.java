@@ -48,4 +48,13 @@ public class CartActivity extends AppCompatActivity {
         listView.setAdapter(lv_cartAdapter);
 
     }
+    public void btn_back_cart_click(View view)
+    {
+        finish();
+    }
+    public  void btn_buy_cart_click(View view)
+    {
+        Intent intent=new Intent(CartActivity.this,ActivityCartPayment.class);
+        startActivity(intent);
+    }
 }

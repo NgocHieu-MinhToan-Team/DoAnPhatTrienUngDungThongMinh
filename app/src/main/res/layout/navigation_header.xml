@@ -18,15 +18,14 @@
         app:contentPadding="25dp">
 
         <ImageView
+            android:id="@+id/pepperlunch_logo_nav"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:contentDescription="Avatar Profile"
-            android:src="@drawable/ic_baseline_person_24"
-            android:tint="@color/red_logo" />
+            android:contentDescription="Avatar Profile" />
     </androidx.cardview.widget.CardView>
 
     <TextView
-        android:id="@+id/txtViewFullNameProfile"
+        android:id="@+id/txt_full_name_nav"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

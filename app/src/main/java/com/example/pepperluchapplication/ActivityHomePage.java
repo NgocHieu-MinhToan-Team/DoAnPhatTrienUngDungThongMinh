@@ -5,11 +5,15 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -17,13 +21,16 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.bumptech.glide.Glide;
 import com.example.pepperluchapplication.DTO.CART;
+import com.example.pepperluchapplication.DTO.MyApplication;
 import com.example.pepperluchapplication.DTO.PRODUCT;
 import com.example.pepperluchapplication.Fragments.fragmentHistory;
 import com.example.pepperluchapplication.Fragments.fragmentHome;
 import com.example.pepperluchapplication.Fragments.fragmentMenu;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 
@@ -35,6 +42,7 @@ public class ActivityHomePage extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private ImageView iv_cart;
     private ArrayList<CART> carts = new ArrayList<CART>();
+    private Button buttonSignOut;
 
     private ActionBarDrawerToggle drawerToggle;
 
@@ -46,6 +54,30 @@ public class ActivityHomePage extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.NavigationMenu);
         toolbar = findViewById(R.id.toolbar);
         iv_cart = findViewById(R.id.iv_cart);
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
+        navigationView.setNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.nav_sign_out:
+                    new AlertDialog.Builder(this)
+                            .setTitle("Xác nhận đăng xuất")
+                            .setMessage("Bạn chắc chắn muốn đăng xuất?")
+                            .setPositiveButton("Có", (dialog, whichButton) -> startActivity(new Intent(ActivityHomePage.this, ActivityLogin.class)))
+                            .setNegativeButton("Không", null).show();
+                    break;
+                default:
+                    Toast.makeText(this, "Invalid selection", Toast.LENGTH_SHORT);
+                    break;
+            }
+            return true;
+        });
+        // Set full name from customer login
+        View hView = navigationView.getHeaderView(0);
+        TextView fullNameUser = (TextView) hView.findViewById(R.id.txt_full_name_nav);
+        fullNameUser.setText("Xin chào, " + MyApplication.getCustomer().getNAME_CUSTOMER());
+        ImageView imageAvatar = hView.findViewById(R.id.pepperlunch_logo_nav);
+        // Using Glide to fix error 'Canvas: trying to draw too large bitmap'
+        Glide.with(this).load(R.drawable.pepperlunch_logo).into(imageAvatar);
 
         CART item = new CART(new PRODUCT("IDLMON01", "MAMON01", "https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/image%2FPremiumSteak%2FTheGIANT.png?alt=media&token=b410306b-dfab-44f0-bb61-b465b422418d", "The Giant", "Bò Mỹ Thượng Hạng", (long) 369000), 1);
         carts.add(item);

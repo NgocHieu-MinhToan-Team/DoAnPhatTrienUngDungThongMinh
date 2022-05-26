@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,68 +7,49 @@
     android:orientation="vertical"
     tools:context=".ActivityLogin">
 
+    <ImageView
+        android:id="@+id/pepperlunch_logo"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="180dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Welcome to"
+            android:layout_marginBottom="50dp"
+            android:text="Welcome to\nPEPPER LUNCH"
             android:textAlignment="center"
             android:textAllCaps="true"
             android:textColor="@color/whiteSmoke"
             android:textSize="36dp"
             android:textStyle="bold" />
-    </LinearLayout>
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <ImageView
+        <Button
+            android:id="@+id/button_open_modal_login"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:src="@drawable/bg_dish" />
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/red_logo"
+            android:padding="15dp"
+            android:text="Đăng nhập"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
-        <ImageView
-            android:layout_width="160dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:src="@drawable/logotext" />
-    </FrameLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:paddingHorizontal="26dp">
-
-        <LinearLayout
+        <Button
+            android:id="@+id/button_open_modal_sigup"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/rounded_form_login"
-            android:orientation="vertical">
-
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tablayout_login"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:contentDescription="@string/app_name"
-                app:tabIndicatorColor="@color/bg_login"
-                app:tabSelectedTextColor="@color/colorText"
-                app:tabTextColor="@color/colorText" />
-
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/viewpager_login"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-        </LinearLayout>
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="Đăng ký"
+            android:textSize="20dp"
+            android:textStyle="bold" />
     </LinearLayout>
 
 

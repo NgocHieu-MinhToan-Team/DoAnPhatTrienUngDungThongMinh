@@ -23,4 +23,10 @@
     <!--Use for animation-->
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
+
+
+    <string-array name="sex_array">
+        <item>Nam</item>
+        <item>Nữ</item>
+    </string-array>
 </resources>

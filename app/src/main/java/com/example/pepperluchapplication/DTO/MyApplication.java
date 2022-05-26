@@ -27,5 +27,7 @@ public class MyApplication extends Application {
 
         MyApplication.carts.add(cart);
     }
-
+    public static void clearCart(){
+        MyApplication.carts.clear();
+    }
 }

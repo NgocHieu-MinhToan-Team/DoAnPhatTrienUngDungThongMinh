@@ -1,5 +1,6 @@
 package com.example.pepperluchapplication.Fragments;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
@@ -38,6 +39,8 @@ import java.util.stream.Collectors;
 public class fragmentMenu extends Fragment implements View.OnClickListener {
 
     Context context;
+    ProgressDialog progressDialog;
+
     public fragmentMenu(Context context)
     {
         this.context=context;
@@ -66,55 +69,63 @@ public class fragmentMenu extends Fragment implements View.OnClickListener {
         cardMain.setOnClickListener(this);
         cardSide.setOnClickListener(this);
         cardCombo.setOnClickListener(this);
-
+        progressDialog =new ProgressDialog(getActivity());
+        progressDialog.setMessage("Loading...");
         // Write a message to the database
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://dbpepperlunch-default-rtdb.asia-southeast1.firebasedatabase.app/");
         DatabaseReference databaseReference = database.getReference("Database/Category_Dish");
         dataOfCATEGORY = new ArrayList<>();
         // My top posts by number of stars
-        databaseReference.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        for (DataSnapshot temp: dataSnapshot.getChildren()) {
-                            CATEGORY item = temp.getValue(CATEGORY.class);
-                            dataOfCATEGORY.add(item);
-                        }
-                    }
+//        databaseReference.addValueEventListener(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(DataSnapshot dataSnapshot) {
+//                        for (DataSnapshot temp: dataSnapshot.getChildren()) {
+//                            CATEGORY item = temp.getValue(CATEGORY.class);
+//                            dataOfCATEGORY.add(item);
+//                        }
+//                        progressDialog.dismiss();
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(DatabaseError databaseError) {
+//                        throw databaseError.toException(); //Don't ignore errors
+//                    }
+//                });
 
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                        throw databaseError.toException(); //Don't ignore errors
-                    }
-                });
+        //handle progressbar
+        //final int[] count ={0};
 
-//        ChildEventListener childEventListener = new ChildEventListener() {
-//            @Override
-//            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-//                CATEGORY itemCate = (CATEGORY) snapshot.getValue();
-//                dataOfCATEGORY.add(itemCate);
-//            }
-//
-//            @Override
-//            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-//
-//            }
-//
-//            @Override
-//            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-//
-//            }
-//
-//            @Override
-//            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        };
-//        databaseReference.addChildEventListener(childEventListener);
+        ChildEventListener childEventListener = new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                //count[0]++;
+                CATEGORY item = snapshot.getValue(CATEGORY.class);
+                dataOfCATEGORY.add(item);
+                progressDialog.dismiss();
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        };
+        databaseReference.addChildEventListener(childEventListener);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -124,6 +135,7 @@ public class fragmentMenu extends Fragment implements View.OnClickListener {
         switch (id){
             case R.id.card_main:{
                 // xử lý lọc data cate
+                //progressDialog.show();
                 ArrayList<CATEGORY> arrMain = filterByCondition(dataOfCATEGORY,"MAIN");
                 frag =new fragment_category(arrMain);
                 openFragmentFromFragment(frag,"CateMain");

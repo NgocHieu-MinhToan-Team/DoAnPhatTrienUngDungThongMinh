@@ -107,7 +107,6 @@ public class LV_CartAdapter extends BaseAdapter {
         product_count_cart.setText(Integer.toString(cart.getSoluong()));
         long total=pro.getPRICE_PRODUCT()*cart.getSoluong();
         total_price_product_cart.setText(Long.toString(total));
-
         return convertView;
     }
 }

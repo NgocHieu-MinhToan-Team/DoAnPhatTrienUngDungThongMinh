@@ -13,8 +13,13 @@ import android.widget.TextView;
 import com.example.pepperluchapplication.Adapter.LV_CartAdapter;
 import com.example.pepperluchapplication.DTO.CART;
 import com.example.pepperluchapplication.DTO.MyApplication;
+import com.example.pepperluchapplication.DTO.ORDER;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CartActivity extends AppCompatActivity {
 
@@ -47,6 +52,27 @@ public class CartActivity extends AppCompatActivity {
         lv_cartAdapter=new LV_CartAdapter(this,carts);
         listView.setAdapter(lv_cartAdapter);
 
+
+        // buy now here
+        btn_buy_cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HashMap<String,CART> listOfCart=new HashMap<String,CART>();
+                float totalPayment=0;
+                for (CART cart : carts){
+                    listOfCart.put(cart.getProduct().getID_PRODUCT(), cart);
+                    totalPayment+=cart.getProduct().getPRICE_PRODUCT()*cart.getSoluong();
+                }
+                ORDER order = new ORDER(listOfCart,"KH001","","","Dang Xu Ly",totalPayment);
+                FirebaseDatabase database = FirebaseDatabase.getInstance("https://dbpepperlunch-default-rtdb.asia-southeast1.firebasedatabase.app/");
+                DatabaseReference myRef = database.getReference("Database/TestInsertOrder");
+                myRef.child(order.getID_CUSTOMER()).setValue(order);
+                //clear carts
+                MyApplication.clearCart();
+                finish();
+
+            }
+        });
     }
     public void btn_back_cart_click(View view)
     {

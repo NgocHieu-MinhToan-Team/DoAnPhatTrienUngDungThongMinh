@@ -58,15 +58,19 @@ public class CartActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 HashMap<String,CART> listOfCart=new HashMap<String,CART>();
+                float totalPayment=0;
                 for (CART cart : carts){
                     listOfCart.put(cart.getProduct().getID_PRODUCT(), cart);
+                    totalPayment+=cart.getProduct().getPRICE_PRODUCT()*cart.getSoluong();
                 }
-                ORDER order = new ORDER(listOfCart,"KH001","","");
+                ORDER order = new ORDER(listOfCart,"KH001","","","Dang Xu Ly",totalPayment);
                 FirebaseDatabase database = FirebaseDatabase.getInstance("https://dbpepperlunch-default-rtdb.asia-southeast1.firebasedatabase.app/");
                 DatabaseReference myRef = database.getReference("Database/TestInsertOrder");
-                myRef.child(order.getId_customer()).setValue(order);
+                myRef.child(order.getID_CUSTOMER()).setValue(order);
                 //clear carts
                 MyApplication.clearCart();
+                finish();
+
             }
         });
     }

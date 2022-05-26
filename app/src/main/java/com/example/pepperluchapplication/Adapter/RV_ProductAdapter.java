@@ -50,20 +50,15 @@ public class RV_ProductAdapter extends RecyclerView.Adapter<ViewProduct> impleme
     @Override
     public void onBindViewHolder(@NonNull ViewProduct holder, int position) {
         PRODUCT pro=data.get(position);
+        Picasso.get().load(pro.getIMAGE_PRODUCT()).placeholder(R.drawable.beef_sukiyaki).error(R.drawable.beef_sukiyaki).into(holder.iv_product_image);
         holder.tv_product_name.setText(pro.getNAME_PRODUCT_VN());
-        Picasso.get().load(pro.getIMAGE_PRODUCT()).into(holder.iv_product_image);
+        //Picasso.get().load(pro.getIMAGE_PRODUCT()).into(holder.iv_product_image);
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // open bottom sheet
                 clickOpenBottomSheetDialog(pro);
-
-
-//                Intent intent =new Intent(context, DetailProduct.class);
-//                Bundle bundle = new Bundle();
-//                bundle.putSerializable("product",pro);
-//                intent.putExtras(bundle);
-//                context.startActivity(intent);
             }
             int[] quantity = {0};
 
@@ -127,14 +122,10 @@ class ViewProduct extends RecyclerView.ViewHolder {
     TextView tv_product_name;
     ImageView iv_product_image;
     LinearLayout item;
-
-
     public ViewProduct(@NonNull View itemView) {
         super(itemView);
         tv_product_name=itemView.findViewById(R.id.tv_product_name);
         iv_product_image=itemView.findViewById(R.id.iv_product_image);
         item=itemView.findViewById(R.id.product_item);
-
     }
-
 }

@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -49,10 +50,13 @@ public class RV_CategoryAdapter extends RecyclerView.Adapter<ViewHolderCategory>
         ArrayList<PRODUCT> listProduct
                 =  kq.getDishes().values().stream().collect(
                 Collectors.toCollection(ArrayList::new));
-        RV_ProductAdapter adapter = new RV_ProductAdapter(context,listProduct);
-        holder.rv_product_item_by_cate.setAdapter(adapter);
-        holder.rv_product_item_by_cate.setLayoutManager(new GridLayoutManager(context,2, GridLayoutManager.VERTICAL,false));
 
+        RV_ProductAdapter adapter = new RV_ProductAdapter(context,listProduct);
+
+        //LV_ProductAdapter adapter =new LV_ProductAdapter(context,listProduct);
+        //holder.lv_product_item_by_cate.setAdapter(adapter);
+        holder.rv_product_item_by_cate.setAdapter(adapter);
+        holder.rv_product_item_by_cate.setLayoutManager(new GridLayoutManager(context,2,GridLayoutManager.VERTICAL,false));
 
     }
     @Override
@@ -64,9 +68,11 @@ public class RV_CategoryAdapter extends RecyclerView.Adapter<ViewHolderCategory>
 class ViewHolderCategory extends RecyclerView.ViewHolder{
     TextView tv_category_name;
     RecyclerView rv_product_item_by_cate;
+    //ListView lv_product_item_by_cate;
     public ViewHolderCategory(@NonNull View itemView) {
         super(itemView);
         tv_category_name=itemView.findViewById(R.id.tv_category_name);
         rv_product_item_by_cate=itemView.findViewById(R.id.rv_product_item_by_cate);
+        //lv_product_item_by_cate=itemView.findViewById(R.id.lv_product_item_by_cate);
     }
 }

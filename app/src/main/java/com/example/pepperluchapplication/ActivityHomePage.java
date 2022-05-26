@@ -41,13 +41,13 @@ public class ActivityHomePage extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         drawerLayout = findViewById(R.id.drawerLayout);
         iv_cart=findViewById(R.id.iv_cart);
-
-        CART item= new CART(new PRODUCT("IDLMON01","MAMON01","https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/image%2FPremiumSteak%2FTheGIANT.png?alt=media&token=b410306b-dfab-44f0-bb61-b465b422418d","The Giant","Bò Mỹ Thượng Hạng",(long)369000),1);
-        MyApplication.setItem(item);
-        item= new CART(new PRODUCT("IDLMON01","MAMON01","https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/image%2FPremiumSteak%2FTheGIANT.png?alt=media&token=b410306b-dfab-44f0-bb61-b465b422418d","The Giant","Bò Mỹ Thượng Hạng",(long)369000),2);
-        MyApplication.setItem(item);
-        item= new CART(new PRODUCT("IDLMON01","MAMON01","https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/image%2FPremiumSteak%2FTheGIANT.png?alt=media&token=b410306b-dfab-44f0-bb61-b465b422418d","The Giant","Bò Mỹ Thượng Hạng",(long)369000),3);
-        MyApplication.setItem(item);
+//
+//        CART item= new CART(new PRODUCT("IDLMON01","MAMON01","https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/image%2FPremiumSteak%2FTheGIANT.png?alt=media&token=b410306b-dfab-44f0-bb61-b465b422418d","The Giant","Bò Mỹ Thượng Hạng",(long)369000),1);
+//        MyApplication.setItem(item);
+//        item= new CART(new PRODUCT("IDLMON01","MAMON01","https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/image%2FPremiumSteak%2FTheGIANT.png?alt=media&token=b410306b-dfab-44f0-bb61-b465b422418d","The Giant","Bò Mỹ Thượng Hạng",(long)369000),2);
+//        MyApplication.setItem(item);
+//        item= new CART(new PRODUCT("IDLMON01","MAMON01","https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/image%2FPremiumSteak%2FTheGIANT.png?alt=media&token=b410306b-dfab-44f0-bb61-b465b422418d","The Giant","Bò Mỹ Thượng Hạng",(long)369000),3);
+//        MyApplication.setItem(item);
 
         // thiết lập views
         // Navigation bottom

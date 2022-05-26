@@ -14,9 +14,4 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void login(View view) {
-        Intent intent = new Intent(MainActivity.this, HomePageActivity.class);
-        startActivity(intent);
-        //demo
-    }
 }

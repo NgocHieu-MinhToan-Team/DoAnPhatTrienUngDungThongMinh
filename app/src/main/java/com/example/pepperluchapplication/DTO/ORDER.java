@@ -1,14 +1,15 @@
 package com.example.pepperluchapplication.DTO;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ORDER {
     // test order
-    HashMap<String,CART> LIST_CART;
-    String ID_CUSTOMER,ID_VOUCHER,ID_METHOD,STATUS;
+    HashMap<String, CART> LIST_CART;
+    String ID_CUSTOMER, ID_VOUCHER, ID_METHOD, STATUS;
     float TOTAL_PAYMENT;
-    public ORDER(){}
+
+    public ORDER() {
+    }
 
     public ORDER(HashMap<String, CART> LIST_CART, String ID_CUSTOMER, String ID_VOUCHER, String ID_METHOD, String STATUS, float TOTAL_PAYMENT) {
         this.LIST_CART = LIST_CART;

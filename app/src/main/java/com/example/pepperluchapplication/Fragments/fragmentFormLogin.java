@@ -1,16 +1,13 @@
 package com.example.pepperluchapplication.Fragments;
 
-import androidx.lifecycle.ViewModelProvider;
-
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.example.pepperluchapplication.R;
 
@@ -21,7 +18,6 @@ public class fragmentFormLogin extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_form_login, container, false);
     }
-
 
 
 }

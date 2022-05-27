@@ -1,5 +1,11 @@
 package com.example.pepperluchapplication;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -7,12 +13,6 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageView;
 
 import com.example.pepperluchapplication.DTO.CART;
 import com.example.pepperluchapplication.Fragments.fragmentHistory;
@@ -30,17 +30,17 @@ public class ActivityHomePage extends AppCompatActivity {
     Toolbar toolbar;
     DrawerLayout drawerLayout;
     ImageView iv_cart;
-    ArrayList<CART> carts=new ArrayList<CART>();
+    ArrayList<CART> carts = new ArrayList<CART>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
         // Ánh Xạ Views
-        bottomNavigationView=findViewById(R.id.NavigationMenu);
+        bottomNavigationView = findViewById(R.id.NavigationMenu);
         toolbar = findViewById(R.id.toolbar);
         drawerLayout = findViewById(R.id.drawerLayout);
-        iv_cart=findViewById(R.id.iv_cart);
+        iv_cart = findViewById(R.id.iv_cart);
 
 //        CART item= new CART(new PRODUCT("IDLMON01","MAMON01","https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/image%2FPremiumSteak%2FTheGIANT.png?alt=media&token=b410306b-dfab-44f0-bb61-b465b422418d","The Giant","Bò Mỹ Thượng Hạng",(long)369000),1);
 //        carts.add(item);
@@ -56,14 +56,16 @@ public class ActivityHomePage extends AppCompatActivity {
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id=item.getItemId();
-                switch (id)
-                {
-                    case R.id.mnuHome: fragment=new fragmentHome(getApplicationContext());
+                int id = item.getItemId();
+                switch (id) {
+                    case R.id.mnuHome:
+                        fragment = new fragmentHome(getApplicationContext());
                         break;
-                    case R.id.mnuMenu: fragment=new fragmentMenu(getApplicationContext());
+                    case R.id.mnuMenu:
+                        fragment = new fragmentMenu(getApplicationContext());
                         break;
-                    case R.id.mnuHistory: fragment=new fragmentHistory(getApplicationContext());
+                    case R.id.mnuHistory:
+                        fragment = new fragmentHistory(getApplicationContext());
                         break;
                 }
                 loadFragment(fragment);
@@ -83,15 +85,15 @@ public class ActivityHomePage extends AppCompatActivity {
             }
         });
     }
-    public void loadFragment(Fragment f)
-    {
-        FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frmMain,f);
+
+    public void loadFragment(Fragment f) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frmMain, f);
         transaction.commit();
     }
-    public void btnCart_Click(View view)
-    {
-        Intent intent= new Intent(ActivityHomePage.this,CartActivity.class);
+
+    public void btnCart_Click(View view) {
+        Intent intent = new Intent(ActivityHomePage.this, CartActivity.class);
         //intent.putExtra("cart", MyApplication.getCarts());
         startActivity(intent);
     }

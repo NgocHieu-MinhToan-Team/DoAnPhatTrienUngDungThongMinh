@@ -37,24 +37,25 @@ public class fragmentHome extends Fragment {
     TabLayout tabLayout;
     ViewPager viewPager;
     // khai bao cac view can thiet cho slider
-    List<NEWS> listNews = new ArrayList<>();;
+    List<NEWS> listNews = new ArrayList<>();
+    ;
     ViewPager2 viewPager2_slider;
-    private Handler handler =new Handler();
     Runnable runnable = new Runnable() {
         @Override
         public void run() {
-            if(viewPager2_slider.getCurrentItem()==listNews.size()-1){
+            if (viewPager2_slider.getCurrentItem() == listNews.size() - 1) {
                 viewPager2_slider.setCurrentItem(0);
-            }
-            else{
-                viewPager2_slider.setCurrentItem(viewPager2_slider.getCurrentItem()+1);
+            } else {
+                viewPager2_slider.setCurrentItem(viewPager2_slider.getCurrentItem() + 1);
             }
         }
     };
+    private Handler handler = new Handler();
 
     public fragmentHome(Context context) {
         this.context = context;
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -84,7 +85,7 @@ public class fragmentHome extends Fragment {
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
                 handler.removeCallbacks(runnable);
-                handler.postDelayed(runnable,3000);
+                handler.postDelayed(runnable, 3000);
             }
         });
         viewPager2_slider.setPageTransformer(new DepthPageTransformer());
@@ -102,6 +103,7 @@ public class fragmentHome extends Fragment {
                 }
                 sliderAdapter.notifyDataSetChanged();
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
@@ -109,6 +111,7 @@ public class fragmentHome extends Fragment {
         });
         registerForContextMenu(tabLayout);
     }
+
     // khi ng dung thoat ung dung thi luu index cua slider
     @Override
     public void onPause() {
@@ -120,6 +123,6 @@ public class fragmentHome extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        handler.postDelayed(runnable,3000);
+        handler.postDelayed(runnable, 3000);
     }
 }

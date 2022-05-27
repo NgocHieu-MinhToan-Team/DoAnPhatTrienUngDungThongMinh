@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 
 import com.example.pepperluchapplication.Adapter.RV_CategoryAdapter;
 import com.example.pepperluchapplication.DTO.CATEGORY;
@@ -38,8 +40,15 @@ public class fragment_category extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         rv_category=view.findViewById(R.id.rv_category);
+
+        //set animation
+        LayoutAnimationController layoutAnimationController = AnimationUtils.loadLayoutAnimation(getContext(),R.anim.layout_anim_up_to_down);
+        rv_category.setLayoutAnimation(layoutAnimationController);
+
         RV_CategoryAdapter adapter = new RV_CategoryAdapter(getContext(),listOfCate);
         rv_category.setAdapter(adapter);
         rv_category.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+
+
     }
 }

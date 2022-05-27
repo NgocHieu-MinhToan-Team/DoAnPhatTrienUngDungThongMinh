@@ -5,6 +5,15 @@ import android.app.Application;
 import java.util.ArrayList;
 
 public class MyApplication extends Application {
+    public static CUSTOMER getCustomer() {
+        return customer;
+    }
+
+    public static void setCustomer(CUSTOMER customer) {
+        MyApplication.customer = customer;
+    }
+
+    private static CUSTOMER customer;
 
     static ArrayList<CART> carts = new ArrayList<CART>();
 

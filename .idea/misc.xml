@@ -17,7 +17,9 @@
         <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/bottom_sheet_detail_product.xml" value="0.2" />
         <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/fragment_category.xml" value="0.20512820512820512" />
         <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/fragment_form_login.xml" value="0.20512820512820512" />
-        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/fragment_history.xml" value="0.20512820512820512" />
+        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/fragment_history.xml" value="0.1" />
+        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/fragment_history_orders_fragment.xml" value="0.1935897435897436" />
+        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/fragment_history_receipts_fragment.xml" value="0.20512820512820512" />
         <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/fragment_menu.xml" value="0.264" />
         <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/fragment_product_item.xml" value="0.20512820512820512" />
@@ -31,6 +33,7 @@
         <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/rv_bestseller_item.xml" value="0.264" />
         <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/rv_category.xml" value="0.20512820512820512" />
         <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/rv_category_item.xml" value="0.20512820512820512" />
+        <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/rv_order_item.xml" value="0.20512820512820512" />
         <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/rv_product_item.xml" value="0.264" />
         <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/slider_item.xml" value="0.20512820512820512" />
         <entry key="..\:/HK2_Nam_3/DevelopmentMobile/DoAnPhatTrienUngDungThongMinh/app/src/main/res/layout/tab_menu_dessert_fragment.xml" value="0.20512820512820512" />

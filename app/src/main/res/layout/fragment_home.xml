@@ -29,6 +29,7 @@
                 android:layout_height="20dp"
                 app:ci_drawable="@drawable/indicator3_slider" />
         </LinearLayout>
+<<<<<<< HEAD
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tablayout"
@@ -46,6 +47,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/bg_main" />
+=======
+
+>>>>>>> origin/minhtoan
         <!--    menu -->
     </LinearLayout>
 

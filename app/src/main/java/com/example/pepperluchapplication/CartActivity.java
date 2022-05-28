@@ -63,7 +63,7 @@ public class CartActivity extends AppCompatActivity {
                     listOfCart.put(cart.getProduct().getID_PRODUCT(), cart);
                     totalPayment+=cart.getProduct().getPRICE_PRODUCT()*cart.getSoluong();
                 }
-                ORDER order = new ORDER(listOfCart,"KH001","","","Dang Xu Ly",totalPayment);
+                ORDER order = new ORDER(listOfCart,"KH003","","",0,totalPayment);
                 FirebaseDatabase database = FirebaseDatabase.getInstance("https://dbpepperlunch-default-rtdb.asia-southeast1.firebasedatabase.app/");
                 DatabaseReference myRef = database.getReference("Database/TestInsertOrder");
                 myRef.child(order.getID_CUSTOMER()).setValue(order);

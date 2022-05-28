@@ -6,11 +6,12 @@ import java.util.HashMap;
 public class ORDER {
     // test order
     HashMap<String,CART> LIST_CART;
-    String ID_CUSTOMER,ID_VOUCHER,ID_METHOD,STATUS;
+    String ID_CUSTOMER,ID_VOUCHER,ID_METHOD;
+    long STATUS;
     float TOTAL_PAYMENT;
     public ORDER(){}
 
-    public ORDER(HashMap<String, CART> LIST_CART, String ID_CUSTOMER, String ID_VOUCHER, String ID_METHOD, String STATUS, float TOTAL_PAYMENT) {
+    public ORDER(HashMap<String, CART> LIST_CART, String ID_CUSTOMER, String ID_VOUCHER, String ID_METHOD, long STATUS, float TOTAL_PAYMENT) {
         this.LIST_CART = LIST_CART;
         this.ID_CUSTOMER = ID_CUSTOMER;
         this.ID_VOUCHER = ID_VOUCHER;
@@ -51,11 +52,11 @@ public class ORDER {
         this.ID_METHOD = ID_METHOD;
     }
 
-    public String getSTATUS() {
+    public long getSTATUS() {
         return STATUS;
     }
 
-    public void setSTATUS(String STATUS) {
+    public void setSTATUS(long STATUS) {
         this.STATUS = STATUS;
     }
 

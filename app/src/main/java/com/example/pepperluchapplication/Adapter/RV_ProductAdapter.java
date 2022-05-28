@@ -28,7 +28,6 @@ import java.util.ArrayList;
 
 public class RV_ProductAdapter extends RecyclerView.Adapter<ViewProduct> implements Filterable {
     Context context;
-
     ArrayList<PRODUCT> data;
 
     public RV_ProductAdapter(Context context,ArrayList<PRODUCT> data) {
@@ -50,8 +49,8 @@ public class RV_ProductAdapter extends RecyclerView.Adapter<ViewProduct> impleme
     @Override
     public void onBindViewHolder(@NonNull ViewProduct holder, int position) {
         PRODUCT pro=data.get(position);
-        Picasso.get().load(pro.getIMAGE_PRODUCT()).placeholder(R.drawable.beef_sukiyaki).error(R.drawable.beef_sukiyaki).into(holder.iv_product_image);
-        holder.tv_product_name.setText(pro.getNAME_PRODUCT_VN());
+        Picasso.get().load(pro.getIMAGE_PRODUCT()).placeholder(R.drawable.teppan_null).error(R.drawable.teppan_null).into(holder.iv_product_image);
+        holder.tv_product_name.setText(pro.getNAME_PRODUCT_EN());
         //Picasso.get().load(pro.getIMAGE_PRODUCT()).into(holder.iv_product_image);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

@@ -8,12 +8,16 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
+<<<<<<< HEAD:app/src/main/java/com/example/pepperluchapplication/fragmentHistory.java
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link fragmentHistory#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class fragmentHistory extends Fragment {
+=======
+public class fragmentProfile extends Fragment {
+>>>>>>> origin/minhtoan:app/src/main/java/com/example/pepperluchapplication/Fragments/fragmentProfile.java
 
     Context context;
 

@@ -50,7 +50,7 @@ public class fragmentHome extends Fragment {
 
         // anh xa
         toolbar = view.findViewById(R.id.toolbar);
-        drawerLayout = view.findViewById(R.id.drawerLayout);
+        //drawerLayout = view.findViewById(R.id.drawerLayout);
         //rv_bestSeller = view.findViewById(R.id.rv_bestSeller);
 
         tabLayout = view.findViewById(R.id.tablayout);

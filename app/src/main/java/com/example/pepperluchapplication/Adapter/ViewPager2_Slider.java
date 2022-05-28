@@ -29,7 +29,8 @@ public class ViewPager2_Slider extends RecyclerView.Adapter<ViewPager2_Slider.Vi
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.slider_item,parent,false);
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.slider_item, parent, false);
         return new ViewHolder(view);
     }
 
@@ -37,7 +38,7 @@ public class ViewPager2_Slider extends RecyclerView.Adapter<ViewPager2_Slider.Vi
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         NEWS news = list.get(position);
-        if(news==null){
+        if (news == null) {
             return;
         }
         ArrayList<IMAGE_NEWS> listImage = news.getImage().values().stream().collect(
@@ -51,11 +52,12 @@ public class ViewPager2_Slider extends RecyclerView.Adapter<ViewPager2_Slider.Vi
         return list.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder{
+    class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageView=itemView.findViewById(R.id.iv_slider_item);
+            imageView = itemView.findViewById(R.id.iv_slider_item);
         }
     }
 }

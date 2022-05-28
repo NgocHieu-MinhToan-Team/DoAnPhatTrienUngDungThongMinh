@@ -1,13 +1,25 @@
 package com.example.pepperluchapplication.DTO;
 
-import java.util.Date;
 import java.util.HashMap;
 
 public class NEWS {
-    String ID_NEWS,ID_PROMOTION,TITLE,CONTENT,USERNAME_STAFF;
-    String DATE_VISIBLE,DATE_HIDDEN;
-    HashMap<String,IMAGE_NEWS> Image;
-    public NEWS(){}
+    String ID_NEWS, ID_PROMOTION, TITLE, CONTENT, USERNAME_STAFF;
+    String DATE_VISIBLE, DATE_HIDDEN;
+    HashMap<String, IMAGE_NEWS> Image;
+
+    public NEWS() {
+    }
+
+    public NEWS(String ID_NEWS, String ID_PROMOTION, String TITLE, String CONTENT, String USERNAME_STAFF, String DATE_VISIBLE, String DATE_HIDDEN, HashMap<String, IMAGE_NEWS> image) {
+        this.ID_NEWS = ID_NEWS;
+        this.ID_PROMOTION = ID_PROMOTION;
+        this.TITLE = TITLE;
+        this.CONTENT = CONTENT;
+        this.USERNAME_STAFF = USERNAME_STAFF;
+        this.DATE_VISIBLE = DATE_VISIBLE;
+        this.DATE_HIDDEN = DATE_HIDDEN;
+        Image = image;
+    }
 
     public String getID_NEWS() {
         return ID_NEWS;
@@ -70,17 +82,6 @@ public class NEWS {
     }
 
     public void setImage(HashMap<String, IMAGE_NEWS> image) {
-        Image = image;
-    }
-
-    public NEWS(String ID_NEWS, String ID_PROMOTION, String TITLE, String CONTENT, String USERNAME_STAFF, String DATE_VISIBLE, String DATE_HIDDEN, HashMap<String, IMAGE_NEWS> image) {
-        this.ID_NEWS = ID_NEWS;
-        this.ID_PROMOTION = ID_PROMOTION;
-        this.TITLE = TITLE;
-        this.CONTENT = CONTENT;
-        this.USERNAME_STAFF = USERNAME_STAFF;
-        this.DATE_VISIBLE = DATE_VISIBLE;
-        this.DATE_HIDDEN = DATE_HIDDEN;
         Image = image;
     }
 }

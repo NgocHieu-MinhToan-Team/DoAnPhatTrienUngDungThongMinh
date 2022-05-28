@@ -6,7 +6,21 @@ import java.util.ArrayList;
 
 public class MyApplication extends Application {
 
+<<<<<<< HEAD
     static ArrayList<CART> carts=new ArrayList<CART>();
+=======
+    static ArrayList<CART> carts = new ArrayList<CART>();
+
+    public static CUSTOMER getCustomer() {
+        return customer;
+    }
+
+    public static void setCustomer(CUSTOMER customer) {
+        MyApplication.customer = customer;
+    }
+
+    static CUSTOMER customer;
+>>>>>>> 515e893 (add login, sign up and navigation view)
 
     public static ArrayList<CART> getCarts() {
         return carts;
@@ -16,18 +30,30 @@ public class MyApplication extends Application {
         this.carts = carts;
     }
 
+<<<<<<< HEAD
     public static void setItem(CART cart)
     {
         //duyet kiem tra trong gio hang co sn pham do chua
         for(CART t :MyApplication.carts)
             if(t.getProduct().ID_PRODUCT==cart.getProduct().ID_PRODUCT) {
+=======
+    public static void setItem(CART cart) {
+        //duyet kiem tra trong gio hang co sn pham do chua
+        for (CART t : MyApplication.carts)
+            if (t.getProduct().ID_PRODUCT == cart.getProduct().ID_PRODUCT) {
+>>>>>>> 515e893 (add login, sign up and navigation view)
                 t.setSoluong(cart.getSoluong() + t.getSoluong());
                 return;
             }
 
         MyApplication.carts.add(cart);
     }
+<<<<<<< HEAD
     public static void clearCart(){
+=======
+
+    public static void clearCart() {
+>>>>>>> 515e893 (add login, sign up and navigation view)
         MyApplication.carts.clear();
     }
 }

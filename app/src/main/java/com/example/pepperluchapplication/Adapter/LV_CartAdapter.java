@@ -77,6 +77,7 @@ public class LV_CartAdapter extends BaseAdapter {
                 Picasso.get().load(cart.getProduct().getIMAGE_PRODUCT()).into(iv_detail_product_image);
                 tv_detail_product_name.setText(cart.getProduct().getNAME_PRODUCT_EN());
                 tv_detail_product_price.setText(cart.getProduct().getPRICE_PRODUCT().toString());
+
                 btnIncrease.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

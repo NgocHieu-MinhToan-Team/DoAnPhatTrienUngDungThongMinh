@@ -1,6 +1,5 @@
 package com.example.pepperluchapplication.Adapter;
 
-import android.app.Application;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pepperluchapplication.DTO.CART;
-import com.example.pepperluchapplication.DTO.MyApplication;
+import com.example.pepperluchapplication.Service.MyApplication;
 import com.example.pepperluchapplication.DTO.PRODUCT;
 import com.example.pepperluchapplication.R;
 import com.google.android.material.bottomsheet.BottomSheetDialog;

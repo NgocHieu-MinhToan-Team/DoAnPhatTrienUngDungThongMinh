@@ -8,13 +8,13 @@ public class CART implements Serializable {
     private int soluong;
     private String note;
     private String spicy;
-    public CART()
-    {
+
+    public CART() {
         setProduct(new PRODUCT());
         setSoluong(0);
     }
-    public  CART(PRODUCT product, int soluong)
-    {
+
+    public CART(PRODUCT product, int soluong) {
         this.setProduct(product);
         this.setSoluong(soluong);
     }
@@ -34,7 +34,6 @@ public class CART implements Serializable {
     public void setSoluong(int soluong) {
         this.soluong = soluong;
     }
-
 
 
 }

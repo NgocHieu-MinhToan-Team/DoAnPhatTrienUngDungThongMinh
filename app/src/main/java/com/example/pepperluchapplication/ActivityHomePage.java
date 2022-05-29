@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -30,6 +32,7 @@ import com.example.pepperluchapplication.DTO.PRODUCT;
 import com.example.pepperluchapplication.Fragments.fragmentHistory;
 import com.example.pepperluchapplication.Fragments.fragmentHome;
 import com.example.pepperluchapplication.Fragments.fragmentMenu;
+import com.example.pepperluchapplication.Fragments.fragment_change_password;
 import com.example.pepperluchapplication.Fragments.fragment_customer_information;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -54,6 +57,7 @@ public class ActivityHomePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+
         // Ánh Xạ Views
         bottomNavigationView = findViewById(R.id.NavigationMenu);
         toolbar = findViewById(R.id.toolbar);
@@ -71,6 +75,17 @@ public class ActivityHomePage extends AppCompatActivity {
                     loadFragment(new fragment_customer_information(customer),
                             new fragmentHome(getApplicationContext()));
                     drawerLayout.closeDrawers();
+                    break;
+                case R.id.nav_change_password:
+                    loadFragment(new fragment_change_password(), new fragmentHome(getApplicationContext()));
+                    drawerLayout.closeDrawers();
+                    break;
+                case R.id.nav_loyalty:
+                    new AlertDialog.Builder(this)
+                            .setTitle("Điểm tích luỹ")
+                            .setMessage("Điểm tích luỹ hiện tại của bạn là: " + customer.getPOINT())
+                            .setPositiveButton("OK", null)
+                            .show();
                     break;
                 case R.id.nav_sign_out:
                     new AlertDialog.Builder(this)

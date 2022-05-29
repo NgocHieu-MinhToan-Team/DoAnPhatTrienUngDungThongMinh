@@ -1,14 +1,18 @@
 package com.example.pepperluchapplication;
 
+import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
+import android.app.ActivityOptions;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.InputType;
+import android.transition.Explode;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -115,7 +119,8 @@ public class ActivityLogin extends AppCompatActivity {
                                 prefsEditor.putString("CUSTOMER", json);
                                 prefsEditor.commit();
 
-                                startActivity(intent);
+
+                                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
                                 bottomSheetDialog.dismiss();
                             } else {
                                 Toast.makeText(ActivityLogin.this, "Tên đăng nhập hoặc mật khẩu " +
@@ -285,7 +290,7 @@ public class ActivityLogin extends AppCompatActivity {
      * @param s Input
      * @return
      */
-    private String sha256(String s) {
+    public static String sha256(String s) {
         String result = "";
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
@@ -316,7 +321,7 @@ public class ActivityLogin extends AppCompatActivity {
      * @param confirmPassword Confirm password
      * @return
      */
-    private boolean isMatchConfirmPassword(String password, String confirmPassword) {
+    public static boolean isMatchConfirmPassword(String password, String confirmPassword) {
         return password.compareTo(confirmPassword) == 0;
     }
 
@@ -326,7 +331,7 @@ public class ActivityLogin extends AppCompatActivity {
      * @param phoneNumber Phone number
      * @return True if phone number is valid, otherwise false
      */
-    private boolean isValidPhoneNumber(String phoneNumber) {
+    public static boolean isValidPhoneNumber(String phoneNumber) {
         Pattern pattern = Pattern.compile("(0[3|5|7|8|9])+([0-9]{8})\\b");
         return pattern.matcher(phoneNumber).find();
     }

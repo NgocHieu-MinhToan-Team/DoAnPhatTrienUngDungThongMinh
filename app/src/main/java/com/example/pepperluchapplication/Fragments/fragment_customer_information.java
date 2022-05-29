@@ -1,7 +1,10 @@
 package com.example.pepperluchapplication.Fragments;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.LayoutInflater;
@@ -21,6 +24,7 @@ import com.example.pepperluchapplication.DTO.CUSTOMER;
 import com.example.pepperluchapplication.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.gson.Gson;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -147,10 +151,17 @@ public class fragment_customer_information extends Fragment {
 
             try {
                 reference.child(customer.getID_CUSTOMER()).setValue(customer);
+                SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences(
+                        "USER", MODE_PRIVATE);
+
+                SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
+                Gson gson = new Gson();
+                String json = gson.toJson(customer);
+                prefsEditor.putString("CUSTOMER", json);
+                prefsEditor.commit();
+
                 Toast.makeText(getActivity(), "Bạn đã cập nhật thông tin tài khoản " +
-                    "thành" +
-                                " " +
-                                "công",
+                                "thành công",
                         Toast.LENGTH_LONG).show();
             } catch (Exception ex) {
                 Toast.makeText(view.getContext(), "Something went wrong: " + ex.getMessage(),

@@ -18,8 +18,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AnimationUtils;
-import android.view.animation.LayoutAnimationController;
 import android.widget.Toast;
 
 import com.example.pepperluchapplication.DTO.CATEGORY;
@@ -77,6 +75,25 @@ public class fragmentMenu extends Fragment implements View.OnClickListener {
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://dbpepperlunch-default-rtdb.asia-southeast1.firebasedatabase.app/");
         DatabaseReference databaseReference = database.getReference("Database/Category_Dish");
         dataOfCATEGORY = new ArrayList<>();
+        // My top posts by number of stars
+//        databaseReference.addValueEventListener(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(DataSnapshot dataSnapshot) {
+//                        for (DataSnapshot temp: dataSnapshot.getChildren()) {
+//                            CATEGORY item = temp.getValue(CATEGORY.class);
+//                            dataOfCATEGORY.add(item);
+//                        }
+//                        progressDialog.dismiss();
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(DatabaseError databaseError) {
+//                        throw databaseError.toException(); //Don't ignore errors
+//                    }
+//                });
+
+        //handle progressbar
+        //final int[] count ={0};
 
         ChildEventListener childEventListener = new ChildEventListener() {
             @Override
@@ -84,7 +101,7 @@ public class fragmentMenu extends Fragment implements View.OnClickListener {
                 //count[0]++;
                 CATEGORY item = snapshot.getValue(CATEGORY.class);
                 dataOfCATEGORY.add(item);
-                //progressDialog.dismiss();
+                progressDialog.dismiss();
 
             }
 
@@ -141,7 +158,6 @@ public class fragmentMenu extends Fragment implements View.OnClickListener {
     }
 
     void openFragmentFromFragment(Fragment fragment,String backStackName){
-
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.frmMain, fragment, null)

@@ -1,73 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActivityLogin"
+    android:background="@drawable/bg_main"
     android:orientation="vertical"
-    android:background="@drawable/bg_main">
+    tools:context=".ActivityLogin">
+
+    <ImageView
+        android:id="@+id/pepperlunch_logo"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="180dp"
         android:orientation="vertical"
-        >
+        android:paddingHorizontal="20dp">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Welcome to"
-            android:textColor="@color/whiteSmoke"
+            android:layout_marginBottom="50dp"
+            android:text="Welcome to\nPEPPER LUNCH"
             android:textAlignment="center"
-            android:textSize="36dp"
             android:textAllCaps="true"
-            android:textStyle="bold"
-            />
-    </LinearLayout>
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+            android:textColor="@color/whiteSmoke"
+            android:textSize="36dp"
+            android:textStyle="bold" />
 
-        <ImageView
+        <Button
+            android:id="@+id/button_open_modal_login"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:src="@drawable/bg_dish" />
-        <ImageView
-            android:layout_width="160dp"
-            android:layout_gravity="center"
-            android:layout_height="match_parent"
-            android:src="@drawable/logotext"/>
-    </FrameLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_weight="1"
-        android:paddingHorizontal="26dp"
-        >
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:background="@drawable/rounded_form_login"
-            >
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tablayout_login"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:contentDescription="@string/app_name"
-                app:tabSelectedTextColor="@color/colorText"
-                app:tabIndicatorColor="@color/bg_login"
-                app:tabTextColor="@color/colorText" />
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/red_logo"
+            android:padding="15dp"
+            android:text="Đăng nhập"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/viewpager_login"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-        </LinearLayout>
+        <Button
+            android:id="@+id/button_open_modal_sigup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="Đăng ký"
+            android:textSize="20dp"
+            android:textStyle="bold" />
     </LinearLayout>
 
 

@@ -11,8 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AnimationUtils;
-import android.view.animation.LayoutAnimationController;
 
 import com.example.pepperluchapplication.DTO.PRODUCT;
 import com.example.pepperluchapplication.R;
@@ -38,8 +36,6 @@ public class fragment_product_item extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         // anh xa
         rv_product = view.findViewById(R.id.rv_product);
-
-
         // binding data by adapter
         RV_ProductAdapter adapter = new RV_ProductAdapter(this.getContext(),data);
         rv_product.setAdapter(adapter);

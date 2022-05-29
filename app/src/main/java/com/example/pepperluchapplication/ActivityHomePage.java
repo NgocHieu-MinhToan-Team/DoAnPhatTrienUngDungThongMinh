@@ -23,11 +23,11 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.bumptech.glide.Glide;
 import com.example.pepperluchapplication.DTO.CART;
-import com.example.pepperluchapplication.DTO.MyApplication;
 import com.example.pepperluchapplication.DTO.PRODUCT;
 import com.example.pepperluchapplication.Fragments.fragmentHistory;
 import com.example.pepperluchapplication.Fragments.fragmentHome;
 import com.example.pepperluchapplication.Fragments.fragmentMenu;
+import com.example.pepperluchapplication.Service.MyApplication;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;

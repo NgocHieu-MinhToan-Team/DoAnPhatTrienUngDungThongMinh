@@ -22,7 +22,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.example.pepperluchapplication.DTO.CUSTOMER;
-import com.example.pepperluchapplication.DTO.MyApplication;
+import com.example.pepperluchapplication.Service.MyApplication;
 import com.google.android.gms.common.util.Strings;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.database.DataSnapshot;

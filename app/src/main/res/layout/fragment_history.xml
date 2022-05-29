@@ -1,14 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.fragmentHistory">
-
-    <!-- TODO: Update blank fragment layout -->
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".Fragments.fragmentHistory"
+    android:background="@color/whiteSmoke"
+    >
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:text="Đơn Hàng Hiện Tại"
+        android:textColor="@color/colorText"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        android:paddingVertical="10dp"
+        android:paddingHorizontal="20dp"
+        />
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rv_orders"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lịch Sử Giao Dịch"
+        android:textColor="@color/colorText"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        android:paddingVertical="10dp"
+        android:paddingHorizontal="20dp"
+        />
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rv_receipts"
+        />
 
-</FrameLayout>
+</LinearLayout>

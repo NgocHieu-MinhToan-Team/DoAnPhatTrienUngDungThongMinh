@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,9 +69,6 @@ public class fragmentHome extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         // Mapping
-        tabLayout = view.findViewById(R.id.tablayout);
-        viewPager = view.findViewById(R.id.viewpager);
-        tabLayout.setupWithViewPager(viewPager);
         // add value here
         // slider
         viewPager2_slider = view.findViewById(R.id.viewPager2_slider);
@@ -109,7 +107,6 @@ public class fragmentHome extends Fragment {
 
             }
         });
-        registerForContextMenu(tabLayout);
     }
 
     // khi ng dung thoat ung dung thi luu index cua slider

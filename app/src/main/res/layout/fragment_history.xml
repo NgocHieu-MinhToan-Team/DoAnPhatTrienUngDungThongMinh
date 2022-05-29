@@ -1,26 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<<<<<<< HEAD
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Fragments.fragmentHistory"
-    android:background="@color/white">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="Great, you dont have any bill to wait!"
-        android:textAlignment="center"
-        android:textColor="@color/colorTextNotActive"
-        android:textSize="20dp"
-        android:textStyle="bold"/>
-
-    
-
-</RelativeLayout>
-=======
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -61,4 +39,3 @@
         />
 
 </LinearLayout>
->>>>>>> origin/minhtoan

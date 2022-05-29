@@ -78,9 +78,4 @@ public class CartActivity extends AppCompatActivity {
     {
         finish();
     }
-    public  void btn_buy_cart_click(View view)
-    {
-        Intent intent=new Intent(CartActivity.this,ActivityCartPayment.class);
-        startActivity(intent);
-    }
 }

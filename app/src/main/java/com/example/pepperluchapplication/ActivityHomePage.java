@@ -23,11 +23,11 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.bumptech.glide.Glide;
 import com.example.pepperluchapplication.DTO.CART;
-import com.example.pepperluchapplication.DTO.MyApplication;
 import com.example.pepperluchapplication.DTO.PRODUCT;
 import com.example.pepperluchapplication.Fragments.fragmentHistory;
 import com.example.pepperluchapplication.Fragments.fragmentHome;
 import com.example.pepperluchapplication.Fragments.fragmentMenu;
+import com.example.pepperluchapplication.Service.MyApplication;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
@@ -55,7 +55,7 @@ public class ActivityHomePage extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         iv_cart = findViewById(R.id.iv_cart);
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
+        NavigationView navigationView = findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.nav_sign_out:
@@ -73,7 +73,7 @@ public class ActivityHomePage extends AppCompatActivity {
         });
         // Set full name from customer login
         View hView = navigationView.getHeaderView(0);
-        TextView fullNameUser = (TextView) hView.findViewById(R.id.txt_full_name_nav);
+        TextView fullNameUser = hView.findViewById(R.id.txt_full_name_nav);
         fullNameUser.setText("Xin chào, " + MyApplication.getCustomer().getNAME_CUSTOMER());
         ImageView imageAvatar = hView.findViewById(R.id.pepperlunch_logo_nav);
         // Using Glide to fix error 'Canvas: trying to draw too large bitmap'

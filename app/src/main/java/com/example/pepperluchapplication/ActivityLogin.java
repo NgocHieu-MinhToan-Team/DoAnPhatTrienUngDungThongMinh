@@ -22,7 +22,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.example.pepperluchapplication.DTO.CUSTOMER;
-import com.example.pepperluchapplication.DTO.MyApplication;
+import com.example.pepperluchapplication.Service.MyApplication;
 import com.google.android.gms.common.util.Strings;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.database.DataSnapshot;
@@ -31,8 +31,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.nio.charset.Charset;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.regex.Pattern;
 
 public class ActivityLogin extends AppCompatActivity {
 
@@ -40,6 +47,7 @@ public class ActivityLogin extends AppCompatActivity {
     private ImageView logo;
     private ArrayList<CUSTOMER> customers = new ArrayList<>();
 
+    @SuppressLint("NewApi")
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,12 +134,7 @@ public class ActivityLogin extends AppCompatActivity {
             EditText txtBirthday = bottomSheetSignUpView.findViewById(R.id.txt_birthday);
             txtBirthday.setOnClickListener(v1 -> {
                 // Date Select Listener.
-                DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        txtBirthday.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
-                    }
-                };
+                DatePickerDialog.OnDateSetListener dateSetListener = (view, year, month, dayOfMonth) -> txtBirthday.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
 
                 // Create DatePickerDialog (Spinner Mode):
                 Calendar calendar = Calendar.getInstance();
@@ -143,24 +146,29 @@ public class ActivityLogin extends AppCompatActivity {
                 datePickerDialog.show();
             });
 
-            txtBirthday.setOnFocusChangeListener((v1, event) -> {
-                txtBirthday.setInputType(InputType.TYPE_NULL);
-                // Date Select Listener.
-                DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        txtBirthday.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
+            txtBirthday.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View v, boolean hasFocus) {
+                    if (hasFocus) {
+                        txtBirthday.setInputType(InputType.TYPE_NULL);
+                        // Date Select Listener.
+                        DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                                txtBirthday.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
+                            }
+                        };
+
+                        // Create DatePickerDialog (Spinner Mode):
+                        Calendar calendar = Calendar.getInstance();
+                        @SuppressLint({"NewApi", "LocalSuppress"}) DatePickerDialog datePickerDialog =
+                                new DatePickerDialog(ActivityLogin.this,
+                                        dateSetListener, calendar.get(Calendar.YEAR),
+                                        calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DAY_OF_MONTH));
+
+                        datePickerDialog.show();
                     }
-                };
-
-                // Create DatePickerDialog (Spinner Mode):
-                Calendar calendar = Calendar.getInstance();
-                @SuppressLint({"NewApi", "LocalSuppress"}) DatePickerDialog datePickerDialog =
-                        new DatePickerDialog(this,
-                                dateSetListener, calendar.get(Calendar.YEAR),
-                                calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DAY_OF_MONTH));
-
-                datePickerDialog.show();
+                }
             });
 
 
@@ -169,42 +177,57 @@ public class ActivityLogin extends AppCompatActivity {
                         TextView fullName =
                                 bottomSheetSignUpView.findViewById(R.id.txt_fullname_signup),
                                 birthday = bottomSheetSignUpView.findViewById(R.id.txt_birthday),
+                                address = bottomSheetSignUpView.findViewById(R.id.txt_address),
                                 phoneNumber = bottomSheetSignUpView.findViewById(R.id.txt_phone_number),
                                 password = bottomSheetSignUpView.findViewById(R.id.txt_pwd_signup),
-                                rePassword = bottomSheetSignUpView.findViewById(R.id.txt_repwd);
+                                confirmPassword = bottomSheetSignUpView.findViewById(R.id.txt_confirm_password);
                         Spinner spinnerSex = bottomSheetSignUpView.findViewById(R.id.spinner_sex);
-                        boolean a = isValidSignUp(fullName, phoneNumber, password, rePassword);
+                        boolean a = isValidSignUp(fullName, phoneNumber, password, confirmPassword);
                         boolean b = isMatchConfirmPassword(password.getText()
-                                .toString(), rePassword.getText().toString());
-//                        if (isValidSignUp(fullName, username, password, rePassword) && isMatchConfirmPassword(password.getText()
-//                                .toString(), rePassword.getText().toString())) {
-                        // Write a message to the database
-                        FirebaseDatabase firebase = FirebaseDatabase.getInstance("https" +
-                                "://dbpepperlunch-default" +
-                                "-rtdb.asia-southeast1.firebasedatabase.app/");
-                        DatabaseReference reference = database.getReference("Database/Customer");
-                        String key = reference.push().getKey();
+                                .toString(), confirmPassword.getText().toString());
+                        if (isValidSignUp(fullName, phoneNumber, password, confirmPassword)) {
+                            // Write a message to the database
+                            FirebaseDatabase firebase = FirebaseDatabase.getInstance("https" +
+                                    "://dbpepperlunch-default" +
+                                    "-rtdb.asia-southeast1.firebasedatabase.app/");
+                            DatabaseReference reference = database.getReference("Database/Customer");
 
-                        String[] arrName = fullName.getText().toString().split(" ");
-                        String SURNAME_CUSTOMER = "";
-                        for (int i = 0; i < arrName.length - 1; i++) {
-                            SURNAME_CUSTOMER += arrName[i];
+                            // Get the information to be filled in
+                            String key = reference.push().getKey();
+                            String[] splitFullName = splitFullName(fullName.getText().toString());
+                            String SURNAME_CUSTOMER = splitFullName[0];
+                            String NAME_CUSTOMER = splitFullName[1];
+                            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                            String DATE_OF_BIRTH =
+                                    null;
+                            try {
+                                DATE_OF_BIRTH = formatter.format(new SimpleDateFormat("dd/mm/yyyy").parse(birthday.getText()
+                                        .toString()));
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
+                            int GENDER_CUSTOMER = spinnerSex.getSelectedItem().toString() == "Nam" ?
+                                    1 : 0;
+                            String ADDRESS_CUSTOMER = address.getText().toString();
+                            String PHONE_CUSTOMER = phoneNumber.getText().toString();
+                            String PASSWORD_CUSTOMER = sha256(password.getText().toString());
+                            int POINT = 0;
+                            String DATE_CREATE = formatter.format(new Date());
+                            CUSTOMER customer = new CUSTOMER(key, SURNAME_CUSTOMER, NAME_CUSTOMER,
+                                    DATE_OF_BIRTH, GENDER_CUSTOMER, ADDRESS_CUSTOMER, PHONE_CUSTOMER,
+                                    PASSWORD_CUSTOMER, POINT, DATE_CREATE);
+
+                            try {
+                                reference.child(key).setValue(customer);
+                                bottomSheetDialog.dismiss();
+                                Toast.makeText(ActivityLogin.this, "Đăng ký tài khoản thành công",
+                                        Toast.LENGTH_LONG);
+                            } catch (Exception ex) {
+                                Toast.makeText(this, "Something went wrong: " + ex.getMessage(),
+                                        Toast.LENGTH_LONG);
+                            }
                         }
-                        String NAME = arrName[arrName.length - 1];
-                        String DATE_OF_BIRTH = birthday.getText().toString();
-                        int GENDER_CUSTOMER = spinnerSex.getSelectedItem().toString() == "Nam" ?
-                                1 : 0;
-                        String MAIL_CUSTOMER = phoneNumber.getText().toString();
-                        String PASSWORD_CUSTOMER = password.getText().toString();
-                        int POINT = 0;
-                        String DATE_CREATE =
-                                Calendar.getInstance().toString();
-                        CUSTOMER customer = new CUSTOMER(key, SURNAME_CUSTOMER, NAME,
-                                DATE_OF_BIRTH, GENDER_CUSTOMER, "", "", MAIL_CUSTOMER,
-                                PASSWORD_CUSTOMER, POINT, "", DATE_CREATE);
-                        reference.child(key).setValue(customer);
-//                        }
-                        bottomSheetDialog.dismiss();
+
                     });
 
             bottomSheetDialog.setContentView(bottomSheetSignUpView);
@@ -213,16 +236,66 @@ public class ActivityLogin extends AppCompatActivity {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public CUSTOMER Login(String username, String password) {
+    public CUSTOMER Login(String phoneNumber, String password) {
         return customers.stream().parallel()
-                .filter(customer -> customer.getMAIL_CUSTOMER()
-                        .equals(username) && customer.getPASSWORD_CUSTOMER().equals(password))
+                .filter(customer -> customer.getPHONE_CUSTOMER()
+                        .equals(phoneNumber) && customer.getPASSWORD_CUSTOMER()
+                        .equals(sha256(password)))
                 .findFirst().orElse(null);
     }
 
     /**
+     * Split the full name string into last name and first name
+     *
+     * @param fullName
+     * @return String[0] is Last name, String[1] is First name
+     */
+    private String[] splitFullName(String fullName) {
+        String surname = "", name = "";
+        if (fullName.split(" ").length == 1) {
+            name = fullName.split(" ")[0];
+        } else {
+            surname = fullName.substring(0, fullName.lastIndexOf(" "));
+            name = fullName.substring(fullName.lastIndexOf(" ") + 1);
+        }
+
+        return new String[]{surname, name};
+    }
+
+    /**
+     * Hashing the string using the SHA-256 . algorithm
+     *
+     * @param s Input
+     * @return
+     */
+    private String sha256(String s) {
+        String result = "";
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            md.update(s.getBytes(Charset.forName("UTF-8")));
+
+            byte byteData[] = md.digest();
+
+            StringBuffer hexString = new StringBuffer();
+            for (int i = 0; i < byteData.length; i++) {
+                String hex = Integer.toHexString(0xff & byteData[i]);
+                if (hex.length() == 1) {
+                    hexString.append('0');
+                }
+                hexString.append(hex);
+            }
+            result = hexString.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
+    /**
      * Validate password and confirm password
-     * @param password Password
+     *
+     * @param password        Password
      * @param confirmPassword Confirm password
      * @return
      */
@@ -231,13 +304,34 @@ public class ActivityLogin extends AppCompatActivity {
     }
 
     /**
+     * Validate Vietnam phone number
+     *
+     * @param phoneNumber Phone number
+     * @return True if phone number is valid, otherwise false
+     */
+    private boolean isValidPhoneNumber(String phoneNumber) {
+        Pattern pattern = Pattern.compile("(0[3|5|7|8|9])+([0-9]{8})\\b");
+        return pattern.matcher(phoneNumber).find();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private boolean isExistPhoneNumber(String phoneNumber) {
+        return customers.stream().parallel()
+                .filter(customer -> customer.getPHONE_CUSTOMER()
+                        .equals(phoneNumber))
+                .findFirst().orElse(null) != null;
+    }
+
+    /**
      * Validate required fields for the sign up form
-     * @param fullName Full name text view
-     * @param username Username text view
-     * @param password Password text view
+     *
+     * @param fullName   Full name text view
+     * @param username   Username text view
+     * @param password   Password text view
      * @param rePassword Re-password text view
      * @return
      */
+    @RequiresApi(api = Build.VERSION_CODES.N)
     private boolean isValidSignUp(TextView fullName, TextView username,
                                   TextView password, TextView rePassword) {
         if (Strings.isEmptyOrWhitespace(fullName.getText().toString())) {
@@ -250,6 +344,12 @@ public class ActivityLogin extends AppCompatActivity {
         if (Strings.isEmptyOrWhitespace(username.getText().toString())) {
             username.setError("Nhập tên đăng nhâp");
             return false;
+        } else if (!isValidPhoneNumber(username.getText().toString())) {
+            username.setError("Số điện thoại không hợp lệ");
+            return false;
+        } else if (isExistPhoneNumber(username.getText().toString())) {
+            username.setError("Số điện thoại đã tồn tại");
+            return false;
         } else {
             username.setError(null);
         }
@@ -261,7 +361,7 @@ public class ActivityLogin extends AppCompatActivity {
             password.setError(null);
         }
 
-        if (isMatchConfirmPassword(password.getText().toString(), rePassword.getText()
+        if (!isMatchConfirmPassword(password.getText().toString(), rePassword.getText()
                 .toString())) {
             rePassword.setError("Mật khẩu không khớp");
             return false;
@@ -274,6 +374,7 @@ public class ActivityLogin extends AppCompatActivity {
 
     /**
      * Validate required fields for the login form
+     *
      * @param username Username field
      * @param password Password field
      * @return True if fields is valid, otherwise false
@@ -287,7 +388,7 @@ public class ActivityLogin extends AppCompatActivity {
         }
 
         if (Strings.isEmptyOrWhitespace(password.getText().toString())) {
-            username.setError("Nhập mật khẩu");
+            password.setError("Nhập mật khẩu");
             return false;
         } else {
             password.setError(null);

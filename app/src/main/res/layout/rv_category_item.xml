@@ -37,4 +37,5 @@
         android:id="@+id/rv_product_item_by_cate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
 </LinearLayout>

@@ -179,7 +179,6 @@
                 android:layout_marginTop="14dp"
                 android:backgroundTint="@color/red_logo"
                 android:minHeight="48dp"
-                android:onClick="login"
                 android:padding="10dp"
                 android:text="Đăng ký"
                 android:textAlignment="center"

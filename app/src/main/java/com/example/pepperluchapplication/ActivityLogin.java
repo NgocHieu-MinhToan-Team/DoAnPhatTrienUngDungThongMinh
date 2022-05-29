@@ -3,6 +3,7 @@ package com.example.pepperluchapplication;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.InputType;
@@ -22,7 +23,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.example.pepperluchapplication.DTO.CUSTOMER;
-import com.example.pepperluchapplication.Service.MyApplication;
 import com.google.android.gms.common.util.Strings;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.database.DataSnapshot;
@@ -30,6 +30,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
 
 import java.nio.charset.Charset;
 import java.security.MessageDigest;
@@ -101,7 +102,18 @@ public class ActivityLogin extends AppCompatActivity {
                                     password.getText().toString());
                             if (userLogin != null) {
                                 Intent intent = new Intent(ActivityLogin.this, ActivityHomePage.class);
-                                MyApplication.setCustomer(userLogin);
+
+                                // Save customer information
+                                //MyApplication.setCustomer(userLogin);
+                                SharedPreferences sharedPreferences = getSharedPreferences(
+                                        "USER",
+                                        MODE_PRIVATE);
+
+                                SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
+                                Gson gson = new Gson();
+                                String json = gson.toJson(userLogin);
+                                prefsEditor.putString("CUSTOMER", json);
+                                prefsEditor.commit();
 
                                 startActivity(intent);
                                 bottomSheetDialog.dismiss();
@@ -186,10 +198,6 @@ public class ActivityLogin extends AppCompatActivity {
                         boolean b = isMatchConfirmPassword(password.getText()
                                 .toString(), confirmPassword.getText().toString());
                         if (isValidSignUp(fullName, phoneNumber, password, confirmPassword)) {
-                            // Write a message to the database
-                            FirebaseDatabase firebase = FirebaseDatabase.getInstance("https" +
-                                    "://dbpepperlunch-default" +
-                                    "-rtdb.asia-southeast1.firebasedatabase.app/");
                             DatabaseReference reference = database.getReference("Database/Customer");
 
                             // Get the information to be filled in
@@ -221,10 +229,10 @@ public class ActivityLogin extends AppCompatActivity {
                                 reference.child(key).setValue(customer);
                                 bottomSheetDialog.dismiss();
                                 Toast.makeText(ActivityLogin.this, "Đăng ký tài khoản thành công",
-                                        Toast.LENGTH_LONG);
+                                        Toast.LENGTH_LONG).show();
                             } catch (Exception ex) {
                                 Toast.makeText(this, "Something went wrong: " + ex.getMessage(),
-                                        Toast.LENGTH_LONG);
+                                        Toast.LENGTH_LONG).show();
                             }
                         }
 
@@ -233,6 +241,15 @@ public class ActivityLogin extends AppCompatActivity {
             bottomSheetDialog.setContentView(bottomSheetSignUpView);
             bottomSheetDialog.show();
         });
+
+
+        // Check if customer information exists, then automatically log in
+        Gson gson = new Gson();
+        String json = getSharedPreferences("USER", MODE_PRIVATE).getString("CUSTOMER", "");
+        if (!json.equals("")) {
+            Intent intent = new Intent(ActivityLogin.this, ActivityHomePage.class);
+            startActivity(intent);
+        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -250,7 +267,7 @@ public class ActivityLogin extends AppCompatActivity {
      * @param fullName
      * @return String[0] is Last name, String[1] is First name
      */
-    private String[] splitFullName(String fullName) {
+    public static String[] splitFullName(String fullName) {
         String surname = "", name = "";
         if (fullName.split(" ").length == 1) {
             name = fullName.split(" ")[0];

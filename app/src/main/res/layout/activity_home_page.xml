@@ -73,7 +73,8 @@
             android:fitsSystemWindows="true"
             app:headerLayout="@layout/navigation_header"
             app:itemIconPadding="4dp"
+            app:menu="@menu/navigation_menu"
             app:itemIconTint="@color/red_logo"
-            app:menu="@menu/navigation_menu" />
+            ></com.google.android.material.navigation.NavigationView>
     </androidx.drawerlayout.widget.DrawerLayout>
 </LinearLayout>

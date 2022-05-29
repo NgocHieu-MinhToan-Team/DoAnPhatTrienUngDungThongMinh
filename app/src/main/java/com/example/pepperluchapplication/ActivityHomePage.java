@@ -1,8 +1,10 @@
 package com.example.pepperluchapplication;
 
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -23,14 +25,16 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.bumptech.glide.Glide;
 import com.example.pepperluchapplication.DTO.CART;
-import com.example.pepperluchapplication.DTO.MyApplication;
+import com.example.pepperluchapplication.DTO.CUSTOMER;
 import com.example.pepperluchapplication.DTO.PRODUCT;
 import com.example.pepperluchapplication.Fragments.fragmentHistory;
 import com.example.pepperluchapplication.Fragments.fragmentHome;
 import com.example.pepperluchapplication.Fragments.fragmentMenu;
+import com.example.pepperluchapplication.Fragments.fragment_customer_information;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
@@ -55,14 +59,32 @@ public class ActivityHomePage extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         iv_cart = findViewById(R.id.iv_cart);
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
+        // Get customer information from shared preferences
+        Gson gson = new Gson();
+        String json = getSharedPreferences("USER", MODE_PRIVATE).getString("CUSTOMER", "");
+        CUSTOMER customer = gson.fromJson(json, CUSTOMER.class);
+
+        NavigationView navigationView = findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
+                case R.id.nav_information:
+                    loadFragment(new fragment_customer_information(customer),
+                            new fragmentHome(getApplicationContext()));
+                    drawerLayout.closeDrawers();
+                    break;
                 case R.id.nav_sign_out:
                     new AlertDialog.Builder(this)
                             .setTitle("Xác nhận đăng xuất")
                             .setMessage("Bạn chắc chắn muốn đăng xuất?")
-                            .setPositiveButton("Có", (dialog, whichButton) -> startActivity(new Intent(ActivityHomePage.this, ActivityLogin.class)))
+                            .setPositiveButton("Có",
+                                    (dialog, whichButton) -> {
+                                        // Clear customer information
+                                        getSharedPreferences("USER", MODE_PRIVATE).edit().remove(
+                                                "CUSTOMER").commit();
+                                        startActivity(new Intent(ActivityHomePage.this,
+                                                ActivityLogin.class));
+                                        finish();
+                                    })
                             .setNegativeButton("Không", null).show();
                     break;
                 default:
@@ -73,8 +95,8 @@ public class ActivityHomePage extends AppCompatActivity {
         });
         // Set full name from customer login
         View hView = navigationView.getHeaderView(0);
-        TextView fullNameUser = (TextView) hView.findViewById(R.id.txt_full_name_nav);
-        fullNameUser.setText("Xin chào, " + MyApplication.getCustomer().getNAME_CUSTOMER());
+        TextView fullNameUser = hView.findViewById(R.id.txt_full_name_nav);
+        fullNameUser.setText("Xin chào, " + customer.getNAME_CUSTOMER());
         ImageView imageAvatar = hView.findViewById(R.id.pepperlunch_logo_nav);
         // Using Glide to fix error 'Canvas: trying to draw too large bitmap'
         Glide.with(this).load(R.drawable.pepperlunch_logo).into(imageAvatar);
@@ -166,10 +188,29 @@ public class ActivityHomePage extends AppCompatActivity {
         transaction.commit();
     }
 
+    public void loadFragment(Fragment fragment, Fragment fragmentPrev) {
+        FragmentTransaction transaction =
+                getSupportFragmentManager().beginTransaction().add(fragmentPrev,
+                        fragmentPrev.getId() + "").addToBackStack(null);
+        transaction.replace(R.id.frmMain, fragment);
+        transaction.commit();
+    }
+
     public void btnCart_Click(View view) {
         Intent intent = new Intent(ActivityHomePage.this, CartActivity.class);
         intent.putExtra("cart", carts);
         startActivity(intent);
     }
 
+    @Override
+    public void onBackPressed() {
+        FragmentManager fm = getFragmentManager();
+        if (fm.getBackStackEntryCount() > 0) {
+            Log.i("MainActivity", "Popping backstack");
+            fm.popBackStack();
+        } else {
+            Log.i("MainActivity", "Nothing on backstack, so calling super");
+            super.onBackPressed();
+        }
+    }
 }

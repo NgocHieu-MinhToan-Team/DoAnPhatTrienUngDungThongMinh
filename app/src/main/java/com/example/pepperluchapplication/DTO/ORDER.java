@@ -1,9 +1,10 @@
 package com.example.pepperluchapplication.DTO;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ORDER {
+public class ORDER implements Serializable {
     // test order
     HashMap<String,CART> LIST_CART;
     String ID_CUSTOMER,ID_VOUCHER,ID_METHOD;

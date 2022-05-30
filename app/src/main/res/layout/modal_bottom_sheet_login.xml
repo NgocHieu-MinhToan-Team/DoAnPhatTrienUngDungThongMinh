@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/modal_bottom_sheet_login_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:paddingHorizontal="20dp"
+    android:paddingBottom="250dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:text="ĐĂNG NHẬP"
+        android:textAlignment="center"
+        android:textColor="@color/red_logo"
+        android:textSize="32dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:labelFor="@+id/txt_usr_login"
+        android:text="Tên đăng nhập"
+        android:textColor="@color/colorText"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/txt_usr_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:hint="Nhập số điện thoại"
+        android:inputType="phone"
+        android:padding="16dp"
+        android:textSize="16dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:labelFor="@+id/txt_pwd_login"
+        android:text="Mật khẩu"
+        android:textColor="@color/colorText"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/txt_pwd_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:hint="Nhập mật khẩu"
+        android:inputType="textPassword"
+        android:padding="16dp"
+        android:textSize="16dp" />
+
+    <Button
+        android:id="@+id/button_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:backgroundTint="@color/red_logo"
+        android:background="@color/red_logo"
+        android:minHeight="48dp"
+        android:onClick="login"
+        android:padding="10dp"
+        android:text="Đăng nhập"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+</LinearLayout>

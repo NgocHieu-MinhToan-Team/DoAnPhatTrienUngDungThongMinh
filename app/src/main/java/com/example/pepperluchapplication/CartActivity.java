@@ -1,26 +1,41 @@
 package com.example.pepperluchapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.pepperluchapplication.Adapter.LV_CartAdapter;
+import com.example.pepperluchapplication.Adapter.RV_MethodAdapter;
+import com.example.pepperluchapplication.Adapter.RV_VoucherAdapter;
 import com.example.pepperluchapplication.DTO.CART;
+import com.example.pepperluchapplication.DTO.CUSTOMER;
+import com.example.pepperluchapplication.DTO.METHOD;
+import com.example.pepperluchapplication.DTO.VOUCHER;
+import com.example.pepperluchapplication.Interface.onClickInterface;
 import com.example.pepperluchapplication.Service.MyApplication;
 import com.example.pepperluchapplication.DTO.ORDER;
 import com.example.pepperluchapplication.Service.MyService;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,6 +47,9 @@ public class CartActivity extends AppCompatActivity {
     TextView textView;
     CardView buy_carview;
     LV_CartAdapter lv_cartAdapter;
+    onClickInterface onClickInterface;
+    RV_VoucherAdapter voucherAdapter;
+
     FirebaseDatabase database = FirebaseDatabase.getInstance("https://dbpepperlunch-default-rtdb.asia-southeast1.firebasedatabase.app/");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,25 +86,150 @@ public class CartActivity extends AppCompatActivity {
                 bottomSheetDialog.show();
                 TextView tv_payment_total=viewDialog.findViewById(R.id.tv_payment_total);
                 TextView tv_payment_yourAddress = viewDialog.findViewById(R.id.tv_payment_yourAddress);
+                TextView tv_payment_discount = viewDialog.findViewById(R.id.tv_payment_discount);
+                TextView tv_payment_pay = viewDialog.findViewById(R.id.tv_payment_pay);
+
                 RecyclerView rv_voucher= viewDialog.findViewById(R.id.rv_voucher);
+                RecyclerView rv_method= viewDialog.findViewById(R.id.rv_method);
+
                 //btn
                 Button btn_pay  = viewDialog.findViewById(R.id.btn_pay);
                 tv_payment_total.setText(Double.toString(MyApplication.getTotalPriceOfCart()));
-                // get data khách hàng từ MyApplication
+                CUSTOMER customer = MyApplication.getCustomer();
+
                 //get data voucher
-                DatabaseReference refCustomer = database.getReference("Database/Voucher");
-
-
-                btn_pay.setOnClickListener(new View.OnClickListener() {
+                //interface
+                onClickInterface = new onClickInterface() {
                     @Override
-                    public void onClick(View v) {
+                    public void setClick(int abc) {
+
+                        voucherAdapter.notifyDataSetChanged();
                         HashMap<String,CART> listOfCart=new HashMap<String,CART>();
                         float totalPayment=0;
                         for (CART cart : carts){
                             listOfCart.put(cart.getProduct().getID_PRODUCT(), cart);
                             totalPayment+=cart.getProduct().getPRICE_PRODUCT()*cart.getSoluong();
                         }
-                        ORDER order = new ORDER(listOfCart,"KH003","","",0,totalPayment);
+                        float percent =MyApplication.getPercentDiscount();
+                        float maxDiscount = MyApplication.getAmountDiscount();
+                        float discounted=0;
+                        final float[] totalPay = {0};
+                        if(percent>0){
+                            // tinh giam
+                            discounted=totalPayment*(percent/100);
+                            if(discounted>maxDiscount){
+                                totalPay[0]=totalPayment-maxDiscount;
+                                tv_payment_discount.setText(Float.toString(maxDiscount));
+                                tv_payment_pay.setText(Float.toString(totalPay[0]));
+                            }
+                            else{
+                                totalPay[0]=totalPayment-discounted;
+                                tv_payment_discount.setText(Float.toString(discounted));
+                                tv_payment_pay.setText(Float.toString(totalPay[0]));
+                            }
+                        }
+                        else{
+                            totalPay[0]=totalPayment-maxDiscount;
+                            tv_payment_discount.setText(Float.toString(discounted));
+                            tv_payment_pay.setText(Float.toString(totalPay[0]));
+                        }
+                        voucherAdapter.notifyDataSetChanged();
+                        Toast.makeText(CartActivity.this,"Position is"+abc,Toast.LENGTH_LONG).show();
+
+                    }
+                };
+
+                ArrayList<VOUCHER> listOfVoucher=new ArrayList<>();
+                voucherAdapter= new RV_VoucherAdapter(CartActivity.this,listOfVoucher,onClickInterface);
+                rv_voucher.setAdapter(voucherAdapter);
+                rv_voucher.setLayoutManager(new LinearLayoutManager(CartActivity.this, LinearLayoutManager.HORIZONTAL, false));
+
+                //get method payment
+                ArrayList<METHOD> listOfMethod=new ArrayList<>();
+                RV_MethodAdapter methodAdapter = new RV_MethodAdapter(CartActivity.this,listOfMethod);
+                rv_method.setAdapter(methodAdapter);
+                rv_method.setLayoutManager(new LinearLayoutManager(CartActivity.this, LinearLayoutManager.VERTICAL, false));
+
+
+                DatabaseReference refVoucher= database.getReference("Database/Voucher");
+                refVoucher.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for(DataSnapshot data : snapshot.getChildren()){
+                            VOUCHER voucher = data.getValue(VOUCHER.class);
+                            listOfVoucher.add(voucher);
+                        }
+                        voucherAdapter.notifyDataSetChanged();
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+                DatabaseReference refMethod= database.getReference("Database/Method");
+                refMethod.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for(DataSnapshot data : snapshot.getChildren()){
+                            METHOD method = data.getValue(METHOD.class);
+                            listOfMethod.add(method);
+                        }
+                        methodAdapter.notifyDataSetChanged();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+                rv_voucher.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(CartActivity.this, Float.toString(MyApplication.getPercentDiscount()), Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+
+
+                HashMap<String,CART> listOfCart=new HashMap<String,CART>();
+                float totalPayment=0;
+                for (CART cart : carts){
+                    listOfCart.put(cart.getProduct().getID_PRODUCT(), cart);
+                    totalPayment+=cart.getProduct().getPRICE_PRODUCT()*cart.getSoluong();
+                }
+
+
+
+                float percent =MyApplication.getAmountDiscount();
+                float maxDiscount = MyApplication.getAmountDiscount();
+                float discounted=0;
+                final float[] totalPay = {0};
+                if(percent>0){
+                    // tinh giam
+                    discounted=totalPayment*(percent/100);
+                    if(discounted>maxDiscount){
+                        totalPay[0]=totalPayment-maxDiscount;
+
+                    }
+                    else{
+                        totalPay[0]=totalPayment-discounted;
+                    }
+                }
+                else{
+                    totalPay[0]=totalPayment-maxDiscount;
+                }
+                tv_payment_discount.setText(Float.toString(discounted));
+                tv_payment_pay.setText(Float.toString(totalPayment));
+
+
+
+                tv_payment_yourAddress.setText(customer.getADDRESS_CUSTOMER());
+                btn_pay.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ORDER order = new ORDER(listOfCart,customer.getID_CUSTOMER(),MyApplication.getIdVoucher(),MyApplication.getIdMethod(),0,totalPay[0]);
                         DatabaseReference myRef = database.getReference("Database/Order");
                         myRef.child(order.getID_CUSTOMER()).push().setValue(order);
                         // khởi chạy service
@@ -95,10 +238,15 @@ public class CartActivity extends AppCompatActivity {
                         MyApplication.clearCart();
                         finish();
                     }
+
+
                 });
             }
+
         });
+
     }
+
 
     private void beginService(ORDER order) {
         Intent intent = new Intent(this, MyService.class);
@@ -108,4 +256,5 @@ public class CartActivity extends AppCompatActivity {
         intent.putExtras(bundle);
         startService(intent);
     }
+
 }

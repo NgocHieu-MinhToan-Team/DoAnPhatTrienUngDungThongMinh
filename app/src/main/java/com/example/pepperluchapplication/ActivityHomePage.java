@@ -8,6 +8,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,11 +17,14 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.example.pepperluchapplication.DTO.CART;
+import com.example.pepperluchapplication.DTO.CUSTOMER;
 import com.example.pepperluchapplication.Fragments.fragmentHistory;
 import com.example.pepperluchapplication.Fragments.fragmentHome;
 import com.example.pepperluchapplication.Fragments.fragmentMenu;
+import com.example.pepperluchapplication.Service.MyApplication;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
@@ -42,7 +46,12 @@ public class ActivityHomePage extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         drawerLayout = findViewById(R.id.drawerLayout);
         iv_cart=findViewById(R.id.iv_cart);
-
+        //
+        // get data khách hàng từ MyApplication
+        Gson gson= new Gson();
+        String json=getSharedPreferences("USER", Context.MODE_PRIVATE).getString("CUSTOMER","");
+        CUSTOMER customer=gson.fromJson(json,CUSTOMER.class);
+        MyApplication.setCustomer(customer);
         // thiết lập views
         // Navigation bottom
         bottomNavigationView.setSelectedItemId(R.id.mnuHome);

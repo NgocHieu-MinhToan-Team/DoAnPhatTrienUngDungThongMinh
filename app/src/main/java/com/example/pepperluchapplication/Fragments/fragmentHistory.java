@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import com.example.pepperluchapplication.Adapter.RV_OrdersAdapter;
 import com.example.pepperluchapplication.DTO.ORDER;
 import com.example.pepperluchapplication.R;
+import com.example.pepperluchapplication.Service.MyApplication;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -65,32 +66,36 @@ public class fragmentHistory extends Fragment {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://dbpepperlunch-default-rtdb.asia-southeast1.firebasedatabase.app/");
         DatabaseReference databaseReference = database.getReference("Database/Order");
-        // nhớ sửa ID khách hàng bên dưới
-        databaseReference.child("KH003").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                listOfReceipt.clear();
-                listOfOrders.clear();
-                for(DataSnapshot record : snapshot.getChildren()){
-                    ORDER value = record.getValue(ORDER.class);
-                    // 0 : đang xử lý ,thì thêm vào list đơn hàng
-                    if(value.getSTATUS()>=0 && value.getSTATUS()<2){
-                        listOfOrders.add(value);
+            databaseReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    //check child
+                    if(snapshot.hasChild(MyApplication.getCustomer().getID_CUSTOMER())) {
+                        listOfReceipt.clear();
+                        listOfOrders.clear();
+                        for(DataSnapshot record : snapshot.child(MyApplication.getCustomer().getID_CUSTOMER()).getChildren()){
+                            ORDER value = record.getValue(ORDER.class);
+                            // 0 : đang xử lý ,thì thêm vào list đơn hàng
+                            if(value.getSTATUS()>=0 && value.getSTATUS()<2){
+                                listOfOrders.add(value);
+                            }
+                            if(value.getSTATUS()>=2){
+                                listOfReceipt.add(value);
+                            }
+                            // 1 : Dã xử lý xong ,thì thêm vào list lịch sử giao dịch
+                            adapterOrder.notifyDataSetChanged();
+                            adapterReceipt.notifyDataSetChanged();
+                        }
+                        // check don hang neu la khach hang moi chua dat hang thi hien thi lich su trong
+
                     }
-                    if(value.getSTATUS()>=2){
-                        listOfReceipt.add(value);
-                    }
-                    // 1 : Dã xử lý xong ,thì thêm vào list lịch sử giao dịch
-                    adapterOrder.notifyDataSetChanged();
-                    adapterReceipt.notifyDataSetChanged();
                 }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
+                }
+            });
     }
 
 }

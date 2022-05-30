@@ -7,12 +7,56 @@ import android.app.NotificationManager;
 import android.os.Build;
 
 import com.example.pepperluchapplication.DTO.CART;
+import com.example.pepperluchapplication.DTO.CUSTOMER;
 
 import java.util.ArrayList;
 
 public class MyApplication extends Application {
 
     static ArrayList<CART> carts=new ArrayList<CART>();
+    static String ID_VOUCHER=null,ID_METHOD=null;
+    static float PERCENT_DISCOUNT,AMOUNT_DISCOUNT;
+    static CUSTOMER customer;
+
+    public static CUSTOMER getCustomer() {
+        return customer;
+    }
+
+    public static void setCustomer(CUSTOMER customer) {
+        MyApplication.customer = customer;
+    }
+
+    public static float getPercentDiscount() {
+        return PERCENT_DISCOUNT;
+    }
+
+    public static void setPercentDiscount(int percentDiscount) {
+        PERCENT_DISCOUNT = percentDiscount;
+    }
+
+    public static float getAmountDiscount() {
+        return AMOUNT_DISCOUNT;
+    }
+
+    public static void setAmountDiscount(int amountDiscount) {
+        AMOUNT_DISCOUNT = amountDiscount;
+    }
+
+    public static String getIdVoucher() {
+        return ID_VOUCHER;
+    }
+
+    public static void setIdVoucher(String idVoucher) {
+        ID_VOUCHER = idVoucher;
+    }
+
+    public static String getIdMethod() {
+        return ID_METHOD;
+    }
+
+    public static void setIdMethod(String idMethod) {
+        ID_METHOD = idMethod;
+    }
 
     public static ArrayList<CART> getCarts() {
         return carts;

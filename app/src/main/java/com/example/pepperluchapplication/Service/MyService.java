@@ -58,7 +58,7 @@ public class MyService extends Service {
         ArrayList<ORDER> values = new ArrayList<>();
         ArrayList<String> keys = new ArrayList<>();
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://dbpepperlunch-default-rtdb.asia-southeast1.firebasedatabase.app/");
-        DatabaseReference databaseReference = database.getReference("Database/TestInsertOrder/KH003");
+        DatabaseReference databaseReference = database.getReference("Database/Order/"+MyApplication.getCustomer().getID_CUSTOMER());
         databaseReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {

@@ -15,17 +15,14 @@ public class ViewPager_CategoryAdapter extends FragmentPagerAdapter {
     public ViewPager_CategoryAdapter(@NonNull FragmentManager fm, int behavior) {
         super(fm, behavior);
     }
-
-    public void addFragment(Fragment fragment, String title) {
+    public void addFragment(Fragment fragment , String title){
         listFrag.add(fragment);
         titles.add(title);
     }
-
     @Override
     public int getItemPosition(@NonNull Object object) {
         return POSITION_NONE;
     }
-
     @NonNull
     @Override
     public Fragment getItem(int position) {

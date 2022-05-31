@@ -64,6 +64,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="14dp"
         android:backgroundTint="@color/red_logo"
+        android:background="@color/red_logo"
         android:minHeight="48dp"
         android:onClick="login"
         android:padding="10dp"

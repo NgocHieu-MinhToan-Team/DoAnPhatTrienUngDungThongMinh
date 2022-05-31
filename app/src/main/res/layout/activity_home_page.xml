@@ -4,29 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_white"
+    tools:context=".ActivityHomePage"
     android:orientation="vertical"
-    tools:context=".ActivityHomePage">
-
+    android:background="@drawable/bg_white"
+    >
     <androidx.drawerlayout.widget.DrawerLayout
-        android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
+        android:layout_height="match_parent"
+        android:id="@+id/drawerLayout"
+        >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            >
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="60dp">
-
                 <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"></androidx.appcompat.widget.Toolbar>
-
+                    android:layout_height="match_parent">
+                </androidx.appcompat.widget.Toolbar>
                 <ImageView
                     android:layout_width="180dp"
                     android:layout_height="match_parent"
@@ -44,13 +44,12 @@
                     android:padding="4dp"
                     android:src="@drawable/paid_96px" />
             </RelativeLayout>
-
             <FrameLayout
                 android:id="@+id/frmMain"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
+                android:layout_weight="1"
+                />
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/NavigationMenu"
                 android:layout_width="match_parent"
@@ -63,18 +62,16 @@
                 app:menu="@menu/menubutton"
                 tools:ignore="MissingClass" />
         </LinearLayout>
-
         <com.google.android.material.navigation.NavigationView
-            android:id="@+id/navigation_view"
+            android:id="@+id/navigationView"
             android:layout_width="240dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:layout_marginBottom="60dp"
-            android:fitsSystemWindows="true"
-            app:headerLayout="@layout/navigation_header"
             app:itemIconPadding="4dp"
-            app:menu="@menu/navigation_menu"
-            app:itemIconTint="@color/red_logo"
-            ></com.google.android.material.navigation.NavigationView>
+            android:layout_height="match_parent"
+            android:layout_marginBottom="60dp"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+
+            >
+        </com.google.android.material.navigation.NavigationView>
     </androidx.drawerlayout.widget.DrawerLayout>
 </LinearLayout>

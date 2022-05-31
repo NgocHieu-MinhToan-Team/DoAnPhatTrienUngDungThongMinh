@@ -34,6 +34,7 @@ import com.example.pepperluchapplication.Fragments.fragmentHome;
 import com.example.pepperluchapplication.Fragments.fragmentMenu;
 import com.example.pepperluchapplication.Fragments.fragment_change_password;
 import com.example.pepperluchapplication.Fragments.fragment_customer_information;
+import com.example.pepperluchapplication.Service.MyApplication;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
@@ -67,7 +68,7 @@ public class ActivityHomePage extends AppCompatActivity {
         Gson gson = new Gson();
         String json = getSharedPreferences("USER", MODE_PRIVATE).getString("CUSTOMER", "");
         CUSTOMER customer = gson.fromJson(json, CUSTOMER.class);
-
+        MyApplication.setCustomer(customer);
         NavigationView navigationView = findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {

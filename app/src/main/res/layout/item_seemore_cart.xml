@@ -87,6 +87,7 @@
         android:paddingHorizontal="10dp"
         android:buttonTint="@color/whiteSmoke"
         android:orientation="horizontal"
+        android:id="@+id/rdbGroup_product_seemore_spicy"
         >
         <RadioButton
             android:id="@+id/radio_a_seemore"

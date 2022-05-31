@@ -5,11 +5,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,7 +54,7 @@ public class RV_ProductAdapter extends RecyclerView.Adapter<ViewProduct> impleme
         Picasso.get().load(pro.getIMAGE_PRODUCT()).placeholder(R.drawable.teppan_null).error(R.drawable.teppan_null).into(holder.iv_product_image);
         holder.tv_product_name.setText(pro.getNAME_PRODUCT_EN());
         //Picasso.get().load(pro.getIMAGE_PRODUCT()).into(holder.iv_product_image);
-
+        holder.tv_product_price.setText(Long.toString(pro.getPRICE_PRODUCT()));
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,7 +77,8 @@ public class RV_ProductAdapter extends RecyclerView.Adapter<ViewProduct> impleme
                 Button btnAddToCart  = viewDialog.findViewById(R.id.btn_detail_product_addToCart);
                 ImageButton btnIncrease = viewDialog.findViewById(R.id.btn_detail_product_increase);
                 ImageButton btnDecrease = viewDialog.findViewById(R.id.btn_detail_product_decrease);
-
+                EditText edt_note_product_detail=viewDialog.findViewById(R.id.edt_note_product_detail);
+                RadioGroup rdbGroup_product_detail_spicy=viewDialog.findViewById(R.id.rdbGroup_product_detail_spicy);
 
                 Picasso.get().load(pro.getIMAGE_PRODUCT()).into(iv_detail_product_image);
                 tv_detail_product_name.setText(pro.getNAME_PRODUCT_EN());
@@ -101,7 +105,8 @@ public class RV_ProductAdapter extends RecyclerView.Adapter<ViewProduct> impleme
                 btnAddToCart.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        CART cart=new CART(pro,Integer.parseInt(tv_detail_product_quantity.getText().toString()));
+                        RadioButton radioButton=viewDialog.findViewById(rdbGroup_product_detail_spicy.getCheckedRadioButtonId());
+                        CART cart=new CART(pro,Integer.parseInt(tv_detail_product_quantity.getText().toString()),edt_note_product_detail.getText().toString(),radioButton.getText().toString());
                         MyApplication.setItem(cart);
                         Toast.makeText(context,"AddSucess!",Toast.LENGTH_SHORT).show();
                         bottomSheetDialog.dismiss();
@@ -120,10 +125,13 @@ class ViewProduct extends RecyclerView.ViewHolder {
     TextView tv_product_name;
     ImageView iv_product_image;
     LinearLayout item;
+    TextView tv_product_price;
     public ViewProduct(@NonNull View itemView) {
         super(itemView);
         tv_product_name=itemView.findViewById(R.id.tv_product_name);
         iv_product_image=itemView.findViewById(R.id.iv_product_image);
         item=itemView.findViewById(R.id.product_item);
+        tv_product_price=itemView.findViewById(R.id.tv_product_price);
+
     }
 }

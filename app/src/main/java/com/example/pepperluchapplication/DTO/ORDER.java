@@ -5,7 +5,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ORDER implements Serializable {
+    public String getID_ORDER() {
+        return ID_ORDER;
+    }
+
+    public void setID_ORDER(String ID_ORDER) {
+        this.ID_ORDER = ID_ORDER;
+    }
+
     // test order
+    String ID_ORDER;
     HashMap<String,CART> LIST_CART;
     String ID_CUSTOMER,ID_VOUCHER,ID_METHOD;
     long STATUS;
@@ -19,6 +28,7 @@ public class ORDER implements Serializable {
         this.ID_METHOD = ID_METHOD;
         this.STATUS = STATUS;
         this.TOTAL_PAYMENT = TOTAL_PAYMENT;
+
     }
 
     public HashMap<String, CART> getLIST_CART() {

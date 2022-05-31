@@ -6,6 +6,7 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.os.Build;
 
+import com.example.pepperluchapplication.CartActivity;
 import com.example.pepperluchapplication.DTO.CART;
 import com.example.pepperluchapplication.DTO.CUSTOMER;
 
@@ -77,7 +78,25 @@ public class MyApplication extends Application {
 
         MyApplication.carts.add(cart);
     }
+    public static void delItem(CART cart)
+    {
+        for(CART t :MyApplication.carts)
+            if(t.getProduct().getID_PRODUCT()==cart.getProduct().getID_PRODUCT()) {
+                MyApplication.carts.remove(cart);
+                return;
+            }
+    }
 
+    public  static void updateItem(CART cart)
+    {
+        for(CART t :MyApplication.carts)
+            if(t.getProduct().getID_PRODUCT()==cart.getProduct().getID_PRODUCT())
+            {
+                t.setNote(cart.getNote());
+                t.setSoluong(cart.getSoluong());
+                t.setSpicy(cart.getSpicy());
+            }
+    }
     public static double getTotalPriceOfCart(){
         double count=0;
         for(CART t : MyApplication.carts){

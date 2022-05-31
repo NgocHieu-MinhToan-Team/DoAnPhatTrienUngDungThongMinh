@@ -116,9 +116,9 @@ public class ActivityHomePage extends AppCompatActivity {
         ImageView imageAvatar = hView.findViewById(R.id.pepperlunch_logo_nav);
         // Using Glide to fix error 'Canvas: trying to draw too large bitmap'
         Glide.with(this).load(R.drawable.pepperlunch_logo).into(imageAvatar);
-
-        CART item = new CART(new PRODUCT("IDLMON01", "MAMON01", "https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/image%2FPremiumSteak%2FTheGIANT.png?alt=media&token=b410306b-dfab-44f0-bb61-b465b422418d", "The Giant", "Bò Mỹ Thượng Hạng", (long) 369000), 1);
-        carts.add(item);
+//
+//        CART item = new CART(new PRODUCT("IDLMON01", "MAMON01", "https://firebasestorage.googleapis.com/v0/b/dbpepperlunch.appspot.com/o/image%2FPremiumSteak%2FTheGIANT.png?alt=media&token=b410306b-dfab-44f0-bb61-b465b422418d", "The Giant", "Bò Mỹ Thượng Hạng", (long) 369000), 1);
+//        carts.add(item);
 
         // Thiết lập views
         // Navigation bottom

@@ -39,11 +39,14 @@
         <entry key="app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.1405" />
         <entry key="app/src/main/res/drawable/ic_baseline_logout_24.xml" value="0.158" />
         <entry key="app/src/main/res/drawable/rounded_btnlogin.xml" value="0.131" />
-        <entry key="app/src/main/res/layout/activity_cart.xml" value="0.25427350427350426" />
+        <entry key="app/src/main/res/layout/activity_cart.xml" value="0.2510548523206751" />
         <entry key="app/src/main/res/layout/activity_cart_payment.xml" value="0.25427350427350426" />
         <entry key="app/src/main/res/layout/activity_home_page.xml" value="0.21944444444444444" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.2510548523206751" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.24537037037037038" />
         <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.16302521008403362" />
+        <entry key="app/src/main/res/layout/bottom_sheet_detail_product.xml" value="0.1259259259259259" />
+        <entry key="app/src/main/res/layout/bottom_sheet_payment.xml" value="0.2510548523206751" />
         <entry key="app/src/main/res/layout/cart_preview.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_change_password.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_customer_information.xml" value="0.12735042735042734" />
@@ -53,7 +56,13 @@
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.2953125" />
         <entry key="app/src/main/res/layout/fragment_status.xml" value="0.2953125" />
         <entry key="app/src/main/res/layout/item_cart.xml" value="0.2423076923076923" />
+        <entry key="app/src/main/res/layout/item_seemore_cart.xml" value="0.12735042735042734" />
         <entry key="app/src/main/res/layout/navigation_header.xml" value="0.12735042735042734" />
+        <entry key="app/src/main/res/layout/rv_category_item.xml" value="0.2510548523206751" />
+        <entry key="app/src/main/res/layout/rv_method_item.xml" value="0.2510548523206751" />
+        <entry key="app/src/main/res/layout/rv_order_item.xml" value="0.2510548523206751" />
+        <entry key="app/src/main/res/layout/rv_product_item.xml" value="0.2510548523206751" />
+        <entry key="app/src/main/res/layout/rv_voucher_item.xml" value="0.2510548523206751" />
         <entry key="app/src/main/res/layout/slider_item.xml" value="0.2510548523206751" />
         <entry key="app/src/main/res/layout/submit_cart_payment.xml" value="0.25427350427350426" />
         <entry key="app/src/main/res/layout/welcome_slide1.xml" value="0.2101851851851852" />

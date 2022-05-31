@@ -24,19 +24,22 @@
         android:layout_marginTop="20dp"
         android:layout_toRightOf="@id/image_product_cart"
         android:text="com bo mi sieu cap thuong hang vu tru"
+        android:textAllCaps="true"
         android:textSize="20dp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="@color/yellowGold"/>
 
     <TextView
+        android:id="@+id/price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/price"
+        android:layout_below="@id/name_product_cart"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@id/image_product_cart"
         android:text="Price: "
         android:textSize="20dp"
         android:textStyle="bold"
-        android:layout_toRightOf="@id/image_product_cart"
-        android:layout_below="@id/name_product_cart"
-        android:layout_marginLeft="20dp"/>
+        android:textColor="@color/colorTextNotActive"/>
 
     <TextView
         android:id="@+id/price_product_cart"
@@ -55,7 +58,8 @@
         android:layout_below="@id/image_product_cart"
         android:layout_marginLeft="10dp"
         android:text="Counts: "
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:textColor="@color/colorTextNotActive"/>
 
     <TextView
         android:id="@+id/product_count_cart"
@@ -76,7 +80,8 @@
         android:layout_toLeftOf="@id/total_price_product_cart"
         android:text="Total: "
         android:textSize="25dp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="@color/colorTextNotActive"/>
 
     <TextView
         android:id="@+id/total_price_product_cart"
@@ -91,7 +96,7 @@
         android:textStyle="bold" />
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:layout_below="@id/total"
         android:orientation="horizontal"
         >
@@ -107,6 +112,8 @@
             android:textAlignment="center"
             android:gravity="center"
             android:background="@color/white"
+            android:textAllCaps="false"
+
             />
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -114,17 +121,22 @@
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:background="@color/white"
-            app:cardCornerRadius="20dp">
+            app:cardCornerRadius="10dp">
 
             <Button
-                android:id="@+id/btn_buy_cart"
+                android:id="@+id/btn_delete_cart"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/red_holo"
+                android:background="@color/red_dark"
                 android:text="Delete"
                 android:textAlignment="center"
                 android:textSize="20dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                android:layout_gravity="center"
+                android:outlineAmbientShadowColor="@color/black"
+                android:textColor="@color/white"
+                />
 
         </androidx.cardview.widget.CardView>
     </LinearLayout>

@@ -72,7 +72,7 @@ public class CartActivity extends AppCompatActivity {
             buy_carview.setVisibility(View.GONE);
             return;
         }
-        lv_cartAdapter=new LV_CartAdapter(this,carts);
+        lv_cartAdapter=new LV_CartAdapter(this,carts,textView,listView,buy_carview);
         listView.setAdapter(lv_cartAdapter);
 
 
@@ -93,6 +93,7 @@ public class CartActivity extends AppCompatActivity {
                 RecyclerView rv_method= viewDialog.findViewById(R.id.rv_method);
 
                 //btn
+
                 Button btn_pay  = viewDialog.findViewById(R.id.btn_pay);
                 tv_payment_total.setText(Double.toString(MyApplication.getTotalPriceOfCart()));
                 CUSTOMER customer = MyApplication.getCustomer();
@@ -245,6 +246,7 @@ public class CartActivity extends AppCompatActivity {
 
         });
 
+
     }
 
 
@@ -255,6 +257,10 @@ public class CartActivity extends AppCompatActivity {
         bundle.putSerializable("YourOrder",order);
         intent.putExtras(bundle);
         startService(intent);
+    }
+    public void btn_back_cart_click(View view)
+    {
+        finish();
     }
 
 }

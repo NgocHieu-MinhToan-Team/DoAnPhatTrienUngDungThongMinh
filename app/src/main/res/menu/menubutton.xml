@@ -4,13 +4,13 @@
     <item
         android:id="@+id/mnuMenu"
         android:icon="@drawable/cutlery_96px"
-        android:title="Menu" />
+        android:title="Menu"/>
     <item
         android:id="@+id/mnuHome"
         android:icon="@drawable/home_96px"
-        android:title="Home" />
+        android:title="Home"/>
     <item
         android:id="@+id/mnuHistory"
         android:icon="@drawable/time_machine_96px"
-        android:title="History" />
+        android:title="History"/>
 </menu>

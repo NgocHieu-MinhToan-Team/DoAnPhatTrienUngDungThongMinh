@@ -1,3 +1,4 @@
+
 package com.example.pepperluchapplication;
 
 import android.annotation.SuppressLint;
@@ -119,8 +120,8 @@ public class ActivityLogin extends AppCompatActivity {
                                 bottomSheetDialog.dismiss();
                             } else {
                                 Toast.makeText(ActivityLogin.this, "Tên đăng nhập hoặc mật khẩu " +
-                                                        "không đúng",
-                                                Toast.LENGTH_SHORT).
+                                                "không đúng",
+                                        Toast.LENGTH_SHORT).
                                         show();
                             }
                         }
@@ -261,12 +262,6 @@ public class ActivityLogin extends AppCompatActivity {
                 .findFirst().orElse(null);
     }
 
-    /**
-     * Split the full name string into last name and first name
-     *
-     * @param fullName
-     * @return String[0] is Last name, String[1] is First name
-     */
     public static String[] splitFullName(String fullName) {
         String surname = "", name = "";
         if (fullName.split(" ").length == 1) {
@@ -279,12 +274,6 @@ public class ActivityLogin extends AppCompatActivity {
         return new String[]{surname, name};
     }
 
-    /**
-     * Hashing the string using the SHA-256 . algorithm
-     *
-     * @param s Input
-     * @return
-     */
     private String sha256(String s) {
         String result = "";
         try {
@@ -309,23 +298,9 @@ public class ActivityLogin extends AppCompatActivity {
         return result;
     }
 
-    /**
-     * Validate password and confirm password
-     *
-     * @param password        Password
-     * @param confirmPassword Confirm password
-     * @return
-     */
     private boolean isMatchConfirmPassword(String password, String confirmPassword) {
         return password.compareTo(confirmPassword) == 0;
     }
-
-    /**
-     * Validate Vietnam phone number
-     *
-     * @param phoneNumber Phone number
-     * @return True if phone number is valid, otherwise false
-     */
     private boolean isValidPhoneNumber(String phoneNumber) {
         Pattern pattern = Pattern.compile("(0[3|5|7|8|9])+([0-9]{8})\\b");
         return pattern.matcher(phoneNumber).find();
@@ -339,15 +314,6 @@ public class ActivityLogin extends AppCompatActivity {
                 .findFirst().orElse(null) != null;
     }
 
-    /**
-     * Validate required fields for the sign up form
-     *
-     * @param fullName   Full name text view
-     * @param username   Username text view
-     * @param password   Password text view
-     * @param rePassword Re-password text view
-     * @return
-     */
     @RequiresApi(api = Build.VERSION_CODES.N)
     private boolean isValidSignUp(TextView fullName, TextView username,
                                   TextView password, TextView rePassword) {
@@ -389,13 +355,6 @@ public class ActivityLogin extends AppCompatActivity {
         return true;
     }
 
-    /**
-     * Validate required fields for the login form
-     *
-     * @param username Username field
-     * @param password Password field
-     * @return True if fields is valid, otherwise false
-     */
     private boolean isValidLogin(TextView username, TextView password) {
         if (Strings.isEmptyOrWhitespace(username.getText().toString())) {
             username.setError("Nhập tên đăng nhâp");

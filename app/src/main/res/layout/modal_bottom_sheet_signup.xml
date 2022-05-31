@@ -6,7 +6,6 @@
     android:background="@color/white"
     android:orientation="vertical"
     android:paddingHorizontal="20dp">
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -65,7 +64,6 @@
                 android:inputType="date"
                 android:padding="16dp"
                 android:textSize="16dp" />
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -75,7 +73,6 @@
                 android:textColor="@color/colorText"
                 android:textSize="18dp"
                 android:textStyle="bold" />
-
             <Spinner
                 android:id="@+id/spinner_sex"
                 android:layout_width="match_parent"
@@ -145,7 +142,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:fontFamily="@font/font_main"
                 android:hint="Nhập mật khẩu"
                 android:inputType="textPassword"
                 android:padding="16dp"
@@ -166,7 +162,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:fontFamily="@font/font_main"
                 android:hint="Nhập lại mật khẩu"
                 android:inputType="textPassword"
                 android:padding="16dp"
@@ -178,6 +173,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
                 android:backgroundTint="@color/red_logo"
+                android:background="@color/red_logo"
                 android:minHeight="48dp"
                 android:padding="10dp"
                 android:text="Đăng ký"

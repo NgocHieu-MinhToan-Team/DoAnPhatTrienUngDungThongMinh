@@ -16,10 +16,11 @@ public class ViewPager_Login extends FragmentPagerAdapter {
         super(fm, behavior);
     }
 
-    public void addFragment(Fragment fragment, String title) {
+    public void addFragment(Fragment fragment , String title){
         listFrag.add(fragment);
         titles.add(title);
     }
+
 
 
     @Nullable

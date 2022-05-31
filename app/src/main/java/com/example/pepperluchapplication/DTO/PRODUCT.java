@@ -3,20 +3,8 @@ package com.example.pepperluchapplication.DTO;
 import java.io.Serializable;
 
 public class PRODUCT implements Serializable {
-    String ID_CATEGORY, ID_PRODUCT, IMAGE_PRODUCT, NAME_PRODUCT_EN, NAME_PRODUCT_VN;
+    String ID_CATEGORY,ID_PRODUCT,IMAGE_PRODUCT,NAME_PRODUCT_EN,NAME_PRODUCT_VN;
     Long PRICE_PRODUCT;
-
-    public PRODUCT() {
-    }
-
-    public PRODUCT(String ID_CATEGORY, String ID_PRODUCT, String IMAGE_PRODUCT, String NAME_PRODUCT_EN, String NAME_PRODUCT_VN, Long PRICE_PRODUCT) {
-        this.ID_CATEGORY = ID_CATEGORY;
-        this.ID_PRODUCT = ID_PRODUCT;
-        this.IMAGE_PRODUCT = IMAGE_PRODUCT;
-        this.NAME_PRODUCT_EN = NAME_PRODUCT_EN;
-        this.NAME_PRODUCT_VN = NAME_PRODUCT_VN;
-        this.PRICE_PRODUCT = PRICE_PRODUCT;
-    }
 
     public String getID_CATEGORY() {
         return ID_CATEGORY;
@@ -63,6 +51,17 @@ public class PRODUCT implements Serializable {
     }
 
     public void setPRICE_PRODUCT(Long PRICE_PRODUCT) {
+        this.PRICE_PRODUCT = PRICE_PRODUCT;
+    }
+
+    public PRODUCT(){}
+
+    public PRODUCT(String ID_CATEGORY, String ID_PRODUCT, String IMAGE_PRODUCT, String NAME_PRODUCT_EN, String NAME_PRODUCT_VN, Long PRICE_PRODUCT) {
+        this.ID_CATEGORY = ID_CATEGORY;
+        this.ID_PRODUCT = ID_PRODUCT;
+        this.IMAGE_PRODUCT = IMAGE_PRODUCT;
+        this.NAME_PRODUCT_EN = NAME_PRODUCT_EN;
+        this.NAME_PRODUCT_VN = NAME_PRODUCT_VN;
         this.PRICE_PRODUCT = PRICE_PRODUCT;
     }
 }

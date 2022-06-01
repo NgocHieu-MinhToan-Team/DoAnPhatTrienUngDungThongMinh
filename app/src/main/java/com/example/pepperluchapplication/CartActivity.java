@@ -13,8 +13,11 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -88,15 +91,29 @@ public class CartActivity extends AppCompatActivity {
                 TextView tv_payment_yourAddress = viewDialog.findViewById(R.id.tv_payment_yourAddress);
                 TextView tv_payment_discount = viewDialog.findViewById(R.id.tv_payment_discount);
                 TextView tv_payment_pay = viewDialog.findViewById(R.id.tv_payment_pay);
-
+                RadioButton tv_payment_otherAddress=viewDialog.findViewById(R.id.tv_payment_otherAddress);
                 RecyclerView rv_voucher= viewDialog.findViewById(R.id.rv_voucher);
                 RecyclerView rv_method= viewDialog.findViewById(R.id.rv_method);
-
+                CardView edt_other_address=viewDialog.findViewById(R.id.edt_other_address);
                 //btn
 
                 Button btn_pay  = viewDialog.findViewById(R.id.btn_pay);
                 tv_payment_total.setText(Double.toString(MyApplication.getTotalPriceOfCart()));
                 CUSTOMER customer = MyApplication.getCustomer();
+
+                tv_payment_otherAddress.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        if(tv_payment_otherAddress.isChecked())
+                        {
+                            edt_other_address.setVisibility(View.VISIBLE);
+                        }
+                        else
+                        {
+                            edt_other_address.setVisibility(View.GONE);
+                        }
+                    }
+                });
 
                 //get data voucher
                 //interface

@@ -56,7 +56,6 @@ public class fragmentMenu extends Fragment implements View.OnClickListener {
     }
 
     CardView cardMain,cardSide,cardCombo;
-    ArrayList<CATEGORY> dataOfCATEGORY;
     Fragment frag;
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -74,41 +73,7 @@ public class fragmentMenu extends Fragment implements View.OnClickListener {
         progressDialog =new ProgressDialog(getActivity());
         progressDialog.setMessage("Loading...");
         // Write a message to the database
-        FirebaseDatabase database = FirebaseDatabase.getInstance("https://dbpepperlunch-default-rtdb.asia-southeast1.firebasedatabase.app/");
-        DatabaseReference databaseReference = database.getReference("Database/Category_Dish");
-        dataOfCATEGORY = new ArrayList<>();
 
-        ChildEventListener childEventListener = new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                //count[0]++;
-                CATEGORY item = snapshot.getValue(CATEGORY.class);
-                dataOfCATEGORY.add(item);
-                //progressDialog.dismiss();
-
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        };
-        databaseReference.addChildEventListener(childEventListener);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -119,21 +84,21 @@ public class fragmentMenu extends Fragment implements View.OnClickListener {
             case R.id.card_main:{
                 // xử lý lọc data cate
                 //progressDialog.show();
-                ArrayList<CATEGORY> arrMain = filterByCondition(dataOfCATEGORY,"MAIN");
-                frag =new fragment_category(arrMain);
+                //ArrayList<CATEGORY> arrMain = filterByCondition(dataOfCATEGORY,"MAIN");
+                frag =new fragment_category("MAIN");
                 openFragmentFromFragment(frag,"CateMain");
             };break;
             case R.id.card_side:{
                 // xử lý lọc data cate
-                ArrayList<CATEGORY> arrSide = filterByCondition(dataOfCATEGORY,"SIDE");
-                frag =new fragment_category(arrSide);
+                //ArrayList<CATEGORY> arrSide = filterByCondition(dataOfCATEGORY,"SIDE");
+                frag =new fragment_category("SIDE");
                 openFragmentFromFragment(frag,"CateSide");
 
             };break;
             case R.id.card_combo:{
                 // xử lý lọc data cate
-                ArrayList<CATEGORY> arrCombo = filterByCondition(dataOfCATEGORY,"COMBO");
-                frag =new fragment_category(arrCombo);
+                //ArrayList<CATEGORY> arrCombo = filterByCondition(dataOfCATEGORY,"COMBO");
+                frag =new fragment_category("COMBO");
                 openFragmentFromFragment(frag,"CateCombo");
             };break;
         }

@@ -8,6 +8,7 @@ import android.os.Build;
 
 import com.example.pepperluchapplication.CartActivity;
 import com.example.pepperluchapplication.DTO.CART;
+import com.example.pepperluchapplication.DTO.CATEGORY;
 import com.example.pepperluchapplication.DTO.CUSTOMER;
 
 import java.util.ArrayList;
@@ -18,6 +19,8 @@ public class MyApplication extends Application {
     static String ID_VOUCHER=null,ID_METHOD=null;
     static float PERCENT_DISCOUNT,AMOUNT_DISCOUNT;
     static CUSTOMER customer;
+    public static ArrayList<CATEGORY> dataOfCATEGORY=new ArrayList<>();
+
 
     public static CUSTOMER getCustomer() {
         return customer;

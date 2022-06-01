@@ -17,17 +17,28 @@ public class ORDER implements Serializable {
     String ID_ORDER;
     HashMap<String,CART> LIST_CART;
     String ID_CUSTOMER,ID_VOUCHER,ID_METHOD;
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    String address;
     long STATUS;
     float TOTAL_PAYMENT;
     public ORDER(){}
 
-    public ORDER(HashMap<String, CART> LIST_CART, String ID_CUSTOMER, String ID_VOUCHER, String ID_METHOD, long STATUS, float TOTAL_PAYMENT) {
+    public ORDER(HashMap<String, CART> LIST_CART, String ID_CUSTOMER, String ID_VOUCHER, String ID_METHOD, long STATUS, float TOTAL_PAYMENT, String address) {
         this.LIST_CART = LIST_CART;
         this.ID_CUSTOMER = ID_CUSTOMER;
         this.ID_VOUCHER = ID_VOUCHER;
         this.ID_METHOD = ID_METHOD;
         this.STATUS = STATUS;
         this.TOTAL_PAYMENT = TOTAL_PAYMENT;
+        this.address=address;
 
     }
 

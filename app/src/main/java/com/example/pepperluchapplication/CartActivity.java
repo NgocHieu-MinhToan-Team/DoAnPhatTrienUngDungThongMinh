@@ -58,6 +58,7 @@ public class CartActivity extends AppCompatActivity {
     LV_CartAdapter lv_cartAdapter;
     onClickInterface onClickInterface;
     RV_VoucherAdapter voucherAdapter;
+    EditText text_address;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance("https://dbpepperlunch-default-rtdb.asia-southeast1.firebasedatabase.app/");
     @Override
@@ -102,7 +103,7 @@ public class CartActivity extends AppCompatActivity {
                 RecyclerView rv_voucher= viewDialog.findViewById(R.id.rv_voucher);
                 RecyclerView rv_method= viewDialog.findViewById(R.id.rv_method);
                 CardView edt_other_address=viewDialog.findViewById(R.id.edt_other_address);
-
+                text_address=viewDialog.findViewById(R.id.text_address);
                 tv_voucher_name=viewDialog.findViewById(R.id.tv_voucher_name);
                 btn_delete_voucher=viewDialog.findViewById(R.id.btn_delete_voucher);
 
@@ -267,7 +268,13 @@ public class CartActivity extends AppCompatActivity {
                 btn_pay.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ORDER order = new ORDER(listOfCart,customer.getID_CUSTOMER(),MyApplication.getIdVoucher(),MyApplication.getIdMethod(),0,totalPay[0]);
+                        String address;
+                        if(tv_payment_otherAddress.isChecked())
+                            address=text_address.getText().toString();
+                        else
+                            address=MyApplication.getCustomer().getADDRESS_CUSTOMER();
+
+                        ORDER order = new ORDER(listOfCart,customer.getID_CUSTOMER(),MyApplication.getIdVoucher(),MyApplication.getIdMethod(),0,totalPay[0], address);
                         DatabaseReference myRef = database.getReference("Database/Order");
                         myRef.child(order.getID_CUSTOMER()).push().setValue(order);
 

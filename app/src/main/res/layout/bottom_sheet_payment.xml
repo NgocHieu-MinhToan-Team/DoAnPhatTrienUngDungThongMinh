@@ -58,7 +58,7 @@
                 android:hint="Enter other address"
                 android:textSize="20dp"
                 android:background="@null"
-
+                android:id="@+id/text_address"
 
                 />
         </androidx.cardview.widget.CardView>

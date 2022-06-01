@@ -1,6 +1,7 @@
 package com.example.pepperluchapplication;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,13 +9,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +45,7 @@ import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.stream.Collectors;
 
 public class CartActivity extends AppCompatActivity {
 
@@ -46,9 +53,12 @@ public class CartActivity extends AppCompatActivity {
     ListView listView;
     TextView textView;
     CardView buy_carview;
+    TextView tv_voucher_name;
+    ImageButton btn_delete_voucher;
     LV_CartAdapter lv_cartAdapter;
     onClickInterface onClickInterface;
     RV_VoucherAdapter voucherAdapter;
+    EditText text_address;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance("https://dbpepperlunch-default-rtdb.asia-southeast1.firebasedatabase.app/");
     @Override
@@ -72,12 +82,13 @@ public class CartActivity extends AppCompatActivity {
             buy_carview.setVisibility(View.GONE);
             return;
         }
-        lv_cartAdapter=new LV_CartAdapter(this,carts);
+        lv_cartAdapter=new LV_CartAdapter(this,carts,textView,listView,buy_carview);
         listView.setAdapter(lv_cartAdapter);
 
 
         // buy now here
         btn_buy_cart.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View v) {
                 View viewDialog = LayoutInflater.from(CartActivity.this).inflate(R.layout.bottom_sheet_payment,null);
@@ -88,14 +99,42 @@ public class CartActivity extends AppCompatActivity {
                 TextView tv_payment_yourAddress = viewDialog.findViewById(R.id.tv_payment_yourAddress);
                 TextView tv_payment_discount = viewDialog.findViewById(R.id.tv_payment_discount);
                 TextView tv_payment_pay = viewDialog.findViewById(R.id.tv_payment_pay);
-
+                RadioButton tv_payment_otherAddress=viewDialog.findViewById(R.id.tv_payment_otherAddress);
                 RecyclerView rv_voucher= viewDialog.findViewById(R.id.rv_voucher);
                 RecyclerView rv_method= viewDialog.findViewById(R.id.rv_method);
+                CardView edt_other_address=viewDialog.findViewById(R.id.edt_other_address);
+                text_address=viewDialog.findViewById(R.id.text_address);
+                tv_voucher_name=viewDialog.findViewById(R.id.tv_voucher_name);
+                btn_delete_voucher=viewDialog.findViewById(R.id.btn_delete_voucher);
 
+                btn_delete_voucher.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        tv_voucher_name.setText("No Voucher Choosen");
+                        MyApplication.setIdVoucher(null);
+                        tv_payment_discount.setText("0");
+                        tv_payment_pay.setText(tv_payment_total.getText());
+                    }
+                });
                 //btn
+
                 Button btn_pay  = viewDialog.findViewById(R.id.btn_pay);
                 tv_payment_total.setText(Double.toString(MyApplication.getTotalPriceOfCart()));
                 CUSTOMER customer = MyApplication.getCustomer();
+
+                tv_payment_otherAddress.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        if(tv_payment_otherAddress.isChecked())
+                        {
+                            edt_other_address.setVisibility(View.VISIBLE);
+                        }
+                        else
+                        {
+                            edt_other_address.setVisibility(View.GONE);
+                        }
+                    }
+                });
 
                 //get data voucher
                 //interface
@@ -134,13 +173,13 @@ public class CartActivity extends AppCompatActivity {
                             tv_payment_pay.setText(Float.toString(totalPay[0]));
                         }
                         voucherAdapter.notifyDataSetChanged();
-                        Toast.makeText(CartActivity.this,"Position is"+abc,Toast.LENGTH_LONG).show();
+                        //Toast.makeText(CartActivity.this,"Position is"+abc,Toast.LENGTH_LONG).show();
 
                     }
                 };
 
-                ArrayList<VOUCHER> listOfVoucher=new ArrayList<>();
-                voucherAdapter= new RV_VoucherAdapter(CartActivity.this,listOfVoucher,onClickInterface);
+                ArrayList<VOUCHER> listVoucher= new ArrayList<>();
+                voucherAdapter= new RV_VoucherAdapter(CartActivity.this,listVoucher,onClickInterface,tv_voucher_name);
                 rv_voucher.setAdapter(voucherAdapter);
                 rv_voucher.setLayoutManager(new LinearLayoutManager(CartActivity.this, LinearLayoutManager.HORIZONTAL, false));
 
@@ -157,9 +196,9 @@ public class CartActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for(DataSnapshot data : snapshot.getChildren()){
                             VOUCHER voucher = data.getValue(VOUCHER.class);
-                            listOfVoucher.add(voucher);
+                            listVoucher.add(voucher);
+                            voucherAdapter.notifyDataSetChanged();
                         }
-                        voucherAdapter.notifyDataSetChanged();
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
@@ -229,14 +268,23 @@ public class CartActivity extends AppCompatActivity {
                 btn_pay.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ORDER order = new ORDER(listOfCart,customer.getID_CUSTOMER(),MyApplication.getIdVoucher(),MyApplication.getIdMethod(),0,totalPay[0]);
+                        String address;
+                        if(tv_payment_otherAddress.isChecked())
+                            address=text_address.getText().toString();
+                        else
+                            address=MyApplication.getCustomer().getADDRESS_CUSTOMER();
+
+                        ORDER order = new ORDER(listOfCart,customer.getID_CUSTOMER(),MyApplication.getIdVoucher(),MyApplication.getIdMethod(),0,totalPay[0], address);
                         DatabaseReference myRef = database.getReference("Database/Order");
                         myRef.child(order.getID_CUSTOMER()).push().setValue(order);
-                        // khởi chạy service
-                        beginService(order);
-                        //clear carts
-                        MyApplication.clearCart();
-                        finish();
+
+
+                            // khởi chạy service
+                            beginService(order);
+                            //clear carts
+                            MyApplication.clearCart();
+                            finish();
+
                     }
 
 
@@ -244,6 +292,7 @@ public class CartActivity extends AppCompatActivity {
             }
 
         });
+
 
     }
 
@@ -255,6 +304,10 @@ public class CartActivity extends AppCompatActivity {
         bundle.putSerializable("YourOrder",order);
         intent.putExtras(bundle);
         startService(intent);
+    }
+    public void btn_back_cart_click(View view)
+    {
+        finish();
     }
 
 }

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,32 +9,47 @@
     tools:context=".Fragments.fragmentHome"
     android:orientation="vertical"
     >
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
-        <!--    news , advert vd best seller-->
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             >
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/viewPager2_slider"
+            <!--    news , advert vd best seller-->
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp"/>
-            <me.relex.circleindicator.CircleIndicator3
-                android:id="@+id/circleIndicator3_slider"
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                app:ci_drawable="@drawable/indicator3_slider"
-                />
+                android:layout_height="200dp"
+                android:orientation="vertical"
+                >
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewPager2_slider"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"/>
+                <me.relex.circleindicator.CircleIndicator3
+                    android:id="@+id/circleIndicator3_slider"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    app:ci_drawable="@drawable/indicator3_slider"
+                    />
+            </LinearLayout>
+
+            <!--    menu -->
         </LinearLayout>
-
-        <!--    menu -->
-    </LinearLayout>
-
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="What other choose"
+            android:textSize="30dp"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/lv_fpgrowth"
+            />
 
 
 </LinearLayout>

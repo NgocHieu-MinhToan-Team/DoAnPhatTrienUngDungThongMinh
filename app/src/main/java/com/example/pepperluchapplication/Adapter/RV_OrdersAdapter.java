@@ -47,7 +47,7 @@ public class RV_OrdersAdapter extends RecyclerView.Adapter<RV_OrdersAdapter.View
     @Override
     public void onBindViewHolder(@NonNull ViewOrders holder, int position) {
         ORDER order=data.get(position);
-        holder.tv_order_title.setText(order.getID_CUSTOMER());
+        holder.tv_order_title.setText(order.getID_ORDER());
         String state ;
         switch ((int) order.getSTATUS()){
             case 0:{

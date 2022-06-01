@@ -62,15 +62,33 @@
 
                 />
         </androidx.cardview.widget.CardView>
-
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Voucher"
-        android:textSize="18dp"
-        android:padding="10dp"
-        android:textStyle="bold"
-        />
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Voucher"
+            android:textSize="18dp"
+            android:padding="10dp"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No Voucher Choosen"
+            android:textSize="20dp"
+            android:id="@+id/tv_voucher_name"/>
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_close_24"
+            android:layout_gravity="center"
+            android:background="@color/white"
+            android:id="@+id/btn_delete_voucher"
+            />
+    </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_voucher"
         android:layout_width="match_parent"
@@ -89,6 +107,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/rv_method"
+
         />
     <LinearLayout
         android:layout_width="match_parent"

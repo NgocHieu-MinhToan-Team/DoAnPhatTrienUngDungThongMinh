@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
@@ -44,6 +45,7 @@ import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.stream.Collectors;
 
 public class CartActivity extends AppCompatActivity {
 
@@ -51,6 +53,8 @@ public class CartActivity extends AppCompatActivity {
     ListView listView;
     TextView textView;
     CardView buy_carview;
+    TextView tv_voucher_name;
+    ImageButton btn_delete_voucher;
     LV_CartAdapter lv_cartAdapter;
     onClickInterface onClickInterface;
     RV_VoucherAdapter voucherAdapter;
@@ -98,6 +102,19 @@ public class CartActivity extends AppCompatActivity {
                 RecyclerView rv_voucher= viewDialog.findViewById(R.id.rv_voucher);
                 RecyclerView rv_method= viewDialog.findViewById(R.id.rv_method);
                 CardView edt_other_address=viewDialog.findViewById(R.id.edt_other_address);
+
+                tv_voucher_name=viewDialog.findViewById(R.id.tv_voucher_name);
+                btn_delete_voucher=viewDialog.findViewById(R.id.btn_delete_voucher);
+
+                btn_delete_voucher.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        tv_voucher_name.setText("No Voucher Choosen");
+                        MyApplication.setIdVoucher(null);
+                        tv_payment_discount.setText("0");
+                        tv_payment_pay.setText(tv_payment_total.getText());
+                    }
+                });
                 //btn
 
                 Button btn_pay  = viewDialog.findViewById(R.id.btn_pay);
@@ -155,13 +172,13 @@ public class CartActivity extends AppCompatActivity {
                             tv_payment_pay.setText(Float.toString(totalPay[0]));
                         }
                         voucherAdapter.notifyDataSetChanged();
-                        Toast.makeText(CartActivity.this,"Position is"+abc,Toast.LENGTH_LONG).show();
+                        //Toast.makeText(CartActivity.this,"Position is"+abc,Toast.LENGTH_LONG).show();
 
                     }
                 };
 
-                HashMap<String,VOUCHER> hashMapVoucher=new HashMap<>();
-                voucherAdapter= new RV_VoucherAdapter(CartActivity.this,hashMapVoucher,onClickInterface);
+                ArrayList<VOUCHER> listVoucher= new ArrayList<>();
+                voucherAdapter= new RV_VoucherAdapter(CartActivity.this,listVoucher,onClickInterface,tv_voucher_name);
                 rv_voucher.setAdapter(voucherAdapter);
                 rv_voucher.setLayoutManager(new LinearLayoutManager(CartActivity.this, LinearLayoutManager.HORIZONTAL, false));
 
@@ -178,7 +195,7 @@ public class CartActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for(DataSnapshot data : snapshot.getChildren()){
                             VOUCHER voucher = data.getValue(VOUCHER.class);
-                            hashMapVoucher.put(voucher.getID_VOUCHER(),voucher);
+                            listVoucher.add(voucher);
                             voucherAdapter.notifyDataSetChanged();
                         }
                     }
@@ -254,23 +271,13 @@ public class CartActivity extends AppCompatActivity {
                         DatabaseReference myRef = database.getReference("Database/Order");
                         myRef.child(order.getID_CUSTOMER()).push().setValue(order);
 
-                        // cap nhat lai so luong voucher
-                        DatabaseReference voucherRef = database.getReference("Database/Voucher");
-                        //get so luong voucher hien tai
-                        VOUCHER currentVoucher = hashMapVoucher.get(MyApplication.getIdVoucher());
-                        int countVoucherExist = currentVoucher.getQUANTITY_VOUCHER();
-                        if(countVoucherExist>0){
-                            //cap nhat so luong voucher hien tai
-                            voucherRef.child(MyApplication.getIdVoucher()).child("QUANTITY_VOUCHER").setValue(countVoucherExist-1);
+
                             // khởi chạy service
                             beginService(order);
                             //clear carts
                             MyApplication.clearCart();
                             finish();
-                        }
-                        else{
-                            return;
-                        }
+
                     }
 
 

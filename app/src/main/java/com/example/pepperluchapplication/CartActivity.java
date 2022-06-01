@@ -1,6 +1,7 @@
 package com.example.pepperluchapplication;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -81,6 +83,7 @@ public class CartActivity extends AppCompatActivity {
 
         // buy now here
         btn_buy_cart.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View v) {
                 View viewDialog = LayoutInflater.from(CartActivity.this).inflate(R.layout.bottom_sheet_payment,null);
@@ -157,8 +160,8 @@ public class CartActivity extends AppCompatActivity {
                     }
                 };
 
-                ArrayList<VOUCHER> listOfVoucher=new ArrayList<>();
-                voucherAdapter= new RV_VoucherAdapter(CartActivity.this,listOfVoucher,onClickInterface);
+                HashMap<String,VOUCHER> hashMapVoucher=new HashMap<>();
+                voucherAdapter= new RV_VoucherAdapter(CartActivity.this,hashMapVoucher,onClickInterface);
                 rv_voucher.setAdapter(voucherAdapter);
                 rv_voucher.setLayoutManager(new LinearLayoutManager(CartActivity.this, LinearLayoutManager.HORIZONTAL, false));
 
@@ -175,9 +178,9 @@ public class CartActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for(DataSnapshot data : snapshot.getChildren()){
                             VOUCHER voucher = data.getValue(VOUCHER.class);
-                            listOfVoucher.add(voucher);
+                            hashMapVoucher.put(voucher.getID_VOUCHER(),voucher);
+                            voucherAdapter.notifyDataSetChanged();
                         }
-                        voucherAdapter.notifyDataSetChanged();
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
@@ -250,11 +253,24 @@ public class CartActivity extends AppCompatActivity {
                         ORDER order = new ORDER(listOfCart,customer.getID_CUSTOMER(),MyApplication.getIdVoucher(),MyApplication.getIdMethod(),0,totalPay[0]);
                         DatabaseReference myRef = database.getReference("Database/Order");
                         myRef.child(order.getID_CUSTOMER()).push().setValue(order);
-                        // khởi chạy service
-                        beginService(order);
-                        //clear carts
-                        MyApplication.clearCart();
-                        finish();
+
+                        // cap nhat lai so luong voucher
+                        DatabaseReference voucherRef = database.getReference("Database/Voucher");
+                        //get so luong voucher hien tai
+                        VOUCHER currentVoucher = hashMapVoucher.get(MyApplication.getIdVoucher());
+                        int countVoucherExist = currentVoucher.getQUANTITY_VOUCHER();
+                        if(countVoucherExist>0){
+                            //cap nhat so luong voucher hien tai
+                            voucherRef.child(MyApplication.getIdVoucher()).child("QUANTITY_VOUCHER").setValue(countVoucherExist-1);
+                            // khởi chạy service
+                            beginService(order);
+                            //clear carts
+                            MyApplication.clearCart();
+                            finish();
+                        }
+                        else{
+                            return;
+                        }
                     }
 
 

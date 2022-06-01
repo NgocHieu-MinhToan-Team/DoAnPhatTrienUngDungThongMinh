@@ -49,7 +49,7 @@ public class RV_MethodAdapter extends RecyclerView.Adapter<RV_MethodAdapter.View
         // set default
         holder.rb_payment.setChecked(position==lastCheckedPosition);
         MyApplication.setIdMethod(method.getID_METHOD());
-        if(lastCheckedPosition==0){
+        if(position==0){
             holder.rb_payment.setChecked(true);
         }
 //        holder.itemView.setOnClickListener(new View.OnClickListener() {

@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,11 +17,15 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.example.pepperluchapplication.Adapter.LV_FPGrowthAdapter;
 import com.example.pepperluchapplication.Adapter.ViewPager2_Slider;
 import com.example.pepperluchapplication.Animation.DepthPageTransformer;
+import com.example.pepperluchapplication.DTO.CATEGORY;
 import com.example.pepperluchapplication.DTO.NEWS;
 import com.example.pepperluchapplication.R;
+import com.example.pepperluchapplication.Service.MyApplication;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -40,6 +45,10 @@ public class fragmentHome extends Fragment {
     // khai bao cac view can thiet cho slider
     List<NEWS> listNews = new ArrayList<>();;
     ViewPager2 viewPager2_slider;
+    ListView lv_fpgrowth;
+    ArrayList<CATEGORY> dataOfCATEGORY;//= MyApplication.dataOfCATEGORY;
+    LV_FPGrowthAdapter lv_fpGrowthAdapter;
+
     private Handler handler =new Handler();
     Runnable runnable = new Runnable() {
         @Override
@@ -74,6 +83,8 @@ public class fragmentHome extends Fragment {
         ViewPager2_Slider sliderAdapter = new ViewPager2_Slider(listNews);
         viewPager2_slider.setAdapter(sliderAdapter);
 
+        lv_fpgrowth=view.findViewById(R.id.lv_fpgrowth);
+
         CircleIndicator3 indicator = view.findViewById(R.id.circleIndicator3_slider);
         indicator.setViewPager(viewPager2_slider);
         sliderAdapter.registerAdapterDataObserver(indicator.getAdapterDataObserver());
@@ -105,6 +116,46 @@ public class fragmentHome extends Fragment {
 
             }
         });
+
+        FirebaseDatabase database2 = FirebaseDatabase.getInstance("https://dbpepperlunch-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        DatabaseReference databaseReference = database2.getReference("Database/FPGrowth");
+        dataOfCATEGORY = new ArrayList<>();
+
+        ChildEventListener childEventListener = new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                //count[0]++;
+                CATEGORY item = snapshot.getValue(CATEGORY.class);
+                dataOfCATEGORY.add(item);
+                lv_fpGrowthAdapter.notifyDataSetChanged();
+                //progressDialog.dismiss();
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        };
+        databaseReference.addChildEventListener(childEventListener);
+        lv_fpGrowthAdapter=new LV_FPGrowthAdapter(getContext(),dataOfCATEGORY);
+        lv_fpgrowth.setAdapter(lv_fpGrowthAdapter);
+
     }
     // khi ng dung thoat ung dung thi luu index cua slider
     @Override

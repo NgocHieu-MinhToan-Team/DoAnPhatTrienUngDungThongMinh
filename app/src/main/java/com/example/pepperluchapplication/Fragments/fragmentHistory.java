@@ -75,6 +75,7 @@ public class fragmentHistory extends Fragment {
                         listOfOrders.clear();
                         for(DataSnapshot record : snapshot.child(MyApplication.getCustomer().getID_CUSTOMER()).getChildren()){
                             ORDER value = record.getValue(ORDER.class);
+                            value.setID_ORDER(record.getKey());
                             // 0 : đang xử lý ,thì thêm vào list đơn hàng
                             if(value.getSTATUS()>=0 && value.getSTATUS()<2){
                                 listOfOrders.add(value);

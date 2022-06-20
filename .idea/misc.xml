@@ -50,8 +50,12 @@
         <entry key="app/src/main/res/layout/bottom_sheet_detail_product.xml" value="0.1259259259259259" />
         <entry key="app/src/main/res/layout/bottom_sheet_payment.xml" value="0.2510548523206751" />
         <entry key="app/src/main/res/layout/cart_preview.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_category.xml" value="0.25427350427350426" />
         <entry key="app/src/main/res/layout/fragment_change_password.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_customer_information.xml" value="0.12735042735042734" />
+        <entry key="app/src/main/res/layout/fragment_form_login.xml" value="0.25427350427350426" />
+        <entry key="app/src/main/res/layout/fragment_form_register.xml" value="0.25427350427350426" />
+        <entry key="app/src/main/res/layout/fragment_history.xml" value="0.24814814814814815" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.21944444444444444" />
         <entry key="app/src/main/res/layout/fragment_menu.xml" value="0.2510548523206751" />
         <entry key="app/src/main/res/layout/fragment_order.xml" value="0.2953125" />
@@ -59,9 +63,14 @@
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.2953125" />
         <entry key="app/src/main/res/layout/fragment_status.xml" value="0.2953125" />
         <entry key="app/src/main/res/layout/item_cart.xml" value="0.2423076923076923" />
+        <entry key="app/src/main/res/layout/item_click_history.xml" value="0.2510548523206751" />
         <entry key="app/src/main/res/layout/item_seemore_cart.xml" value="0.12735042735042734" />
+        <entry key="app/src/main/res/layout/layout_notification_custom.xml" value="0.25427350427350426" />
         <entry key="app/src/main/res/layout/lv_item_fpgrowth.xml" value="0.2351851851851852" />
+        <entry key="app/src/main/res/layout/modal_bottom_sheet_login.xml" value="0.2510548523206751" />
+        <entry key="app/src/main/res/layout/modal_bottom_sheet_signup.xml" value="0.25427350427350426" />
         <entry key="app/src/main/res/layout/navigation_header.xml" value="0.12735042735042734" />
+        <entry key="app/src/main/res/layout/rv_category.xml" value="0.25427350427350426" />
         <entry key="app/src/main/res/layout/rv_category_item.xml" value="0.2510548523206751" />
         <entry key="app/src/main/res/layout/rv_method_item.xml" value="0.2510548523206751" />
         <entry key="app/src/main/res/layout/rv_order_item.xml" value="0.2510548523206751" />

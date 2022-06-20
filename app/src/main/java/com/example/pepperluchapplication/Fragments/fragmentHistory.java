@@ -77,10 +77,10 @@ public class fragmentHistory extends Fragment {
                             ORDER value = record.getValue(ORDER.class);
                             value.setID_ORDER(record.getKey());
                             // 0 : đang xử lý ,thì thêm vào list đơn hàng
-                            if(value.getSTATUS()>=0 && value.getSTATUS()<2){
+                            if(value.getSTATUS()>=0 && value.getSTATUS()<3){
                                 listOfOrders.add(value);
                             }
-                            if(value.getSTATUS()>=2){
+                            else{
                                 listOfReceipt.add(value);
                             }
                             // 1 : Dã xử lý xong ,thì thêm vào list lịch sử giao dịch

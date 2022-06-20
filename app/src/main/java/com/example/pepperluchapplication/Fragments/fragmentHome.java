@@ -117,17 +117,21 @@ public class fragmentHome extends Fragment {
             }
         });
 
+        //doc du lieu cho listview FPGrowth
+        //ket noi firebase
         FirebaseDatabase database2 = FirebaseDatabase.getInstance("https://dbpepperlunch-default-rtdb.asia-southeast1.firebasedatabase.app/");
         DatabaseReference databaseReference = database2.getReference("Database/FPGrowth");
+        //tao list category
         dataOfCATEGORY = new ArrayList<>();
 
         ChildEventListener childEventListener = new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 //count[0]++;
+                //tao doi tuong category
                 CATEGORY item = snapshot.getValue(CATEGORY.class);
-                dataOfCATEGORY.add(item);
-                lv_fpGrowthAdapter.notifyDataSetChanged();
+                dataOfCATEGORY.add(item);//them item vao list category
+                lv_fpGrowthAdapter.notifyDataSetChanged();//thong bao toi adapter co su thay doi cua du lieu
                 //progressDialog.dismiss();
 
             }
@@ -152,9 +156,10 @@ public class fragmentHome extends Fragment {
 
             }
         };
-        databaseReference.addChildEventListener(childEventListener);
+        databaseReference.addChildEventListener(childEventListener);//them event vao ket noi firebase
+        //tao adapter cho listview
         lv_fpGrowthAdapter=new LV_FPGrowthAdapter(getContext(),dataOfCATEGORY);
-        lv_fpgrowth.setAdapter(lv_fpGrowthAdapter);
+        lv_fpgrowth.setAdapter(lv_fpGrowthAdapter);//gan adapter vao listview
 
     }
     // khi ng dung thoat ung dung thi luu index cua slider

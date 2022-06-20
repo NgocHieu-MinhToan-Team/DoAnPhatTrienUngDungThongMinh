@@ -114,6 +114,7 @@
             android:background="@color/white"
             android:textAllCaps="false"
 
+
             />
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"

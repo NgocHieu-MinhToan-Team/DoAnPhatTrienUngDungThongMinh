@@ -51,13 +51,16 @@ public class LV_FPGrowthAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if(convertView==null)
-            convertView= LayoutInflater.from(context).inflate(R.layout.lv_item_fpgrowth,null);
+            convertView= LayoutInflater.from(context).inflate(R.layout.lv_item_fpgrowth,null);//dung view lv_item_fpgrowth
+        //tao doi tuong anh xa tu lv_item_fpgrowth
         RecyclerView rv_item_fpgrowth=convertView.findViewById(R.id.rv_item_fpgrowth);
         ImageButton btn_Choose_FPGrowth=convertView.findViewById(R.id.btn_Choose_FPGrowth);
-
+        //tao data cho recycle view rv_item_fpgrowth
+        //ep kieu tu hashmap sang ArrayList<PRODUCT>
         ArrayList<PRODUCT> listProduct
                 =  data.get(position).getDishes().values().stream().collect(
                 Collectors.toCollection(ArrayList::new));
+        //tao adapter cho recycle view
         RV_ProductAdapter rv_productAdapter=new RV_ProductAdapter(context,listProduct);
         rv_item_fpgrowth.setAdapter(rv_productAdapter);
         rv_item_fpgrowth.setLayoutManager(new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false));

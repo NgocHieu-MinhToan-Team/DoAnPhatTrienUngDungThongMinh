@@ -23,7 +23,7 @@ import java.util.ArrayList;
 public class RV_MethodAdapter extends RecyclerView.Adapter<RV_MethodAdapter.ViewMethod> implements Filterable {
     Context context;
     ArrayList<METHOD> data;
-    private int lastCheckedPosition = -1;
+    private int lastCheckedPosition = 0;
 
     public RV_MethodAdapter(Context context,  ArrayList<METHOD> data) {
         this.context = context;
@@ -49,9 +49,9 @@ public class RV_MethodAdapter extends RecyclerView.Adapter<RV_MethodAdapter.View
         // set default
         holder.rb_payment.setChecked(position==lastCheckedPosition);
         MyApplication.setIdMethod(method.getID_METHOD());
-        if(position==0){
-            holder.rb_payment.setChecked(true);
-        }
+//        if(position==0){
+//            holder.rb_payment.setChecked(true);
+//        }
 //        holder.itemView.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {

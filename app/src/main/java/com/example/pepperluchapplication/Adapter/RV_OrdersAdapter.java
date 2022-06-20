@@ -51,16 +51,22 @@ public class RV_OrdersAdapter extends RecyclerView.Adapter<RV_OrdersAdapter.View
         String state ;
         switch ((int) order.getSTATUS()){
             case 0:{
-                state="Đang Xử Lý...";
+                state="Đang Xử Lý";
             };break;
             case 1:{
-                state="Đang Giao...";
+                state="Đã nhận đơn";
             }break;
             case 2:{
-                state="Hoàn Tất Giao Hàng...";
+                state="Đang Giao Hàng";
+            };break;
+            case 3:{
+                state="Hoàn Tất Giao Hàng";
+            };break;
+            case 4:{
+                state="Đơn hàng bị huỷ";
             };break;
             default:
-                state="Đơn Hàng Của Bạn Đã Bị Hủy";break;
+                state="Đơn hàng của bạn đã xảy ra lỗi";break;
         }
         holder.tv_order_content.setText(state);
         int count=0;
@@ -70,6 +76,12 @@ public class RV_OrdersAdapter extends RecyclerView.Adapter<RV_OrdersAdapter.View
         String strcount = "Tổng Cộng Có: "+count + "món";
         holder.tv_count.setText(strcount);
         holder.tv_totalPrice.setText(Float.toString(order.getTOTAL_PAYMENT()));
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
 
     }
